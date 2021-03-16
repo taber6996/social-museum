@@ -1,4 +1,4 @@
-.menu{
+#menu{
     width: 100%;
 }
 
@@ -13,7 +13,7 @@ li{
     display: inline;
 }
 
-.logo{
+#logo{
     width: 100%;
     margin: auto;
     text-align: center;
