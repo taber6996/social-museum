@@ -4,28 +4,24 @@
  <head>
 	 <meta charset="UTF-8">
 	 <title>Contacto</title>
-	 <link rel="stylesheet" href="">
+	 <!-- Para poner el CSS mas adelante: <link rel="stylesheet" href=""> -->
  </head>
- <style>
- </style>
- <script src=""></script>
  <body>
+	<!-- Indice de vinculos -->
     <header>
-        <nav class="navigation" style="width: 100%;">
-            <ul style="list-style-type: none; margin: 0;  padding: 0; width: 100%; " >
-                <li style="display: inline"><a href="index.html">Index</a></li>
-                <li style="display: inline"><a href="bocetos.html">Bocetos</a></li>
-                <li style="display: inline"><a href="contacto.html">Contacto</a></li>
-                <li style="display: inline"><a href="detalles.html">Detalles</a></li>
-                <li style="display: inline"><a href="miembros.html">Miembros</a></li>
-                <li style="display: inline"><a href="planificacion.html">Planificacion</a></li>
-            </ul> 
-    
-        </nav>
+		<ul>
+			<li><a href="index.html">Index</a></li>
+			<li><a href="bocetos.html">Bocetos</a></li>
+			<li><a href="contacto.html">Contacto</a></li>
+			<li><a href="detalles.html">Detalles</a></li>
+			<li><a href="miembros.html">Miembros</a></li>
+			<li><a href="planificacion.html">Planificacion</a></li>
+		</ul>
         <h1>Social Museum</h1>
     </header>
 	
-	<form action="mailto:socialmuseum@gmail.com?subject=motivo&body=consulta" method="post">
+	<!-- Area de formulario de contacto -->
+	<form action="mailto:infoSocialMuseum@gmail.com" method="post">
 		Escribe tu nombre:
 		<input type="text" name="nombre" value="" placeholder="Ej: Juan" />
 		<br/>
@@ -34,7 +30,8 @@
 		<input type="email" name="email" value="" placeholder="Ej: juan@correo.com" />
 		<br/>
 		
-		Motivo de la consulta: <br/>
+		Motivo de la consulta:
+		<br/>
 		<input type="radio" name="motivo" value="evaluacion" checked /> Evaluación
 		<input type="radio" name="motivo" value="sugerencias" /> Sugerencias
 		<input type="radio" name="motivo" value="criticas" /> Críticas
@@ -45,7 +42,8 @@
 		<br/>
 		<br/>
 		
-		Escriba su consulta: <br/>
+		Escriba su consulta:
+		<br/>
 		<textarea name="consulta" rows="4" cols="50"></textarea>
 		<br/>
 		
