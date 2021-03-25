@@ -1,0 +1,37 @@
+#menu{
+    width: 100%;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+li{
+    display: inline;
+}
+
+dt{
+	text-decoration-line: underline;
+}
+
+#logo{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+table{
+	width: 50%;
+	border: 2px solid #000;
+}
+
+th, td{
+	width: 25%;
+	text-align: left;
+	vertical-align: top;
+	border: 1px solid #000;
+	padding: 0.3em;
+}
