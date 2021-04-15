@@ -1,0 +1,181 @@
+-Pantalla de inicio
+
+index.php
+Codigo para la pagina principal. Con una imagen relacionada con el museo, un header con el logo,
+un menu y un pie de pagina con links.
+
+header.php
+Contiene el logo de la web. Esta siempre presente y se puede pinchar para volver a index.php
+
+aside.php
+Menu principal con las opciones: Buscador, Artistas, Expos, Tienda, Eventos, Cuenta e Idioma.
+Tambien esta siempre visible en la web.
+
+footer.php
+Tiene dos links: Sobre nosotros y Contacto.
+
+sobre_nosotos.php
+Informacion sobre los autores del sitio web.
+
+contacto.php
+Formulario para contactar.
+
+-Artistas
+
+artistas.php
+Codigo que muestra una lista con todos los artistas en la BBDD. Los nombre de los
+artistas se pueden pinchar para ver su perfil.
+
+-Perfil artista
+
+perfil_artista.php
+Pagina que muestra el perfil de un artista.
+
+detalles_obra.php
+Pagina que muestra una obra en tamaño mas grande con su titulo, descripcion, likes, comentarios...
+El usuario puede dar like o dejar un comentariosi esta registrado
+
+-Expos
+
+expos.php
+Pagina que muestra una lista con todos las exposiciones en la BBDD. Se puede pinchar una exposicion para visiarla.
+
+expo.php
+Pagina con las obras de la exposicion pinchada. 
+
+-Tienda
+
+tienda.php
+En esta pagina vemos los productos del museo en venta. Si pinchamos en alguno para comprar se genera un carrito.
+
+carrito.php
+En esta pagina vemos un resumen de la compra. Tenemos la opcion de volver a la tienda y seguir comprando o pagar y terminar.
+
+-Eventos
+
+eventos.php
+El codigo muestra una pagina con un calendario junto con los eventos más próximos. El usuario puede pinchar cualquier fecha en el calendario 
+para consultar los eventos en ese día concreto. Los eventos pueden pincharse para ser dirigidos a sus respectivas páginas.
+
+puja.php
+En esta pagina aparecen imágenes con el nombre de las obras, el precio actual y un botón para que el cliente pueda pujar.
+
+reunion.php
+Desde esta pagina los artistas y fans acceden a un link para hacer una videollamada.
+
+concurso.php
+En esta pagina se pueden ver los dibujos participantes de un boton para votar.
+
+-Cuenta
+
+login.php
+Pagina con el formulario de login
+
+signin.php
+Pagina con el formulario de sign in
+
+cuenta.php
+Si ya esta el usuario logeado puede ver aqui su cuenta con un menu de opciones
+
+header_cuenta.php
+Muestra la foto de perfil ,el nombre y el tipo de cuenta
+
+aside_regular.php
+Muestra el menu de los usuarios registrados regular
+
+aside_premium.php
+Muestra el menu de los usuarios registrados premium
+
+aside_artista.php
+Muestra el menu de los artistas
+
+general.php
+Muestra los datos generales del usuario
+
+subscripciones.php
+Muestra la lista de artistas a los que esta subscrito el usuario
+
+entradas.php
+Muestra las entradas que ha comprado el usuario regular
+
+mi_estudio.php
+Muestra un menu con opciones: mi galeria, hacer un dibujo nuevo
+	
+mi_galeria.php
+Muestra todos los dibujos en pequeño hechos por el usuario. Se pueden pinchar para ver en grande
+	
+mi_dibujo.php
+Muestra un dibujo en grande con las opciones editar o borrar
+	
+lienzo.php
+Herramienta para hacer un nuevo dibujo
+	
+mis_obras.php
+Pagina para los artistas donde pueden ver sus obras o subir una nueva
+
+compras.php
+Muestra las compras hechas en la tienda
+
+buzon.php
+Muestra una bandeja de entrada con mensajes del usuario
+	
+leer_mensaje.php
+Muestra un mensaje
+	
+escribir_mensaje.php
+Herramienta para redactar un mesaje
+
+lista_eventos.php
+Pagina para el administrador para ver los eventos o crear uno nuevo
+
+lista_usuarios.php
+Pagina para el administrador para ver los usuarios
+
+logout.php
+Para cerrar sesion
+
+//INCLUDES
+
+DAO y TO para las entidades del proyecto
+
+TOUsusario.php
+SAUsuario.php
+DAOUsuario.php
+
+SAAdmin.php
+TOAdmin.php
+DAOAdmin.php
+
+TOCliente.php
+SACliente.php
+DAOCliente.php
+
+
+TOObra.php
+	DAOObra.php
+TODibujo.php
+	DAODibujo.php
+TOExpo.php
+	DAOExpo.php
+TOProducto.php
+	DAOProducto.php
+TOEvento.php
+	DAOEvento.php
+TOSubasta.php
+	DAOSubasta.php
+TOConcurso.php
+	DAOConcurso.php
+TOReunion.php
+	DAOReunion.php
+TOCompra.php
+	DAOCompra.php
+TOPuja.php
+	DAOPuja.php
+TOEntrada.php
+	DAOEntrada.php
+TOMensaje.php
+	DAOMensaje.php
+TOMecenazgo.php
+	DAOMecenazgo.php
+TOComentario.php
+	DAOComentario.php
