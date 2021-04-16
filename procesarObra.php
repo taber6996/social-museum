@@ -39,14 +39,16 @@
 		finfo_close($finfo);
 		if ( $ok ) {
 			$tmp_name = $_FILES['archivo']['tmp_name'];
-			$dir_subida = 'img/obras/';
-			$id_obra = "1"; //para pruebas
+			$dir_subida = "img/obras/".$_SESSION["user"]->getEmail()."/";
+			if (!file_exists($dir_subida))	//Si es la primera subida de archivo, la carpeta no esta creada todavia
+				mkdir($dir_subida, 0777, true);		//Se crea la carpeta
+			$id_obra = $_REQUEST["titulo"];
 			$fichero_subido = $dir_subida.$id_obra.".jpg";
 			if ( !move_uploaded_file($tmp_name, $fichero_subido) ) {
 			echo 'Error al mover el archivo';
 			
 			}else{
-				Obra::insertarObra($_REQUEST["titulo"],$_REQUEST["descripcion"]);
+				Obra::insertarObra($_REQUEST["titulo"], $_SESSION['user']->getId(), $_REQUEST["descripcion"], $id_obra);
 			}
 		}else {
       echo 'El archivo tiene un nombre o tipo no soportado';

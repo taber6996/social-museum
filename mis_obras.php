@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/includes/UsuarioBD.php';
+require_once __DIR__.'/includes/ObraBD.php';
 
 if(!isset($_SESSION)){
 	session_start();
@@ -29,6 +30,17 @@ if(!isset($_SESSION)){
 	?>
 	
 		<p>Aqui se muestran las obras ya subidas por el artista.</p>
+		<?php
+			$obras = Obra::obtenerObras($_SESSION['user']->getId());
+			for ($i = 0; $i < Obra::obtenerNumObras($_SESSION['user']->getId()); $i++)
+			{
+				$dirObras[$i] = "img/obras"."/".$_SESSION["user"]->getEmail()."/".$obras[$i]->getImg().".jpg";
+			}
+		?>
+		
+		<img src="<?php echo $dirObras[0]; ?>" width='300px' height='300px'>
+		<p><?php echo $obras[0]->getTitulo(); ?></p>
+		<p><?php echo $obras[0]->getDescripcion(); ?></p>
 		
 		<form action="procesarObra.php" method="POST" enctype="multipart/form-data">
 			<fieldset>
