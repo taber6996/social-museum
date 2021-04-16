@@ -4,7 +4,7 @@
 	$tituloPagina = 'Social Museum';
 
 	$contenidoPrincipal=<<<EOS
-		<img src="img/c1.jpg" width="75%" height="400px">
+		<p>aqui se mostraran los artistas</p>
 	EOS;
 
 	require __DIR__.'/includes/comun/layout.php';

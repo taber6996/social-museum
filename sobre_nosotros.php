@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Social Museum</title>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-</head>
 
-<body>
+<?php
 
-<div id="contenedor">
-
-	<?php
-	require('header.php');
-	?>
-	
-	<?php
-	require('aside.php');
-	?>
-
+$contenidoPrincipal=<<<EOS
 	<main>
 
 		 <h1>Miembros</h1>
@@ -82,13 +66,6 @@
 
         </section>
 	</main>
-	
-	<?php
-	require('footer.php');
-	?>
+EOS;
 
-
-</div> <!-- Fin del contenedor -->
-
-</body>
-</html>
+require __DIR__.'/includes/comun/layout.php';

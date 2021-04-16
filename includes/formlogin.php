@@ -69,6 +69,8 @@ function procesaFormularioLogin($params) {
       session_regenerate_id(true);
       $_SESSION['user'] = $usuarioObj;
       $_SESSION['login'] = true;
+      if($usuarioObj->getArtista()){
+        $_SESSION['es_artista'] = true;}  
       //header('Location: index.php');
       $result = 'index.php';
 	  //echo $_SESSION['user']->getNombre();

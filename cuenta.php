@@ -16,8 +16,8 @@ require_once __DIR__.'/includes/UsuarioBD.php';
 <body>
 
 	<?php
-	require('header.php');
-	require('aside.php');
+	require __DIR__.'/includes/comun/header.php';
+	require __DIR__.'/includes/comun/aside.php';
 	?>
 	
 	<main>
@@ -30,13 +30,13 @@ require_once __DIR__.'/includes/UsuarioBD.php';
 	 //echo $_SESSION['user']->getNombre();
 	 
 	 if(isset($_SESSION["login"]) && ($_SESSION["login"]==true)){
-		 require('header_cuenta.php');
+		require __DIR__.'/includes/comun/header_cuenta.php';
 		 
 		 if($_SESSION['user']->getArtista()){
-			 require('aside_artista.php');
+			require __DIR__.'/includes/comun/aside_artista.php';
 		 }
 		 else
-			 require('aside_usuario.php');
+		 require __DIR__.'/includes/comun/aside_usuario.php';
 		 
 	 }
 	 else{

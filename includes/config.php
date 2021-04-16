@@ -4,10 +4,10 @@ define('BD_HOST', 'localhost');
 define('BD_NAME', 'social-museum');
 define('BD_USER', 'user');
 define('BD_PASS', 'userpass');
-define('RUTA_APP', '/htdocs/social-museum-todos/');
-define('RUTA_IMGS', RUTA_APP.'img/');
-define('RUTA_CSS', RUTA_APP.'css/');
-define('RUTA_JS', RUTA_APP.'js/');
+define('RUTA_APP', '/htdocs/social-museum-main');
+define('RUTA_IMGS', RUTA_APP.'/img');
+define('RUTA_CSS', RUTA_APP.'/css');
+define('RUTA_JS', RUTA_APP.'/js');
 define('INSTALADA', true );
 
 //Defines para la subida de archivos

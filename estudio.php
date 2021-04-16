@@ -2,25 +2,8 @@
 require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/formUpload.php';
 
-?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Mi estudio</title>
-		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-    <script type="text/javascript" src="utils.js"></script>
-	</head>
-  <body>
-  
-	<?php
-	require('header.php');
-	?>
-	
-	<?php
-	require('aside.php');
-	?>
-	
+
+	$contenidoPrincipal=<<<EOS
     <div id="contenedor"></div>
     <script type="text/javascript">
       var params = parseHashParams();
@@ -32,7 +15,7 @@ require_once __DIR__.'/includes/formUpload.php';
         parent.appendChild(img);
       }
     </script>
-<?php formularioUpload(); ?>
+EOS;
 
-  </body>
-</html>
+require __DIR__.'/includes/comun/layout.php';
+formularioUpload(); 

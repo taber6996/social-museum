@@ -32,11 +32,12 @@ class Usuario
     $user = self::buscaUsuario($email);
     if(!$user){
       $conn = getConexionBD();
-	  /*$query = sprintf("SELECT * FROM usuario");		//Para sacar el ID y hacerlo por orden, pero no es necesario.
+	  $query = sprintf("SELECT * FROM usuario");
 	  $rs = $conn->query($query);
-	  $id = $rs->num_rows + 1;	//Quizas es ineficiente y habria que buscar solo al ultimo ID?*/
+	  $id = $rs->num_rows + 1;	//Quizas es ineficiente y habria que buscar solo al ultimo ID?
+	  //$id = 57;	//PRUEBA
 	  
-      $query = sprintf("INSERT INTO usuario (id_usuario, nick, passwd, nombre, email, es_admin, es_artista, es_premium, es_juez) VALUES (NULL, '%s', '%s', '%s', '%s', NULL, '%b', NULL, NULL);", $username, $password, $name, $email, $artista);
+      $query = sprintf("INSERT INTO usuario (id_usuario, nick, passwd, nombre, email, es_admin, es_artista, es_premium, es_juez) VALUES ('%d', '%s', '%s', '%s', '%s', NULL, '%b', NULL, NULL);", $id, $username, $password, $name, $email, $artista);
       $rs = $conn->query($query);
       print "Usuario introducido correctamente.";
       return new Usuario($id, $username, $password, $name, $email, null, $artista, null, null);
@@ -111,12 +112,12 @@ class Usuario
     $this->id = $id;
     $this->username = $username;
     $this->password = $password;
-	$this->nombre = $nombre;
-	$this->email = $email;
-	$this->admin = $admin;
-	$this->artista = $artista;
-	$this->premium = $premium;
-	$this->juez = $juez;
+    $this->nombre = $nombre;
+    $this->email = $email;
+    $this->admin = $admin;
+    $this->artista = $artista;
+    $this->premium = $premium;
+    $this->juez = $juez;
     //$this->roles = [];
   }
 
