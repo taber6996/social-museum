@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2021 a las 01:48:59
+-- Tiempo de generación: 16-04-2021 a las 22:56:39
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -64,6 +64,16 @@ CREATE TABLE `obra` (
   `img` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `obra`
+--
+
+INSERT INTO `obra` (`id_obra`, `titulo`, `id_autor`, `descripcion`, `likes`, `id_exposicion`, `img`) VALUES
+(1, 'prueba_subida', 1, 'descripcion', 0, NULL, 0),
+(2, 'prueba_subida2', 1, 'Escribe una descripcion de tu obra', 0, NULL, 0),
+(3, 'prueba_obra4', 1, 'Escribe una descripcion de tu obra', 0, NULL, 0),
+(6, 'prueba_obra5', 1, 'Escribe una descripcion de tu obra', 0, NULL, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -118,7 +128,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nick`, `nombre`, `passwd`, `email`, `es_admin`, `es_artista`, `es_premium`, `es_juez`) VALUES
-(1, 'pruebas', 'pruebas', 'pruebas', 'pruebas@ucm.es', 0, 0, 0, 0);
+(1, 'pruebas', 'pruebas', 'pruebas', 'pruebas@ucm.es', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -206,7 +216,7 @@ ALTER TABLE `exposicion`
 -- AUTO_INCREMENT de la tabla `obra`
 --
 ALTER TABLE `obra`
-  MODIFY `id_obra` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_obra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
