@@ -5,20 +5,8 @@ require_once __DIR__.'/includes/ObraBD.php';
 if(!isset($_SESSION)){
 	session_start();
 }
-
-$obras = Obra::obtenerObras($_SESSION['user']->getId());
-	for ($i = 0; $i < Obra::obtenerNumObras($_SESSION['user']->getId()); $i++)
-	{
-		$dirObras[$i] = "img/obras"."/".$_SESSION["user"]->getEmail()."/".$obras[$i]->getImg().".jpg";
-	}
-$tituloPagina = 'Social Museum';
-if(isset($obras)){
-$contenidoPrincipal=<<<EOS
-		<p>Aqui se muestran las obras ya subidas por el artista.</p>
-		<img src="<?php echo $dirObras[0]; ?>" width='300px' height='300px'>
-		<p>{$obras[0]->getTitulo()}</p>
-		<p><?= echo $obras[0]->getDescripcion(); ?></p>
-		<form action="procesarObra.php" method="POST" enctype="multipart/form-data">
+$contenidoPrincipal = <<<EOS
+<form action="procesarObra.php" method="POST" enctype="multipart/form-data">
 			<fieldset>
 			<legend> Subir nueva obra </legend>
 			<div><label>Titulo</label>
@@ -31,7 +19,38 @@ $contenidoPrincipal=<<<EOS
 			<button type="submit">Subir</button>
 			</fieldset>
 		
-		</form>
+</form>
+EOS;
+require __DIR__.'/includes/comun/layout.php';	
+$obras = Obra::obtenerObras($_SESSION['user']->getId());
+	for ($i = 0; $i < Obra::obtenerNumObras($_SESSION['user']->getId()); $i++)
+	{
+		$dirObras[$i] = "img/obras"."/".$_SESSION["user"]->getEmail()."/".$obras[$i]->getTitulo().".jpg";
+		echo $dirObras[$i];
+		echo "<img src='$dirObras[$i]' width='300px' height='300px'>";
+		echo $obras[$i]->getTitulo();
+		echo $obras[$i]->getDescripcion();
+	}
+$tituloPagina = 'Social Museum';
+/*$result = Obra::listaObras($_SESSION['user']->getId());
+$array = $result;
+
+foreach($array as $key => $fila){
+	$contenidoPrincipal .=<<<EOS
+	<li> Titulo: {$fila['titulo']}
+		Descripcion: {$fila['descripcion']}
+		<img src="<?php echo $fila['img']; ?>"/>
+	EOS;
+}
+
+
+/*if(isset($obras)){
+$contenidoPrincipal=<<<EOS
+		<p>Aqui se muestran las obras ya subidas por el artista.</p>
+		<img src="<?php echo $dirObras[0]; ?>" width='300px' height='300px'>
+		{$obras[0]->getTitulo()}
+		{$obras[0]->getDescripcion()}
+		
 EOS;}
 else{
 	$contenidoPrincipal=<<<EOS
@@ -51,8 +70,8 @@ else{
 		
 		</form>
 	EOS;
-}
-		require __DIR__.'/includes/comun/layout.php';	
+}*/
+		
 
 	
 	

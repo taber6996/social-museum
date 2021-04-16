@@ -12,17 +12,6 @@
 
 <body>
 
-	<?php
-	require('header.php');
-	require('aside.php');
-	?>
-	
-	<main>
-	 
-	 <?php
-		require('header_cuenta.php');
-		require('aside_artista.php');
-	?>
 	
 	<?php
 	
@@ -66,7 +55,9 @@
 
 </body>
 </html>
-
+<?php 
+	header('Location: mis_obras.php');
+?>
 <?php
 function check_file_uploaded_name ($filename) {
     return (bool) ((mb_ereg_match('/^[0-9A-Z-_\.]+$/i',$filename) === 1) ? true : false );
