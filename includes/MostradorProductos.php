@@ -21,7 +21,9 @@ class MostradorProductos {
     else{
         foreach($productos as $producto){
             $nombre = $producto['nombre'] ?? null;
-            $html .= Producto::tarjeta($nombre);
+            if(!empty($nombre)){
+                $html .= Producto::tarjeta($nombre);
+            }
             }
         }
         return $html;

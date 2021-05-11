@@ -97,9 +97,11 @@ class Producto
         }
         $descripcion = $product->descripcion();
         $precio = $product->precio();
+        $path = "img/productos/".$nombre.".jpg";
             $html = <<<EOF
             <div class="product-info">
             <div class="product-text">
+            <img src=$path height="420" width="420">
             <h1>$nombre</h1>
             <p>$descripcion </p>
             </div>

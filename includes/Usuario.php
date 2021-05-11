@@ -101,6 +101,22 @@ class Usuario
         return $usuario;
     }
 	
+    public static function tarjeta($correo){
+        $artista = self::buscaUsuario($correo);
+        if($artista instanceof bool){
+            return false;
+        }
+        $nombre = $artista->nombre();
+        $html = <<<EOF
+            <h3>$nombre</h3>
+            <p>$correo </p>
+            EOF;
+        return $html;
+        
+
+
+    }
+
 	private static function actualiza($usuario)
     {
         $app = Aplicacion::getInstance();
