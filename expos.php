@@ -8,7 +8,7 @@
 	
 	
 	$contenidoPrincipal=<<<EOS
-		<nav id="menu-principal">
+		<nav id="menu-secundario">
 		<!-- <li> <img src="img/busca.jpg" width="15px" height="15px"> </li> --> 
 		<a href="expos.php?momento=pasadas">Exposiciones pasadas</a>
 		<a href="expos.php?momento=presente">Exposiciones presente</a>

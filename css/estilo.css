@@ -22,6 +22,36 @@ header{
 	font-size: 90px;
 	font-family: 'Girassol', cursive;
 }
+/* MENU SECUNDARIO */
+#menu-secundario{
+	float: center;
+	background-color:#fff9f2;
+	margin-top:0px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+#menu-secundario a, #menu-secundario a:hover{
+	-webkit-transition: all .5s ease-in-out;
+}
+#menu-secundario a{
+	font-size:25px;
+	color: #000000;
+	text-align: center;
+	padding: 15px 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#menu-secundario a:hover
+{
+	background-color:#d1ccc7;
+}
+#lista-menu-secundario li a:active
+{
+	background-color:#000000;
+	color:#d1ccc7;
+}
 
 /* MENU DEL HEADER */
 #menu-principal{
@@ -53,6 +83,8 @@ header{
 	background-color:#000000;
 	color:#ff9a40;
 }
+
+
 
 /* CENTRAR CONTENIDO */
 main{
