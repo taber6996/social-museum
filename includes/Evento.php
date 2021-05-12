@@ -32,8 +32,8 @@ class Evento
 	public function nombre(){return $this->nombre;}
     public function tipo(){return $this->tipo;}
     public function descripcion(){return $this->descripcion;}
-	public function fecha_ini(){return $this->fehca_ini;}
-	public function fecha_fin(){return $this->fehca_fin;}
+	public function fecha_ini(){return $this->fecha_ini;}
+	public function fecha_fin(){return $this->fecha_fin;}
 	public function precio(){return $this->precio;}
 	
 	/*   SETTERS   */
@@ -80,6 +80,34 @@ class Evento
         return self::inserta($evento);
     }
     
+    public static function tarjeta($nombre, $type){
+        $evento = self::buscaEvento($nombre, $type);
+        if($evento instanceof bool){
+            return false;
+        }
+        $descripcion = $evento->descripcion();
+        $fechaI = $evento->fecha_ini();
+        $fechaF = $evento->fecha_fin();
+        $precio = $evento->precio();
+            $html = <<<EOF
+            <div class="product-info">
+            <div class="product-text">
+            <h1>$nombre</h1>
+            <p>$descripcion </p>
+            <p>Fecha inicio: $fechaI </p>
+            <p>Fecha fin: $fechaF </p>
+            </div>
+            <div class="product-price-btn">
+            <p><span>$precio</span>$</p>
+            <button type="button">¡Compra tu entrada ahora!</button>
+            </div>
+            </div>
+            EOF;
+        return $html;
+        
+        
+    }
+
     private static function inserta($evento)
     {
         $app = Aplicacion::getInstance();
@@ -100,6 +128,7 @@ class Evento
         return $evento;
     }
     
+
     private static function actualiza($evento)
     {
         $app = Aplicacion::getInstance();
