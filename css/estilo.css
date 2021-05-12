@@ -1,5 +1,107 @@
-#lista1 li {
-	display: inline;
-	padding-left:3px;
-	padding-right:3px;
+html{
+	overflow-y:scroll;
 }
+body{margin:0 auto; padding:0; font-size:18px; font-family: 'Oswald', sans-serif, "Times New Roman", Times, serif; color:#000000; width: 960px;}
+
+
+/* CABECERA */
+header{
+	/*padding:25px 0 30px 0;
+	z-index:1000;*/
+}
+#logo{
+	text-align: center;
+}
+
+#logoText{
+	/*position: relative;
+	top: 0em;
+	left: 0em;*/
+	padding-left: 10px;
+	padding-bottom: 10px;
+	font-size: 90px;
+	font-family: 'Girassol', cursive;
+}
+
+/* MENU DEL HEADER */
+#menu-principal{
+	float: center;
+	background-color:#ffc591;
+	margin-top:20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+#menu-principal a, #menu-principal a:hover{
+	-webkit-transition: all .5s ease-in-out;
+}
+#menu-principal a{
+	font-size:25px;
+	color: #000000;
+	text-align: center;
+	padding: 15px 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#menu-principal a:hover
+{
+	background-color:#ff9a40;
+}
+#lista-menu-principal li a:active
+{
+	background-color:#000000;
+	color:#ff9a40;
+}
+
+/* CENTRAR CONTENIDO */
+main{
+	margin-top:15px;
+	text-align: center;
+}
+
+footer{
+	margin-top:5px;
+	text-align: center;
+}
+
+/* GALERIA DE HOMEPAGE */
+/*Credito autor: http://w3.unpocodetodo.info/css3/galeria-de-imagenes-css1.php */
+.galeria {
+  height: calc( 480px + 3em);
+  width: 960px;
+  margin:1em auto;
+  border: 1px solid #555;
+  position: relative;  
+}
+
+.galeria img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 3s;
+}
+
+.galeria input[type=radio] {
+  position: relative;
+  bottom: calc(-480px - 1.5em);
+  left: .5em;
+}
+
+.galeria input[type=radio]:nth-of-type(1):checked ~ img:nth-of-type(1) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(2):checked ~ img:nth-of-type(2) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(3):checked ~ img:nth-of-type(3) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(4):checked ~ img:nth-of-type(4) {
+  opacity: 1;
+}
+
