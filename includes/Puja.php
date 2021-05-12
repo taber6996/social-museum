@@ -7,56 +7,57 @@ class Puja
 	
 	private $id;
     private $id_obra;
-	private $id_evento;
     private $precio_inicial;
     private $precio_actual;
     private $id_comprador_actual;
+    private $fecha_finalizacion;
 	
 	/*   CONSTRUCTOR   */
 	
-	private function __construct($id_obra, $id_evento, $precio_inicial)
+	public function __construct($id_obra = NULL, $precio_inicial = NULL, $precio_actual = NULL,$fecha_finalizacion = NULL, $id_comprador_actual = NULL)
     {
         $this->id_obra= $id_obra;
-        $this->od_evento = $id_evento;
 		$this->precio_inicial = $precio_inicial;
-		$this->precio_actual = $precio_inicial;
+		$this->precio_actual = $precio_actual;
+        $this->fecha_finalizacion = $fecha_finalizacion;
+        $this->$id_comprador_actual = $id_comprador_actual;
     }
 	
 	/*   GETTERS   */
 	
 	public function id(){return $this->id;}
-	public function id(){return $this->id_obra;}
-	public function id(){return $this->id_evento;}
-	public function id(){return $this->precio_inicial;}
-	public function id(){return $this->precio_actual;}
-	public function id(){return $this->id_comprador_actual;}
+	public function id_obra(){return $this->id_obra;}
+	public function precio_inicial(){return $this->precio_inicial;}
+	public function precio_actual(){return $this->precio_actual;}
+	public function id_comprador_actual(){return $this->id_comprador_actual;}
 	
 	/*   SETTERS   */
 	
 	/*   FUNCIONE CRUD   */
 	
-	public static function crea($id_obra, $id_evento, $precio_inicial)
+	public static function crea($id_obra, $precio_inicial, $fecha_finalizacion)
     {
-        $puja = self::buscaPuja($id_obra,$id_evento);
+        $puja = self::buscaPuja($id_obra);
         if ($puja) {
             return false;
         }
-        $puja = new Puja($id_obra, $id_evento, $precio_actual);
+        $puja = new Puja($id_obra, $precio_inicial, $precio_inicial, $fecha_finalizacion, NULL);
         return self::guarda($puja);
     }
 
-    public static function buscaPuja($id_obra, $id_evento)
+    public static function buscaPuja($id_obra)
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-		$query = sprintf("SELECT * FROM Pujas P WHERE P.id_obra = %d AND P.id_evento = %d",$id_obra,$id_autor);
+		$query = sprintf("SELECT * FROM Pujas P WHERE P.id_obra = %d",$id_obra,$id_autor);
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
-                $fila = $rs->fetch_assoc();$puja = new Puja($fila['id_obra'], $fila['id_evento'], $fila['precio_inicial']);
-                $puja->precio_actual = $fila['precio_actual'];
-				$puja->id_comprador_actual = $fila['id_comprador_actual'];
+                $fila = $rs->fetch_assoc();
+                $puja = new Puja($fila['id_obra'], $fila['fecha_finalizacion'], $fila['precio_inicial'], $fila['precio_actual'], $fila['id_comprador_actual']);
+                //$puja->precio_actual = $fila['precio_actual'];
+				//$puja->id_comprador_actual = $fila['id_comprador_actual'];
                 $puja->id = $fila['id'];
                 $result = $puja;
             }
@@ -65,6 +66,27 @@ class Puja
             echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
         }
+        return $result;
+    }
+    
+    public static function muestraSubastas(){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		$query = sprintf("SELECT * FROM Pujas");
+        $rs = $conn->query($query);
+        $result = [];
+        if($rs){
+            while($fila = $rs->fetch_assoc()){
+                $result[] = new Puja($fila['id_obra'], $fila['fecha_finalizacion'], $fila['precio_inicial'], $fila['precio_actual'], $fila['id_comprador_actual']);
+                echo $result;
+            }
+            $rs->free();
+        }
+        else{
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
         return $result;
     }
     
@@ -80,9 +102,9 @@ class Puja
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Pujas(id_obra, id_evento, precio_inicial, precio_actual) VALUES(%d, %d, %d, %d)"
+        $query=sprintf("INSERT INTO Pujas(id_obra, fecha_finalizacion, precio_inicial, precio_actual) VALUES(%d, '%s', %d, %d)"
             , $puja->id_obra
-            , $puja->id_evento
+            , $puja->fecha_finalizacion
 			, $puja->precio_inicial
 			, $puja->precio_actual);
         if ( $conn->query($query) ) {
