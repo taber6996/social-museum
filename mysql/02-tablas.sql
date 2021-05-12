@@ -75,7 +75,7 @@ CREATE TABLE `Eventos` (
 CREATE TABLE `Pujas` (
   `id` int(11) NOT NULL,
   `id_obra` int(11) DEFAULT NULL,
-  `id_evento` int(11) DEFAULT NULL,
+  `fecha_finalizacion` timestamp(6) DEFAULT NULL,
   `precio_inicial` float(11) DEFAULT NULL,
   `precio_actual` float(11) DEFAULT NULL,
   `id_comprador_actual` int(11) DEFAULT NULL
