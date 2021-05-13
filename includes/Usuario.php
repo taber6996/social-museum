@@ -123,7 +123,7 @@ class Usuario
             , $conn->real_escape_string($usuario->correo)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
-	    , $usuario->avatar
+			, $usuario->avatar
             , $usuario->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
