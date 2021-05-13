@@ -46,6 +46,9 @@ CREATE TABLE `Obras` (
   `titulo` varchar(25) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL
+  --`subasta` boolean DEFAULT NULL,
+  --`precio_inicial` float(11) DEFAULT NULL,
+ -- `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -76,11 +79,12 @@ CREATE TABLE `Eventos` (
 CREATE TABLE `Pujas` (
   `id` int(11) NOT NULL,
   `id_obra` int(11) DEFAULT NULL,
-  `fecha_finalizacion` timestamp(6) DEFAULT NULL,
+  `fecha_finalizacion` date DEFAULT NULL,
   `precio_inicial` float(11) DEFAULT NULL,
   `precio_actual` float(11) DEFAULT NULL,
   `id_comprador_actual` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 CREATE TABLE `Mecenas` (
   `id` int(11) NOT NULL,
