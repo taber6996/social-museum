@@ -4,16 +4,18 @@ namespace es\ucm\fdi\aw;
 class MostradorPerfilArtista {
     public function __construct($artist) {
 		 $this->usuarioArista = Usuario::buscaUsuario($artist);
-		 //echo $this->usuarioArista->id();
-		 //echo $this->usuarioArista->nombre();
 	}
 	
 	public $usuarioArista;
 	
 	public function muestra(){
 		$html="";
-		$html.=self::muestra_avatar();	
-
+		$html.=self::muestra_avatar();
+		$nombre = $this->usuarioArista->nombre();
+		
+		$html .= <<<EOS
+		<h2>$nombre</h2>
+		EOS;
 
 		
 		return $html;
