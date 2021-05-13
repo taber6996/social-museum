@@ -59,10 +59,11 @@ EOF;
         }*/
         // 4. Si fuese necesario guardar en la base de datos la ruta relativa $nombre del archivo
 
-       //return "index.php#img=".rawurlencode("/{$nombre}"); HACERALGO
-	   $_SESSION['avatar'] = true;
-	   $user->cambiaAvatar();
-	   Usuario:: actualiza($user);
+       if($_SESSION['avatar']==false){
+		$_SESSION['avatar'] = true;
+		$user->cambiaAvatar();
+		Usuario:: actualiza($user);  
+	}			  
 	   return "cuenta.php";
       }else {
         $result[] = 'El archivo tiene un nombre o tipo no soportado';
