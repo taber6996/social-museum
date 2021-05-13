@@ -14,13 +14,12 @@ class Puja
 	
 	/*   CONSTRUCTOR   */
 	
-	public function __construct($id_obra = NULL, $precio_inicial = NULL, $precio_actual = NULL,$fecha_finalizacion = NULL, $id_comprador_actual = NULL)
+	public function __construct($id_obra,$precio_inicial,$fecha_finalizacion)
     {
         $this->id_obra= $id_obra;
 		$this->precio_inicial = $precio_inicial;
-		$this->precio_actual = $precio_actual;
+		$this->precio_actual = $precio_inicial;
         $this->fecha_finalizacion = $fecha_finalizacion;
-        $this->$id_comprador_actual = $id_comprador_actual;
     }
 	
 	/*   GETTERS   */
@@ -30,7 +29,6 @@ class Puja
 	public function precio_inicial(){return $this->precio_inicial;}
 	public function precio_actual(){return $this->precio_actual;}
 	public function id_comprador_actual(){return $this->id_comprador_actual;}
-    public function fecha_finalizacion(){return $this->fecha_finalizacion;}
 	
 	/*   SETTERS   */
 	
@@ -42,7 +40,7 @@ class Puja
         if ($puja) {
             return false;
         }
-        $puja = new Puja($id_obra, $precio_inicial, $precio_inicial, $fecha_finalizacion, NULL);
+        $puja = new Puja($id_obra, $precio_inicial, $fecha_finalizacion);
         return self::guarda($puja);
     }
 
@@ -50,15 +48,15 @@ class Puja
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-		$query = sprintf("SELECT * FROM Pujas P WHERE P.id_obra = %d",$id_obra,$id_autor);
+		$query = sprintf("SELECT * FROM Pujas P WHERE P.id_obra = %d",$id_obra);
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $puja = new Puja($fila['id_obra'], $fila['fecha_finalizacion'], $fila['precio_inicial'], $fila['precio_actual'], $fila['id_comprador_actual']);
-                //$puja->precio_actual = $fila['precio_actual'];
-				//$puja->id_comprador_actual = $fila['id_comprador_actual'];
+                $puja = new Puja($fila['id_obra'], $fila['precio_inicial'], $fila['fecha_finalizacion']);
+                $puja->precio_actual = $fila['precio_actual'];
+				$puja->id_comprador_actual = $fila['id_comprador_actual'];
                 $puja->id = $fila['id'];
                 $result = $puja;
             }
@@ -69,8 +67,8 @@ class Puja
         }
         return $result;
     }
-    
-    public static function buscaPujaPorId($id)
+	
+	public static function buscaPujaPorId($id)
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
@@ -93,7 +91,7 @@ class Puja
         }
         return $result;
     }
-
+    
     public static function muestraSubastas(){
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
@@ -127,7 +125,7 @@ class Puja
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Pujas(id_obra, fecha_finalizacion, precio_inicial, precio_actual) VALUES(%d, '%s', %d, %d)"
+        $query=sprintf("INSERT INTO Pujas(id_obra, fecha_finalizacion, precio_inicial, precio_actual) VALUES(%d, '%s', %f, %f)"
             , $puja->id_obra
             , $puja->fecha_finalizacion
 			, $puja->precio_inicial
@@ -141,32 +139,28 @@ class Puja
         return $puja;
     }
     
-    private static function actualiza($id, $precio_actual, $id_comprador_actual)
+    private static function actualiza($puja)
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $result = array();
-        $query=sprintf("UPDATE Pujas P SET precio_actual = %d, id_comprador_actual=%d WHERE O.id=%i"
-            , $conn->real_escape_string($precio_actual)
-            , $conn->real_escape_string($id_comprador_actual)
-            , $id);
+        $query=sprintf("UPDATE Pujas P SET precio_actual = %f, id_comprador_actual=%d WHERE O.id=%i"
+            , $conn->real_escape_string($puja->precio_actual)
+            , $conn->real_escape_string($puja->id_comprador_actual)
+            , $puja->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
-                $result[] = "No se ha podido actualizar la puja: " . $puja->id;
+                echo "No se ha podido actualizar la puja: " . $puja->id;
                 exit();
             }
-            else{
-                $result[] = "Puja realizada con exito";
-            }
         } else {
-            $result[] = "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
         }
         
-        return $result;
+        return $puja;
     }
-
-    public static function tarjeta($id_obra){
+	
+	 public static function tarjeta($id_obra){
         
         if($puja instanceof bool){
             return false;
@@ -209,6 +203,8 @@ class Puja
         
         
     }
+	
+	
+	
     
 }
-
