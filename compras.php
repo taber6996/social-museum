@@ -8,4 +8,4 @@
 		<p>aqui se mostraran las compras</p>
 	EOS;
 
-	require __DIR__.'/includes/plantillas/layout2.php';
+	require __DIR__.'/includes/plantillas/layout1.php';

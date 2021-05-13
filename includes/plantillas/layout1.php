@@ -1,5 +1,16 @@
 <?php 
     require_once __DIR__.'/../config.php';
+	if (isset($_SESSION["login"]) && $_SESSION["login"]) {	
+		if (isset($_SESSION["esAdmin"]) && $_SESSION["esAdmin"]) {
+			$aside = "aside_admin";
+		}
+		elseif (isset($_SESSION["esArtist"]) && $_SESSION["esArtist"]) {
+			$aside = "aside_artist";
+		}
+		else{
+			$aside = "aside_user";
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +28,6 @@
 
 	<?php
     require("includes/comun/header.php");
-    
-       
-    // require('aside.php');
-   
 	?>
 
 	<main>
