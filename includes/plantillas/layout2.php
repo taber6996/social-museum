@@ -18,7 +18,7 @@
 <html>
 <head>
     <title><?= $tituloPagina ?>Social Museum</title>
-	<link rel="stylesheet" type="text/css" href="<?= RUTA_CSS.'/estilo.css'?>" />
+	<link rel="stylesheet" type="text/css" href="<?= 'css/estilo.css' ?>" />
 	<meta charset="UTF-8">
 </head>
 
