@@ -147,5 +147,5 @@ class Obra
     }
 	
 	//FALTA ELIMINA OBRA
-  
+ 
 }
