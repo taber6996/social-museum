@@ -6,7 +6,6 @@ $tituloPagina = 'Subastas - ';
 $mostrador = new es\ucm\fdi\aw\MostradorSubastas();
 $htmlMostradorSubastas = $mostrador->muestra();
 
-
 $contenidoPrincipal=<<<EOS
 <nav id="menu-secundario">
 <a href="concursos.php">Concursos</a>
