@@ -29,6 +29,7 @@ class Puja
 	public function precio_inicial(){return $this->precio_inicial;}
 	public function precio_actual(){return $this->precio_actual;}
 	public function id_comprador_actual(){return $this->id_comprador_actual;}
+	public function fecha_finalizacion(){return $this->fecha_finalizacion;}
 	
 	/*   SETTERS   */
 	
@@ -160,7 +161,7 @@ class Puja
         return $puja;
     }
 	
-	 public static function tarjeta($id_obra){
+	/* public static function tarjeta($id_obra){
         
         if($puja instanceof bool){
             return false;
@@ -202,9 +203,38 @@ class Puja
         return $html;
         
         
+    }*/
+	
+	public static function tarjeta($id_obra){
+        $puja = self::buscaPuja($id_obra);
+		$obra = Obra::buscaObraPorId($id_obra);
+		$titulo = $obra->titulo();
+		$path = "img/obras/artista_".$obra->id_autor()."/".$titulo.".jpg";
+		$autor = Usuario::buscaUsuarioPorId($obra->id_autor());
+		$autorObra = $autor->nombre();
+        $fecha_limite = $puja->fecha_finalizacion();
+		$puja_inicial = $puja->precio_inicial();
+        $puja_actual = $puja->precio_actual();
+		
+		$comprador = $puja->id_comprador_actual();
+		
+		
+        if($puja instanceof bool){
+            return false;
+        }
+        
+        $html = <<<EOF
+            <h2>$titulo</h2>
+            <img src=$path height="420" width="420">
+            <p>Autor: $autorObra </p>
+            <p>Fecha finalizacion: $fecha_limite </p>
+            <div class="product-price-btn">
+            <p><span>Precio inicial: $puja_actual</span>$</p>
+            <p><span>Puja actual: $puja_inicial</span>$</p>
+            <p><span>Comprador: $comprador</span></p>
+            </div>
+            EOF;
+        return $html;
     }
 	
-	
-	
-    
 }
