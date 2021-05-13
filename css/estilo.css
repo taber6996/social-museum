@@ -138,14 +138,14 @@ footer{
   opacity: 1;
 }
 
-/* menu user */
+/* menu cuenta */
 
-#lista_user{
+#menu_cuenta{
 	width: 200px;
 	float: left;
 }
 
-#lista_user a{
+#menu_cuenta a{
 	background-color: #eee;
 	color: black;
 	display: block;
@@ -153,7 +153,7 @@ footer{
 	text-decoration: none;
 }
 
-#lista_user a:hover {
+#menu_cuenta a:hover {
 	background-color: #ccc;
 }
 
