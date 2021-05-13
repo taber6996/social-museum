@@ -86,6 +86,7 @@ header{
 
 
 
+
 /* CENTRAR CONTENIDO */
 main{
 	margin-top:15px;
@@ -136,4 +137,24 @@ footer{
 .galeria input[type=radio]:nth-of-type(4):checked ~ img:nth-of-type(4) {
   opacity: 1;
 }
+
+/* menu user */
+
+#lista_user{
+	width: 200px;
+	float: left;
+}
+
+#lista_user a{
+	background-color: #eee;
+	color: black;
+	display: block;
+	padding: 12px;
+	text-decoration: none;
+}
+
+#lista_user a:hover {
+	background-color: #ccc;
+}
+
 
