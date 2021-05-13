@@ -1,19 +1,18 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
-use es\ucm\fdi\aw\Puja;
-$form = new es\ucm\fdi\aw\FormularioObra();
-$htmlFormObra = $form->gestiona();
-$pujas = new es\ucm\fdi\aw\Puja();
-$htmlPujas = Puja::muestraSubastas();
+$tituloPagina = 'Subastas - ';
 
-$tituloPagina = 'Social Museum';
+$mostrador = new es\ucm\fdi\aw\MostradorSubastas();
+$htmlMostradorSubastas = $mostrador->muestra();
 
-$contenidoPrincipal = <<<EOS
-	<h3>Subir nueva Subasta</h3>
-	$htmlFormObra
-	<h3>Subastas activas</h3>
-	$htmlPujas
-	EOS;
 
-require __DIR__.'/includes/plantillas/layout2.php';
+$contenidoPrincipal=<<<EOS
+<nav id="menu-secundario">
+<a href="concursos.php">Concursos</a>
+<a href="subastas.php">Subastas</a>
+</nav>	
+$htmlMostradorSubastas
+EOS;
+
+require __DIR__.'/includes/plantillas/layout1.php';
