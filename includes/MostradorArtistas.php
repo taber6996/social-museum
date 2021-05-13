@@ -19,7 +19,13 @@ class MostradorArtistas{
         else{
             foreach($artistas as $artista){
                 $correo = $artista['correo'] ?? null;
-                    $html .= Usuario::tarjeta($correo);
+                $artista = Usuario::tarjeta($correo);
+					
+					$html .= <<<EOF
+               <a href="perfilArtista.php?artist=$correo">$artista</a>
+            EOF;
+					
+					
                 }
             }
             return $html;
