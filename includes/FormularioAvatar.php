@@ -61,6 +61,8 @@ EOF;
 
        //return "index.php#img=".rawurlencode("/{$nombre}"); HACERALGO
 	   $_SESSION['avatar'] = true;
+	   $user->cambiaAvatar();
+	   Usuario:: actualiza($user);
 	   return "cuenta.php";
       }else {
         $result[] = 'El archivo tiene un nombre o tipo no soportado';
