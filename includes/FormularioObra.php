@@ -11,13 +11,17 @@ class FormularioObra extends Form
     {
 		$titulo = $datos['titulo'] ?? '';
 		$descripcion = $datos['descripcion'] ?? '';
+		$precio = $datos['precio'] ?? '';
+		$fecha_fin = $datos['fecha_fin'] ?? '';
 		
-		$puja = 0;
+		
         // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($errores);
         $errorTitulo = self::createMensajeError($errores, 'titulo', 'span', array('class' => 'error'));
         $errorDescripcion = self::createMensajeError($errores, 'descripcion', 'span', array('class' => 'error'));
         $errorArchivo = self::createMensajeError($errores, 'archivo', 'span', array('class' => 'error'));
+		$errorFechaFin = self::createMensajeError($errores, 'fecha_fin', 'span', array('class' => 'error'));
+        $errorPrecio = self::createMensajeError($errores, 'precio', 'span', array('class' => 'error'));
 
         $html = <<<EOF
         <fieldset>
@@ -25,9 +29,9 @@ class FormularioObra extends Form
             <p><label>Titulo:</label> <input type="text" name="titulo" value="$titulo"/>$errorTitulo</p>
             <p><label>Descripcion:</label> <input type="text" name="descripcion" value="$descripcion"/>$errorDescripcion</p>
             <p><label for="archivo">Archivo:</label><input type="file" name="archivo" id="archivo" /></p>
-			<p><label>Activar Subasta: </label> <input type="checkbox" name="subasta"/>
-			<p><label>Puja inicial:</label> <input type="number" name="puja" value="$puja"/></p>
-			<p><label>Fecha limite(minimo una hora mas de la hora actual):</label> <input type="datetime-local" name="fecha" value="$puja"/></p>
+			<p><label>Permitir Subasta: </label> <input type="checkbox" name="subasta"/>
+			<p><label>Precio inicial:</label> <input type="number" step="0.01" min="0" name="precio" value="$precio"/>$errorPrecio</p>
+			<p><label>Fecha de fin de subasta:</label> <input type="date" name="fecha_fin" value="$fecha_fin"/>$errorFechaFin</p>
             <button type="submit" name="subir_obra">Subir</button>
         </fieldset>
 EOF;
@@ -40,7 +44,6 @@ EOF;
         $result = array();
 		
         $titulo = $datos['titulo'] ?? null;
-		$subasta = $datos['subasta'];
         if ( empty($titulo)) {
             $result['titulo'] = "El titulo de la obra no puede estar vacío.";
         }
@@ -48,17 +51,34 @@ EOF;
         if ( empty($descripcion)) {
             $result['descripcion'] = "La descripcion de la obra no puede estar vacía.";
         }
-        if (count($result) === 0) {
-			if($subasta){
-				$puja_inicial = $datos['puja'];
-				$fecha_limite = strtotime($datos['fecha']);
-				$result[] = self::subirObraySubasta($titulo,$descripcion,$_SESSION['user']->id(), $puja_inicial, $fecha_limite);
+		
+		$subasta = isset($datos['subasta']) ? $datos['subasta'] : null ;
+		if($subasta){
+			$precio = $datos['precio'] ?? null;
+			if ( empty($precio) || $precio <= 0) {
+				$result['precio'] = "El precio inicial tiene que ser mayor que 0 €.";
 			}
-			else{
-				$result = self::subirObra($titulo,$descripcion,$_SESSION['user']->id());
-		}	
-        }
-	
+			$fecha_fin = $datos['fecha_fin'] ?? null;
+			if ( empty($fecha_fin)) {
+				$result['fecha_fin'] = "Tienes que elegir cuando termina la subasta.";
+			}
+			
+		}
+		if (count($result) === 0) {
+			$obra = self::subirObra($titulo,$descripcion,$_SESSION['user']->id());
+			if(!$obra){echo "NOOOOOOOOO";}else{echo $obra->id();}
+			//$obra = Obra::buscaObra($titulo, $_SESSION['user']->id());
+			if($subasta){
+				$puja = Puja::crea($obra->id(), $precio, $fecha_fin);
+				if(!$puja){
+					$result[] = "No se ha creado la puja";
+				}else{
+					$result = 'cuenta.php';
+				}
+			}
+			
+		}
+		
         return $result;
     }
 	
@@ -94,7 +114,8 @@ EOF;
 					if ( !move_uploaded_file($tmp_name, $fichero_subido) ) {
 						$result[] = 'Error al mover el archivo';
 					}else{
-						$result = 'cuenta.php'; //mostrar obra en grande?
+						//$result = 'cuenta.php'; //mostrar obra en grande?
+						$result = $obra;
 					}
 				}
 			}else {
@@ -127,7 +148,7 @@ EOF;
 				if (!file_exists($dir_subida)){	//Si es la primera subida de archivo, la carpeta no esta creada todavia
 					mkdir($dir_subida, 0777, true);	}	//Se crea la carpeta
 				if($puja_inicial > 0){
-					if($fecha_limite >= time()+60*60){ //timepo del server mas 1 hora
+					if($fecha_limite <= time()+60*60){ //timepo del server mas 1 hora
 						$fecha_parse = new \DateTime();
 						
 						$fecha_limite_aux = $fecha_parse->createFromFormat("U", $fecha_limite);
@@ -136,13 +157,7 @@ EOF;
 						echo $fecha_limite;
 						//printr($fecha_limite_aux );
 						$obra = Obra::crea($titulo, $descripcion, $id_autor);
-						if($obra){
-							$subasta = Puja::crea($obra->id(), $puja_inicial, $fecha_limite);
-						}
-						else{
-							$result[] = "No se pudo subir la obra";
-						}
-						
+						$subasta = Puja::crea($obra->id(), $puja_inicial, $fecha_limite);
 				if ( ! $obra ) {
 					
 					$result[] = "Ya existe una obra tuya con ese título";
@@ -190,6 +205,3 @@ EOF;
 		return $newName;
 	}
 }
-
-
-
