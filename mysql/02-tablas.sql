@@ -32,7 +32,8 @@ CREATE TABLE `Usuarios` (
   `correo` varchar(40) NOT NULL,
   `nombre` varchar(15) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `rol` varchar(10) NOT NULL
+  `rol` varchar(10) NOT NULL,
+  `avatar` boolean NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
