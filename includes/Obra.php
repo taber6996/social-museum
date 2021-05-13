@@ -125,5 +125,27 @@ class Obra
     }
 	
 	//FALTA ELIMINA OBRA
+
+    public static function buscaObraPorId($id)
+    {
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		$query = sprintf("SELECT * FROM Obras O WHERE O.id = %d",$id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();$obra = new Obra($fila['titulo'], $fila['descripcion'], $fila['id_autor']);
+                
+                $obra->id = $fila['id'];
+                $result = $obra;
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $result;
+    }
   
 }

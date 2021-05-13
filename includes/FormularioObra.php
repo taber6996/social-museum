@@ -27,7 +27,7 @@ class FormularioObra extends Form
             <p><label for="archivo">Archivo:</label><input type="file" name="archivo" id="archivo" /></p>
 			<p><label>Activar Subasta: </label> <input type="checkbox" name="subasta"/>
 			<p><label>Puja inicial:</label> <input type="number" name="puja" value="$puja"/></p>
-			<p><label>Fecha limite:</label> <input type="datetime-local" name="fecha" value="$puja"/></p>
+			<p><label>Fecha limite(minimo una hora mas de la hora actual):</label> <input type="datetime-local" name="fecha" value="$puja"/></p>
             <button type="submit" name="subir_obra">Subir</button>
         </fieldset>
 EOF;
@@ -127,7 +127,7 @@ EOF;
 				if (!file_exists($dir_subida)){	//Si es la primera subida de archivo, la carpeta no esta creada todavia
 					mkdir($dir_subida, 0777, true);	}	//Se crea la carpeta
 				if($puja_inicial > 0){
-					if($fecha_limite <= time()+60*60){ //timepo del server mas 1 hora
+					if($fecha_limite >= time()+60*60){ //timepo del server mas 1 hora
 						$fecha_parse = new \DateTime();
 						
 						$fecha_limite_aux = $fecha_parse->createFromFormat("U", $fecha_limite);
@@ -136,7 +136,13 @@ EOF;
 						echo $fecha_limite;
 						//printr($fecha_limite_aux );
 						$obra = Obra::crea($titulo, $descripcion, $id_autor);
-						$subasta = Puja::crea($obra->id(), $puja_inicial, $fecha_limite);
+						if($obra){
+							$subasta = Puja::crea($obra->id(), $puja_inicial, $fecha_limite);
+						}
+						else{
+							$result[] = "No se pudo subir la obra";
+						}
+						
 				if ( ! $obra ) {
 					
 					$result[] = "Ya existe una obra tuya con ese título";
