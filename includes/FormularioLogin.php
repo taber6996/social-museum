@@ -56,6 +56,7 @@ class FormularioLogin extends Form
                 $_SESSION['esAdmin'] = strcmp($usuario->rol(), 'admin') == 0 ? true : false;
 				$_SESSION['esArtist'] = strcmp($usuario->rol(), 'artist') == 0 ? true : false;
 				$_SESSION['user'] = $usuario;
+				$_SESSION['avatar'] = $usuario->avatar();
                 $result = 'cuenta.php';
             }
         }
