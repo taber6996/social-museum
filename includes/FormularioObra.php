@@ -66,8 +66,6 @@ EOF;
 		}
 		if (count($result) === 0) {
 			$obra = self::subirObra($titulo,$descripcion,$_SESSION['user']->id());
-			if(!$obra){echo "NOOOOOOOOO";}else{echo $obra->id();}
-			//$obra = Obra::buscaObra($titulo, $_SESSION['user']->id());
 			if($subasta){
 				$puja = Puja::crea($obra->id(), $precio, $fecha_fin);
 				if(!$puja){
@@ -127,69 +125,6 @@ EOF;
 			return $result;
 	}
 
-	protected function subirObraySubasta($titulo,$descripcion,$id_autor, $puja_inicial, $fecha_limite)
-	{
-		global $EXTENSIONES_PERMITIDAS;
-		
-		$ok = count($_FILES) == 1 && $_FILES['archivo']['error'] == UPLOAD_ERR_OK;
-		if ( $ok ) {
-			$archivo = $_FILES['archivo'];
-			$nombre = $_FILES['archivo']['name'];
-			$ok = self::check_file_uploaded_name($nombre) && self::check_file_uploaded_length($nombre) ;
-			$ok = $ok && in_array(pathinfo($nombre, PATHINFO_EXTENSION), $EXTENSIONES_PERMITIDAS);
-			$finfo = finfo_open(FILEINFO_MIME_TYPE);
-			$mimeType = finfo_file($finfo, $_FILES['archivo']['tmp_name']);
-			$ok = preg_match('/image\/*./', $mimeType);
-			finfo_close($finfo);
-			if ( $ok ) {
-				$tmp_name = $_FILES['archivo']['tmp_name'];
-					
-				$dir_subida = "img/obras/artista_".$id_autor."/";
-				if (!file_exists($dir_subida)){	//Si es la primera subida de archivo, la carpeta no esta creada todavia
-					mkdir($dir_subida, 0777, true);	}	//Se crea la carpeta
-				if($puja_inicial > 0){
-					if($fecha_limite <= time()+60*60){ //timepo del server mas 1 hora
-						$fecha_parse = new \DateTime();
-						
-						$fecha_limite_aux = $fecha_parse->createFromFormat("U", $fecha_limite);
-						//printr($fecha_limite_aux );
-						$fecha_limite = $fecha_limite_aux->format("Y-m-d H:i:s");
-						echo $fecha_limite;
-						//printr($fecha_limite_aux );
-						$obra = Obra::crea($titulo, $descripcion, $id_autor);
-						$subasta = Puja::crea($obra->id(), $puja_inicial, $fecha_limite);
-				if ( ! $obra ) {
-					
-					$result[] = "Ya existe una obra tuya con ese título";
-				}
-				if(!$subasta){
-					$result[] = "No se pudo crear la subasta";
-				}
-				else{
-					$fichero_subido = $dir_subida.$titulo.".jpg";
-					if ( !move_uploaded_file($tmp_name, $fichero_subido) ) {
-						$result[] = 'Error al mover el archivo';
-					}else{
-						$result = 'cuenta.php'; //mostrar obra en grande?
-					}
-				}
-					}
-					else{
-						$result[] = "Fecha introducida no es válida.";
-					}
-				}
-				else{
-					$result[] = "Valor de la puja no es valido.";
-				}
-				
-			}else {
-				$result[] ='El archivo tiene un nombre o tipo no soportado';
-			}
-		} else {
-			$result[] = 'Error al subir el archivo.';
-		}
-			return $result;
-	}
     
 	function check_file_uploaded_name ($filename) {
 		return (bool) ((mb_ereg_match('/^[0-9A-Z-_\.]+$/i',$filename) === 1) ? true : false );
