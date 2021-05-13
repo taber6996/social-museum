@@ -8,4 +8,4 @@
 		<p>aqui se mostrara el estudio del usuario</p>
 	EOS;
 
-	require __DIR__.'/includes/plantillas/layout1.php';
+	require __DIR__.'/includes/plantillas/layout2.php';
