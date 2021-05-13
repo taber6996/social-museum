@@ -214,7 +214,6 @@ EOS;
 		<p><a href="cambiarDatosUsuario.php">Editar datos</a></p>
 		EOS;
 		
-		
 		return $html;
 	}
 	
