@@ -1,6 +1,6 @@
 <aside>
-	<nav id="Menu Artista">
-	<ul id="lista1">
+	<nav id="menu_admin">
+	<ul id="menu_cuenta">
 		<li> <a href="general_admin.php">General</a></li>
 		<li> <a href="productos.php">Subir producto</a></li>
 		<li> <a href="lista_eventos.php">Crear evento</a></li>
