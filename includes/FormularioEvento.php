@@ -29,7 +29,7 @@ class FormularioEvento extends Form
         <fieldset>
             $htmlErroresGlobales
             <p><label>Nombre:</label> <input type="text" name="nombre" value="$nombre"/>$errorNombre</p>
-            <p><label>Tipo:</label> <select name="tipo"><option value="Expo">Expo</option><option value="Concurso">Concurso</option><option value="Subasta">Subasta</option></select>$errorTipo</p>
+            <p><label>Tipo:</label> <select name="tipo"><option value="Expo">Expo</option><option value="Concurso">Concurso</option></select>$errorTipo</p>
             <p><label>Descripcion:</label> <input type="text" name="descripcion" value="$descripcion"/>$errorDescripcion</p>
 			<p><label>Fecha de inicio :</label> <input type="date" name="fecha_ini" value="$fecha_ini"/>$errorFechaIni</p>
 			<p><label>Fecha de fin :</label> <input type="date" name="fecha_fin" value="$fecha_fin"/>$errorFechaFin</p>
@@ -84,6 +84,3 @@ EOF;
         return $result;
     }
 }
-
-
-
