@@ -47,6 +47,10 @@ class Usuario
 		$this->correo=$nuevoEmail;
 	}
 	
+	public function cambiaAvatar(){
+		$this->avatar = 1;
+	}
+	
 	/*   FUNCIONES CRUD   */
 	
 	public static function crea($correo, $nombre, $password, $rol)
@@ -115,10 +119,11 @@ class Usuario
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
 		
-        $query=sprintf("UPDATE Usuarios U SET correo = '%s', nombre='%s', password='%s' WHERE U.id=%d"
+        $query=sprintf("UPDATE Usuarios U SET correo = '%s', nombre='%s', password='%s', avatar=%d WHERE U.id=%d"
             , $conn->real_escape_string($usuario->correo)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
+			, $usuario->avatar
             , $usuario->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
