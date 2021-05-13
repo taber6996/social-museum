@@ -89,6 +89,3 @@ EOF;
 		return $newName;
 	}
 }
-
-
-
