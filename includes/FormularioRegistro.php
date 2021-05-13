@@ -82,6 +82,7 @@ class FormularioRegistro extends Form
                 $_SESSION['correo'] = $correo;
 				$_SESSION['esAdmin'] = strcmp($user->rol(), 'admin') == 0 ? true : false;
 				$_SESSION['esArtist'] = strcmp($user->rol(), 'artist') == 0 ? true : false;
+				$_SESSION['avatar'] = false;
 				$_SESSION['user'] = $user;
                 $result = 'cuenta.php';
             }
