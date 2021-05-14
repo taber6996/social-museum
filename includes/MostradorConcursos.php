@@ -6,7 +6,7 @@ class MostradorConcursos{
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
 		$tipo = "Concurso";
-        $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Concurso'");
+        $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Concurso'");
         $rs = $conn->prepare($query);
         $rs->execute();
         $eventos = $rs->get_result();

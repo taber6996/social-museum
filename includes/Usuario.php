@@ -197,6 +197,7 @@ class Usuario
 	public static function datosPersonales(){
 		$user = $_SESSION['user'];
 		$html = <<<EOS
+		<div class="datos-personales">
 		<h2>Datos personales</h2>
 		EOS;
 		
@@ -222,6 +223,7 @@ EOS;
 		<h4>Correo</h4>
 		$user->correo
 		<p><a href="cambiarDatosUsuario.php">Editar datos</a></p>
+		</div>
 		EOS;
 		
 		return $html;

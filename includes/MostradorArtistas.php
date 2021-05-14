@@ -5,7 +5,7 @@ class MostradorArtistas{
     public function muestra(){
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT correo FROM usuarios WHERE rol = 'artist'");
+        $query = sprintf("SELECT correo FROM Usuarios WHERE rol = 'artist'");
         $rs = $conn->prepare($query);
         $rs->execute();
         $artistas = $rs->get_result();

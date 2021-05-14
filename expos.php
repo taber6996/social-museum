@@ -3,6 +3,13 @@
 
 	$tituloPagina = 'Expos - ';
 
+	/* VARIABLES PARA DEJAR MARCADO EL MENU */
+	$menuArtistas = "";
+	$menuExpos = "active";
+	$menuTienda = "";
+	$menuEventos = "";
+	$menuCuenta = "";
+
 	$mostrador = new es\ucm\fdi\aw\MostradorExpos();
 	$htmlMostradorExpos = $mostrador->muestra();
 	

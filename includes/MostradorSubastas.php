@@ -22,8 +22,10 @@ class MostradorSubastas{
                 $puja = Puja::tarjeta($id_obra);
 					
 					$html .= <<<EOF
+					<div class="puja">
 						$puja
 						<button type="button">pujar</button>
+						</div>
 EOF;
 					
 					

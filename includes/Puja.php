@@ -224,16 +224,16 @@ class Puja
         }
         
         $html = <<<EOF
-            <h2>$titulo</h2>
-            <img src=$path height="420" width="420">
-            <p>Autor: $autorObra </p>
-            <p>Fecha finalizacion: $fecha_limite </p>
-            <div class="product-price-btn">
-            <p><span>Precio inicial: $puja_actual</span>$</p>
-            <p><span>Puja actual: $puja_inicial</span>$</p>
-            <p><span>Comprador: $comprador</span></p>
-            </div>
-            EOF;
+		<h2>$titulo</h2>
+		<img src=$path height="420" width="420">
+		<p>Autor: $autorObra </p>
+		<p>Fecha finalizacion: $fecha_limite </p>
+		<div class="product-price-btn">
+		<p><span>Precio inicial: $puja_actual</span>$</p>
+		<p><span>Puja actual: $puja_inicial</span>$</p>
+		<p><span>Comprador: $comprador</span></p>
+		</div>
+EOF;
         return $html;
     }
 	

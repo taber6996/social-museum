@@ -9,15 +9,15 @@ class MostradorExpos{
         if(isset($_GET["momento"])){
             $moment = $_GET["momento"];
         }
-        $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo'");
+        $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo'");
         if($moment == 'pasadas'){
-            $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin < NOW()");
+            $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin < NOW()");
         }
         else if($moment == 'presente'){
-            $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin > NOW()");
+            $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin > NOW()");
         }
         else if($moment == 'futuras'){
-            $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo' AND fecha_ini > NOW()");
+            $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo' AND fecha_ini > NOW()");
         }
         $rs = $conn->prepare($query);
         $rs->execute();
