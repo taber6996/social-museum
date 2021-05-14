@@ -179,7 +179,8 @@ class Usuario
             return false;
         }
         $nombre = $artista->nombre();
-        $html = <<<EOF
+        $html = "";
+        $html .= <<<EOF
             <h3>$nombre</h3>
             <p>$correo </p>
             EOF;
@@ -192,7 +193,7 @@ class Usuario
 		<h2>Datos personales</h2>
 		EOS;
 		
-		if($_SESSION['avatar']){
+		if(isset($_SESSION['avatar'])){
 			$path = "img/avatares/".$user->id().".jpg";
 			$html .= <<<EOS
 				

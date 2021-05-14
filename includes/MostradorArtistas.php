@@ -21,9 +21,9 @@ class MostradorArtistas{
                 $correo = $artista['correo'] ?? null;
                 $artista = Usuario::tarjeta($correo);
 					
-					$html .= <<<EOF
-               <a href="perfilArtista.php?artist=$correo">$artista</a>
-            EOF;
+                $html .= <<<EOF
+                <a href="perfilArtista.php?artist=$correo">$artista</a>
+             EOF;
 					
 					
                 }
