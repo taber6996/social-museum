@@ -147,5 +147,21 @@ class Obra
     }
 	
 	//FALTA ELIMINA OBRA
- 
+	
+	public static function tarjeta($id){
+		$obra = self::buscaObraPorId($id);
+		$titulo = $obra->titulo();
+		$path = "img/obras/artista_".$obra->id_autor()."/".$titulo.".jpg";
+		
+		if($obra instanceof bool){
+			return false;
+		}
+		
+        $html = <<<EOF
+            <h2>$titulo</h2>
+            <img src=$path height="420" width="420">
+            EOF;
+        return $html;
+	}
+	
 }

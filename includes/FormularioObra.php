@@ -74,7 +74,7 @@ EOF;
 					$result = 'cuenta.php';
 				}
 			}
-			
+			$result = 'cuenta.php';
 		}
 		
         return $result;
