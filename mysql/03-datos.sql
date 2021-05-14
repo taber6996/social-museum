@@ -62,4 +62,5 @@ INSERT INTO `pujas` (`id`, `id_obra`, `fecha_finalizacion`, `precio_inicial`, `p
 INSERT INTO `eventos` (`id`, `nombre`, `tipo`, `descripcion`, `fecha_ini`, `fecha_fin`, `precio`) VALUES
 (1, 'Exposición Goya', 'Expo', 'Los mejores cuadros de Goya', '2021-05-12', '2021-06-30', 10),
 (2, 'Exposición Pasado', 'Expo', 'Una exposición del pasado', '2021-03-11', '2021-03-31', 5),
-(3, 'Exposición futuro', 'Expo', 'Una exposición del futuro', '2021-06-24', '2021-09-16', 1);
+(3, 'Exposición futuro', 'Expo', 'Una exposición del futuro', '2021-06-24', '2021-09-16', 1),
+(4, 'Concurso 1', 'Concurso', 'El primer concurso de Social Museum', '2021-05-12', '2021-08-14', 2);

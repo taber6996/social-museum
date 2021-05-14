@@ -11,7 +11,7 @@ class MostradorExpos{
         }
         $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo'");
         if($moment == 'pasadas'){
-            $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo' AND fecha_ini > NOW() AND fecha_fin > NOW()");
+            $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin < NOW()");
         }
         else if($moment == 'presente'){
             $query = sprintf("SELECT nombre FROM eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin > NOW()");

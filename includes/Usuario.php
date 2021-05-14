@@ -178,9 +178,16 @@ class Usuario
         if($artista instanceof bool){
             return false;
         }
+		$path = "img/avatares/".$artista->id().".jpg";
+        $html = "";
+        if(!file_exists($path)){
+            $path = "img/avatares/no_avatar.jpg";
+        }
+
         $nombre = $artista->nombre();
         $html = "";
         $html .= <<<EOF
+            <img src=$path height="150" width="150">
             <h3>$nombre</h3>
             <p>$correo </p>
             EOF;
