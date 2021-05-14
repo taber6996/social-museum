@@ -203,7 +203,8 @@ class Usuario
 		if(isset($_SESSION['avatar'])){
 			$path = "img/avatares/".$user->id().".jpg";
 			$html .= <<<EOS
-				
+			
+			<img id="avatar" src=$path>
 
 EOS;
 		}else{
