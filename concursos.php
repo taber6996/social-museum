@@ -3,6 +3,13 @@ require_once __DIR__.'/includes/config.php';
 
 $tituloPagina = 'Concursos - ';
 
+/* VARIABLES PARA DEJAR MARCADO EL MENU */
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "active";
+$menuCuenta = "";
+
 $mostrador = new es\ucm\fdi\aw\MostradorConcursos();
 $htmlMostradorConcursos = $mostrador->muestra();
 

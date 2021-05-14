@@ -6,6 +6,12 @@ $htmlDatosPersonales = $usuario->datosPersonales();
 
 $tituloPagina = "Cuenta - ";
 
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
+
 $contenidoPrincipal = <<<EOS
 <h1>Mi cuenta</h1>
 EOS;

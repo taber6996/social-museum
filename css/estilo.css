@@ -13,18 +13,8 @@ header{
 	text-align: center;
 }
 
-#logoText{
-	/*position: relative;
-	top: 0em;
-	left: 0em;*/
-	padding-left: 10px;
-	padding-bottom: 10px;
-	font-size: 90px;
-	font-family: 'Girassol', cursive;
-}
 /* MENU SECUNDARIO */
 #menu-secundario{
-	float: center;
 	background-color:#fff9f2;
 	margin-top:0px;
 	display: flex;
@@ -55,7 +45,6 @@ header{
 
 /* MENU DEL HEADER */
 #menu-principal{
-	float: center;
 	background-color:#ffc591;
 	margin-top:20px;
 	display: flex;
@@ -78,9 +67,9 @@ header{
 {
 	background-color:#ff9a40;
 }
-#lista-menu-principal li a:active
+#menu-principal a.active
 {
-	background-color:#000000;
+	background-color:#202020;
 	color:#ff9a40;
 }
 
@@ -103,6 +92,7 @@ main{
 footer{
 	margin-top:5px;
 	text-align: center;
+	bottom: 0;
 }
 
 /* GALERIA DE HOMEPAGE */
@@ -164,4 +154,58 @@ footer{
 	background-color: #ccc;
 }
 
+/* ARTISTAS */
+.tarjetasArtistas a{
+	color: #000000;
+	text-decoration: none;
+}
+
+.tarjetasArtistas a h3, .tarjetasArtistas a p{
+	padding: 12px;
+}
+
+.tarjetasArtistas a h3{
+	border-top: #ff9a40 2px solid;
+	background-color:#fff9f2;
+}
+
+.tarjetasArtistas img#avatar{
+	margin-top: 25px;
+	margin-left: 210px;
+	float: left;
+}
+
+.tarjetasArtistas a h3:hover {
+	background-color:#ff9a40;
+}
+
+.tarjetasArtistas a h3, .tarjetasArtistas a h3:hover {
+	-webkit-transition: all .5s ease-in-out;
+}
+
+/* TIENDA */
+.tarjetasProductos{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.product-info{
+	border: #ff9a40 2px solid;
+}
+
+/* SUBASTAS */
+.tarjetasSubastas{
+	display: flex;
+	flex-direction: column;
+}
+.puja img{
+	float: left;
+}
+.puja h2{
+	background-color:#fff9f2;
+}
+.puja {
+	margin-top: 20px;
+	border: #ff9a40 2px solid;
+}
 

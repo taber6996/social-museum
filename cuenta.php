@@ -8,6 +8,13 @@ $htmlFormRegistro = $formR->gestiona();
 
 $tituloPagina = "Cuenta - ";
 
+/* VARIABLES PARA DEJAR MARCADO EL MENU */
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
+
 $contenidoPrincipal = "";
 
 if (isset($_SESSION["login"]) && $_SESSION["login"]) {	

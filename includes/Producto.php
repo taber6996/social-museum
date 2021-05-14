@@ -9,7 +9,7 @@ class Producto
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
 		//$query = sprintf("SELECT * FROM Productos P WHERE P.nombre = '%s',$conn->real_escape_string($nombre));
-		$query = sprintf("SELECT * FROM productos P WHERE P.nombre = '%s'", $conn->real_escape_string($nombre));
+		$query = sprintf("SELECT * FROM Productos P WHERE P.nombre = '%s'", $conn->real_escape_string($nombre));
 
         $rs = $conn->query($query);
         $result = false;
@@ -92,7 +92,7 @@ class Producto
     public static function muestraTodos(){
     $app = Aplicacion::getInstance();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT nombre FROM productos P");
+    $query = sprintf("SELECT nombre FROM Productos P");
     $rs = $conn->prepare($query);
     $rs->execute();
     $productos = $rs->get_result();
