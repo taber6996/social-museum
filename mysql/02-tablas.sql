@@ -46,9 +46,6 @@ CREATE TABLE `Obras` (
   `titulo` varchar(25) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL
-  --`subasta` boolean DEFAULT NULL,
-  --`precio_inicial` float(11) DEFAULT NULL,
- -- `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
