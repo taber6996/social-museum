@@ -3,7 +3,8 @@ require_once __DIR__.'/includes/config.php';
 
 $form = new es\ucm\fdi\aw\FormularioObra();
 $htmlFormObra = $form->gestiona();
-//$htmlListaObras = $form->muestraObras();
+$mostrador = new es\ucm\fdi\aw\MostradorObras($_SESSION['correo']);
+$htmlListaObras = $mostrador->muestra();
 
 $tituloPagina = 'Social Museum';
 

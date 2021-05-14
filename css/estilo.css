@@ -85,7 +85,13 @@ header{
 }
 
 
+/*Información del perfil*/
 
+#avatar{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
 
 /* CENTRAR CONTENIDO */
 main{

@@ -89,7 +89,30 @@ class Producto
         
         return $producto;
     }
-    
+    public static function muestraTodos(){
+    $app = Aplicacion::getInstance();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT nombre FROM productos P");
+    $rs = $conn->prepare($query);
+    $rs->execute();
+    $productos = $rs->get_result();
+    $filas = $productos->num_rows;
+    $html = "";
+    if($filas == 0){
+        $html = <<<EOF
+            <p> ¡No hay productos en la tienda! </p>
+        EOF;
+    }
+    else{
+        foreach($productos as $producto){
+            $nombre = $producto['nombre'] ?? null;
+            if(!empty($nombre)){
+                $html .= Producto::tarjeta($nombre);
+            }
+            }
+        }
+        return $html;
+    }
     public static function tarjeta($nombre){
         $product = self::buscaProducto($nombre);
         if($product instanceof bool){

@@ -7,7 +7,7 @@ class MostradorObras {
 		 $this->usuarioArista = Usuario::buscaUsuario($artist);
 	}
 	
-	public $usuarioArista;
+	private $usuarioArista;
 	
 	public function muestra(){
 		$id_autor = $this->usuarioArista->id();

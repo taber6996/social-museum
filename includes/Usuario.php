@@ -187,7 +187,7 @@ class Usuario
         $nombre = $artista->nombre();
         $html = "";
         $html .= <<<EOF
-            <img src=$path height="150" width="150">
+            <img id="avatar" src=$path>
             <h3>$nombre</h3>
             <p>$correo </p>
             EOF;
@@ -204,13 +204,13 @@ class Usuario
 			$path = "img/avatares/".$user->id().".jpg";
 			$html .= <<<EOS
 				
-			<img src=$path height="150" width="150">
+
 EOS;
 		}else{
 			$path = "img/avatares/no_avatar.jpg";
 			$html .= <<<EOS
 				
-			<img src=$path height="150" width="150">
+			<img id="avatar" src=$path>
 EOS;
 		}
 		
