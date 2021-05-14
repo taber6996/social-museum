@@ -200,7 +200,8 @@ class Usuario
 		<h2>Datos personales</h2>
 		EOS;
 		
-		if(isset($_SESSION['avatar'])){
+		if(isset($_SESSION['avatar'])&&($_SESSION['avatar'])){
+			echo "hola";
 			$path = "img/avatares/".$user->id().".jpg";
 			$html .= <<<EOS
 			
