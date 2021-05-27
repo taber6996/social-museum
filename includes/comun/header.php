@@ -21,7 +21,12 @@
 		<a href="expos.php?momento=presente" class = <?= $menuExpos ?> >Expos</a>
 		<a href="tienda.php" class = <?= $menuTienda ?> >Tienda</a>
 		<a href="eventos.php?tipo=expo" class = <?= $menuEventos ?> >Eventos</a>
-		<a href="cuenta.php" class = <?= $menuCuenta ?> >Cuenta</a>
+		<?php if(isset($_SESSION['login']) && $_SESSION['login']) : ?>
+			<a href="cuenta.php" class = <?= $menuCuenta ?> >Cuenta</a>
+		<?php else : ?>
+			<a href="login.php"> Log In </a>
+			<a href="signup.php"> Sign Up </a>
+		<?php endif; ?>
 		<!-- <li> | <img src="img/spanish.jpg" width="15px" height="15px"> </li> -->
 	</nav>	
 </header>

@@ -29,10 +29,8 @@ if (isset($_SESSION["login"]) && $_SESSION["login"]) {
 	}
 } else {
 	$contenidoPrincipal .= <<<EOS
-	<h1>INICIA SESIÓN</h1>
-	$htmlFormLogin
-	<h1>REGÍSTRATE</h1>
-	$htmlFormRegistro
+	<a href="login.php"><h1>INICIA SESIÓN</h1></a>
+	<a href="signup.php"><h1>REGÍSTRATE</h1></a>
 	EOS;
 }
 		

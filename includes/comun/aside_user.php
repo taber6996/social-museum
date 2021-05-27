@@ -6,7 +6,7 @@
 		<a href="estudio.php">Estudio</a>
 		<a href="compras.php">Compras</a>
 		<a href="buzon.php">Buzón</a>
-		<a href="logout.php">Cerrar sesión</a>
+		<a href="logout.php">Log Out</a>
 	</ul>
 	</nav>	
 </aside>
