@@ -65,18 +65,29 @@ EOF;
             $result['fecha_ini'] = "Tienes que elegir cuando empieza el evento.";
         }
 		$fecha_fin = $datos['fecha_fin'] ?? null;
+        if(($fecha_ini < date("Y-m-d")) && ($fecha_fin < date("Y-m-d"))){
+            $result['fecha_fin'] = "No puedes crear eventos en el pasado.";
+        }
 		 if ( empty($fecha_fin)) {
             $result['fecha_fin'] = "Tienes que elegir cuando termina el evento.";
         }
+        
+
+        
 		
         if (count($result) === 0) {
 			
 			$evento = Evento::crea($nombre,$tipo,$descripcion,$fecha_ini,$fecha_fin,$precio);	
 			
 			if ( ! $evento ) {
-                $result[] = "Ya existe un evento de ese tipo con ese nombre";
+                $result['nombre'] = "Ya existe un evento de ese tipo con ese nombre";
             } else {
-				echo "Evento creado con exito "; //quitar
+                if($tipo == "Expo"){
+                    header("Location: expos.php");
+                }
+				else if($tipo == "Concurso"){
+                    header("Location: concursos.php");
+                }
 			}
 			
         }
