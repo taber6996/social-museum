@@ -80,7 +80,7 @@ EOF;
 			$evento = Evento::crea($nombre,$tipo,$descripcion,$fecha_ini,$fecha_fin,$precio);	
 			
 			if ( ! $evento ) {
-                $result['nombre'] = "Ya existe un evento de ese tipo con ese nombre";
+                $result['nombre'] = "Ya existe un evento de ese tipo con ese nombre.";
             } else {
                 if($tipo == "Expo"){
                     header("Location: expos.php");

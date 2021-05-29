@@ -209,3 +209,44 @@ footer{
 	border: #ff9a40 2px solid;
 }
 
+.sugerencia {
+	background-color: #fff;
+	border-radius: 5x;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	width: auto;
+}
+
+.sugerencia h6 {
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+
+.sugerencia-izq {
+	background-color: #ff9a40;
+	color: #fff;
+	padding: 30px;
+	max-width: 250px;
+}
+
+.sugerencia-izq a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.sugerencia-der {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
