@@ -5,126 +5,46 @@ require_once __DIR__.'/includes/config.php';
 
 $tituloPagina = "Dibujo -";
 $contenidoPrincipal=<<<EOS
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
- <script type="text/javascript">
-      $(document).ready(function () {
-         initialize();
-      });
-      function getPosition(mouseEvent, sigCanvas) {
-         var x, y;
-         if (mouseEvent.pageX != undefined && mouseEvent.pageY != undefined) {
-            x = mouseEvent.pageX;
-            y = mouseEvent.pageY;
-         } else {
-            x = mouseEvent.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            y = mouseEvent.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-         }
- 
-         return { X: x - sigCanvas.offsetLeft, Y: y - sigCanvas.offsetTop };
-      }
- 
-      function initialize() {
-         var sigCanvas = document.getElementById("canvasSignature");
-         var context = sigCanvas.getContext("2d");
-         context.strokeStyle = 'Black';
-         var is_touch_device = 'ontouchstart' in document.documentElement;
- 
-         if (is_touch_device) {
-            var drawer = {
-               isDrawing: false,
-               touchstart: function (coors) {
-                  context.beginPath();
-                  context.moveTo(coors.x, coors.y);
-                  this.isDrawing = true;
-               },
-               touchmove: function (coors) {
-                  if (this.isDrawing) {
-                     context.lineTo(coors.x, coors.y);
-                     context.stroke();
-                  }
-               },
-               touchend: function (coors) {
-                  if (this.isDrawing) {
-                     this.touchmove(coors);
-                     this.isDrawing = false;
-                  }
-               }
-            };
-            function draw(event) {
-               var coors = {
-                  x: event.targetTouches[0].pageX,
-                  y: event.targetTouches[0].pageY
-               };
-               var obj = sigCanvas;
- 
-               if (obj.offsetParent) {
-                  do {
-                     coors.x -= obj.offsetLeft;
-                     coors.y -= obj.offsetTop;
-                  }
-                  while ((obj = obj.offsetParent) != null);
-               }
-               drawer[event.type](coors);
-            }
-            sigCanvas.addEventListener('touchstart', draw, false);
-            sigCanvas.addEventListener('touchmove', draw, false);
-            sigCanvas.addEventListener('touchend', draw, false);
-            sigCanvas.addEventListener('touchmove', function (event) {
-               event.preventDefault();
-            }, false); 
-         }
-         else {
-            $("#canvasSignature").mousedown(function (mouseEvent) {
-               var position = getPosition(mouseEvent, sigCanvas);
- 
-               context.moveTo(position.X, position.Y);
-               context.beginPath();
-               $(this).mousemove(function (mouseEvent) {
-                  drawLine(mouseEvent, sigCanvas, context);
-               }).mouseup(function (mouseEvent) {
-                  finishDrawing(mouseEvent, sigCanvas, context);
-               }).mouseout(function (mouseEvent) {
-                  finishDrawing(mouseEvent, sigCanvas, context);
-               });
-            });
-            var clear = function () {
-                context.clearRect(0, 0, 500, 500);
-              };
-              
-              $("#clear").on("click", clear);
- 
-         }
-      }
-      function drawLine(mouseEvent, sigCanvas, context) {
- 
-         var position = getPosition(mouseEvent, sigCanvas);
- 
-         context.lineTo(position.X, position.Y);
-         context.stroke();
-      }
-      function finishDrawing(mouseEvent, sigCanvas, context) {
-         drawLine(mouseEvent, sigCanvas, context);
- 
-         context.closePath();
-         $(sigCanvas).unbind("mousemove")
-                     .unbind("mouseup")
-                     .unbind("mouseout");
-      }
+ <div id="toolbar-canvas">
+ <div class="colorButtons">
+    <h3>Colour</h3>
+    <input type="color" id="colorpicker" value="#c81464" class="colorpicker">
+ </div>
+ <div class="colorButtons">
+    <h3>Background Color</h3>
+    <input type="color" value="#ffffff" id="bgcolorpicker" class="colorpicker">
+ </div>
 
-      
-   </script>
-   
+ <div class="toolsButtons">
+    <h3>Tools</h3>
+    <button id="eraser" class="btn btn-default"><span class="glyphicon glyphicon-erase" aria-hidden="true">eraser</span></button>
+    <button id="clear" class="btn btn-danger"> <span class="glyphicon glyphicon-repeat" aria-hidden="true">clear</span></button>
+ </div>
 
- 
-<div>
-   <h1>Canvas test</h1>
- 
-   <div id="canvasDiv">
-      <canvas id="canvasSignature" width="500px" height="500px" style="border:2px solid #000000;"></canvas>
-   </div>
-   <div id="botton-borrar">
-   <button id="clear">Nuevo dibujo</button>
-   </div>
+ <div class="buttonSize">
+    <h3>Size (<span id="showSize">5</span>)</h3>
+    <input type="range" min="1" max="50" value="5" step="1" id="controlSize">
+ </div>
+
+ <div class="Storage">
+    <h3>Storage</h3>
+    <input type="button" value="Guardar cambios" class="btn btn-warning" id="save">
+    <input type="button" value="Cargar dibujo" class="btn btn-warning" id="load">
+    <input type="button" value="Borrar cola" class="btn btn-warning" id="clearCache">
+ </div>
+ <div class="extra">
+    <h3>Extra</h3>
+    <a id="saveToImage" class="btn btn-warning">Download</a>
+    <a id="sendToServer" class="btn btn-warning">SendTo</a>
+ </div>
 </div>
+<div id="input-name">
+   <input type="text" id ="titulo-input" value="Unnamed">
+</div>
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/canvas.js"></script>
+<noscript>
+<p> Esta página requiere JavaScript para su correcto funcionamiento.</p>
+</noscript>
 EOS;
 require __DIR__.'/includes/plantillas/layout1.php';
