@@ -338,6 +338,14 @@ INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `a
 --
 
 --
+-- Estructura de tabla para la tabla `dibujos`
+--
+CREATE TABLE `dibujos` (
+  `id` int(11) NOT NULL,
+  `id_autor` int(11) DEFAULT NULL,
+  `titulo` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
 -- Indices de la tabla `biografias`
 --
 ALTER TABLE `biografias`
@@ -415,6 +423,14 @@ ALTER TABLE `sugerencias`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+
+--
+-- Indices de la tabla `dibujos`
+--
+
+ALTER TABLE `dibujos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -503,6 +519,13 @@ ALTER TABLE `mecenas`
 ALTER TABLE `pujas`
   ADD CONSTRAINT `pujas_comprador` FOREIGN KEY (`id_comprador_actual`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pujas_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+--
+-- AUTO_INCREMENT de la tabla `dibujos`
+--
+
+
+ALTER TABLE `dibujos`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
