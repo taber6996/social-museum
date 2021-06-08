@@ -348,3 +348,54 @@ div#obras_artista div.obraTarjeta div.inter{
 	position: relative;
 	width: 100%;
 }
+
+.colorButtons {
+	display: block;
+	margin: 10px 0;
+}
+
+canvas {
+	cursor: crosshair;
+}
+
+div#toolbar-canvas {
+	position: absolute;
+	left: 280px;
+	width: 150px;
+	padding: 20px 20px;
+	top: 300px;
+}
+
+canvas#canvas {
+	left: 550px;
+	top: 400px;
+}
+
+.btn {
+	margin-bottom: 10px;
+	width: 100%;
+}
+input {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.input-group {
+	margin-bottom: 10px;
+}
+
+.toolsButtons .btn {
+	width: 48%;
+}
+
+.sizeButtons .btn {
+	width: 48%;
+}
+
+.colorpicker {
+	background: transparent;
+	height: 40px;
+}
+#input-name{
+	width: 100px;
+}
