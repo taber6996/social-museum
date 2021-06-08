@@ -10,12 +10,12 @@ class FormularioCambiaDatosUsuario extends Form
     protected function generaCamposFormulario($datos, $errores = array())
     {
 		$user = $_SESSION['user'];
-        $correo = $user->correo();
+        $nick = $user->nick();
         $nombre = $user->nombre();
 
         // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($errores);
-        $errorCorreo = self::createMensajeError($errores, 'correo', 'span', array('class' => 'error'));
+        $errorNick = self::createMensajeError($errores, 'nick', 'span', array('class' => 'error'));
         $errorNombre = self::createMensajeError($errores, 'nombre', 'span', array('class' => 'error'));
         $errorPassword = self::createMensajeError($errores, 'password', 'span', array('class' => 'error'));
         $errorPassword2 = self::createMensajeError($errores, 'password2', 'span', array('class' => 'error'));
@@ -24,7 +24,7 @@ class FormularioCambiaDatosUsuario extends Form
             <fieldset>
                 $htmlErroresGlobales
                 <div class="grupo-control">
-                    <label>Correo:</label> <input class="control" type="text" name="correo" value="$correo" />$errorCorreo
+                    <label>Nick:</label> <input class="control" type="text" name="nick" value="$nick" />$errorNick
                 </div>
                 <div class="grupo-control">
                     <label>Nombre:</label> <input class="control" type="text" name="nombre" value="$nombre" />$errorNombre
@@ -46,14 +46,14 @@ class FormularioCambiaDatosUsuario extends Form
     {
         $result = array();
         
-        $correo = $datos['correo'] ?? null;
-        if ( empty($correo) || mb_strlen($correo) < 5 ) { //TODO contiene @?
-            $result['correo'] = "El correo tiene que ser válido.";
+        $nick = $datos['nick'] ?? null;
+        if ( empty($nick) || mb_strlen($nick) < 5 ) {
+            $result['nick'] = "El nick tiene que ser válido.";
         }
         
         $nombre = $datos['nombre'] ?? null;
-        if ( empty($nombre) || mb_strlen($nombre) < 5 ) {
-            $result['nombre'] = "El nombre tiene que tener una longitud de al menos 5 caracteres.";
+        if ( empty($nombre) || mb_strlen($nombre) < 2 ) {
+            $result['nombre'] = "El nombre tiene que tener una longitud de al menos 2 caracteres.";
         }
         
         $password = $datos['password'] ?? null;
@@ -68,17 +68,17 @@ class FormularioCambiaDatosUsuario extends Form
 	   
         if (count($result) === 0) {
 			$usuario = $_SESSION['user'];
-			$usuarioBBDD = Usuario::buscaUsuario($correo);
+			$usuarioBBDD = Usuario::buscaUsuario($nick);
 			
 			if ($usuarioBBDD && ($usuarioBBDD->id() != $usuario->id())) {
 				$result[] = "El usuario ya existe";
 			}else{
 				$usuario->cambiaNombre($nombre);
-				$usuario->cambiaCorreo($correo);
+				$usuario->cambiaNick($nick);
 				$usuario->cambiaPassword($password);
 				$_SESSION['user'] = Usuario::actualiza($usuario);
 				
-				$_SESSION['correo'] = $correo;
+				$_SESSION['nick'] = $nick;
 				$_SESSION['nombre'] = $nombre;
 				$result = 'cuenta.php';
 			}

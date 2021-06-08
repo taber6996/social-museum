@@ -7,20 +7,23 @@ class Usuario
 	/*   ATRIBUTOS   */
 	
 	private $id;
-    private $correo;
+    private $nick;
     private $nombre;
     private $password;
     private $rol;
 	private $avatar;
+	private $premium;
+	
 	
 	/*   CONSTRUCTOR   */
 	
-	 private function __construct($correo, $nombre, $password, $rol)
+	 private function __construct($nick, $nombre, $password, $rol, $premium)
     {
-        $this->correo= $correo;
+        $this->nick= $nick;
         $this->nombre = $nombre;
         $this->password = $password;
         $this->rol = $rol;
+		$this->premium = $premium;
     }
 	
 	/*   GETTERS   */
@@ -28,8 +31,11 @@ class Usuario
 	public function id(){return $this->id;}
 	public function nombre(){return $this->nombre;}
 	public function rol(){return $this->rol;}
-	public function correo(){return $this->correo;}
+	public function nick(){return $this->nick;}
 	public function avatar(){return $this->avatar;}
+	public function premium(){return $this->premium;}
+	
+	
 	
 	/*   SETTERS   */
 	
@@ -43,8 +49,8 @@ class Usuario
 		//self::actualiza($this);
     }
 	
-	public function cambiaCorreo($nuevoEmail){
-		$this->correo=$nuevoEmail;
+	public function cambiaNick($nuevoNick){
+		$this->nick=$nuevoNick;
 	}
 	
 	public function cambiaAvatar(){
@@ -53,27 +59,27 @@ class Usuario
 	
 	/*   FUNCIONES CRUD   */
 	
-	public static function crea($correo, $nombre, $password, $rol)
+	public static function crea($nick, $nombre, $password, $rol, $premium)
     {
-        $user = self::buscaUsuario($correo);
+        $user = self::buscaUsuario($nick);
         if ($user) {
             return false;
         }
-        $user = new Usuario($correo, $nombre, self::hashPassword($password), $rol);
+        $user = new Usuario($nick, $nombre, self::hashPassword($password), $rol, $premium);
         return self::guarda($user);
     }
 	
-	public static function buscaUsuario($correo)
+	public static function buscaUsuario($nick)
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM Usuarios U WHERE U.correo = '%s'", $conn->real_escape_string($correo));
+        $query = sprintf("SELECT * FROM Usuarios U WHERE U.nick = '%s'", $conn->real_escape_string($nick));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['correo'], $fila['nombre'], $fila['password'], $fila['rol']);
+                $user = new Usuario($fila['nick'], $fila['nombre'], $fila['password'], $fila['rol'], $fila['premium']);
                 $user->avatar = $fila['avatar'];
 				$user->id = $fila['id'];
                 $result = $user;
@@ -96,7 +102,7 @@ class Usuario
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['correo'], $fila['nombre'], $fila['password'], $fila['rol']);
+                $user = new Usuario($fila['nick'], $fila['nombre'], $fila['password'], $fila['rol'], $fila['premium']);
                 $user->id = $fila['id'];
                 $result = $user;
             }
@@ -120,11 +126,12 @@ class Usuario
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Usuarios(correo, nombre, password, rol, avatar) VALUES('%s', '%s', '%s', '%s', %d)"
-            , $conn->real_escape_string($usuario->correo)
+        $query=sprintf("INSERT INTO Usuarios(nick, nombre, password, rol, premium,avatar) VALUES('%s', '%s', '%s', '%s', %d,%d)"
+            , $conn->real_escape_string($usuario->nick)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
             , $conn->real_escape_string($usuario->rol)
+			, $usuario->premium()
 			, 0);
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
@@ -141,11 +148,12 @@ class Usuario
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
 		
-        $query=sprintf("UPDATE Usuarios U SET correo = '%s', nombre='%s', password='%s', avatar=%d WHERE U.id=%d"
-            , $conn->real_escape_string($usuario->correo)
+        $query=sprintf("UPDATE Usuarios U SET nick = '%s', nombre='%s', password='%s', avatar=%d, premium=%d WHERE U.id=%d"
+            , $conn->real_escape_string($usuario->nick)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
 			, $usuario->avatar
+			, $usuario->premium
             , $usuario->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
@@ -164,72 +172,38 @@ class Usuario
 	
 	/*   FUNCIONES DE USUARIO   */
 	
-	 public static function login($correo, $password)
+	 public static function login($nick, $password)
     {
-        $user = self::buscaUsuario($correo);
+        $user = self::buscaUsuario($nick);
         if ($user && $user->compruebaPassword($password)) {
             return $user;
         }
         return false;
     }
 	
-	public static function tarjeta($correo){
-        $artista = self::buscaUsuario($correo);
-        if($artista instanceof bool){
-            return false;
-        }
-		$path = "img/avatares/".$artista->id().".jpg";
-        $html = "";
-        if(!file_exists($path)){
-            $path = "img/avatares/no_avatar.jpg";
-        }
-
-        $nombre = $artista->nombre();
-        $html = "";
-        $html .= <<<EOF
-            <img id="avatar" src=$path>
-            <h3>$nombre</h3>
-            <p>$correo </p>
-            EOF;
-        return $html;
-    }
+	/*   FUNCIONES AUXILIARES   */
 	
-	public static function datosPersonales(){
-		$user = $_SESSION['user'];
-		$html = <<<EOS
-		<div class="datos-personales">
-		<h2>Datos personales</h2>
-		EOS;
-		
-		if(isset($_SESSION['avatar'])&&($_SESSION['avatar'])){
-			echo "hola";
-			$path = "img/avatares/".$user->id().".jpg";
-			$html .= <<<EOS
-			
-			<img id="avatar" src=$path>
-
-EOS;
-		}else{
-			$path = "img/avatares/no_avatar.jpg";
-			$html .= <<<EOS
-				
-			<img id="avatar" src=$path>
-EOS;
-		}
-		
-		$html .= <<<EOS
-		<h4>Nombre</h4>
-		$user->nombre
-		<h4>Correo</h4>
-		$user->correo
-		<p><a href="cambiarDatosUsuario.php">Editar datos</a></p>
-		</div>
-		EOS;
-		
-		return $html;
+	public function serMecenas($artistNick){
+		$artist = self::buscaUsuario($artistNick);
+		$a= $artist->id();
+		$u= $this->id;
+		$mecena = Mecena::crea($u,$a);
 	}
 	
-	/*   FUNCIONES AUXILIARES   */
+	public function dejarDeSerMecenas($artistNick){
+		$artist = self::buscaUsuario($artistNick);
+		$a= $artist->id();
+		$u= $this->id;
+		$mecena = Mecena::buscaMecena($u,$a);
+		if($mecena){
+			$mecena = Mecena::elimina($mecena);
+		}
+	}
+	
+	public function esMecenas($id_artista){
+		$mecena = Mecena::buscaMecena($this->id,$id_artista);
+		return $mecena;
+	}
 	
 	public function compruebaPassword($password)
     {
@@ -239,5 +213,103 @@ EOS;
 	private static function hashPassword($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
-    }	
+    }
+
+	
+
+	public function bio(){
+		 $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Biografias B WHERE B.id_autor = %d", $this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+				$bio = $fila['bio'];
+                $result = $bio;
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		return $result;
+	}
+	
+	
+	public function numMecenazgos(){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Mecenas B WHERE B.id_artista = %d", $this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+			$result = $rs->num_rows;
+        
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		return $result;
+	}
+	
+	public function numObras(){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Obras B WHERE B.id_autor = %d", $this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+			$result = $rs->num_rows;
+        
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		return $result;
+	}
+	
+	public function numExpos(){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		$query = sprintf("SELECT DISTINCT ev.nombre FROM Eventos ev, Expos ex, Obras o WHERE ev.id=ex.id_expo AND ex.id_obra=o.id AND o.id_autor=%d", $this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+			$result = $rs->num_rows;
+        
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		return $result;
+	}
+	
+	/* Buscadores */
+	
+	public static function todosArtistas(){
+        $query = sprintf("SELECT nick FROM Usuarios WHERE rol = 'artist'");
+        $artistas = self:: consulta($query);
+		return $artistas;
+	}
+	
+	public static function misArtistas($user){
+		//SELECT nick FROM `usuarios`,`mecenas` WHERE `mecenas`.`id_usuario`=14 AND `mecenas`.`id_artista` = `usuarios`.`id`
+		$query = sprintf("SELECT nick FROM usuarios, mecenas WHERE mecenas.id_usuario=%d AND mecenas.id_artista=usuarios.id",$user->id());
+        $artistas = self:: consulta($query);
+		return $artistas;
+	}
+	
+	private static function consulta($query){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $rs = $conn->prepare($query);
+        $rs->execute();
+		return $rs->get_result();
+	}
+	
 }

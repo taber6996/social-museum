@@ -102,13 +102,14 @@ EOF;
 				if (!file_exists($dir_subida))	//Si es la primera subida de archivo, la carpeta no esta creada todavia
 					mkdir($dir_subida, 0777, true);		//Se crea la carpeta
 					
-				$obra = Obra::crea($titulo, $descripcion, $id_autor);	
+				$obra = Obra::crea($titulo, $descripcion, $id_autor);
+				$id_obra = $obra->id();
 				if ( ! $obra ) {
 					
 					$result[] = "Ya existe una obra tuya con ese título";
 				}
 				else{
-					$fichero_subido = $dir_subida.$titulo.".jpg";
+					$fichero_subido = $dir_subida.$id_obra.".jpg";
 					if ( !move_uploaded_file($tmp_name, $fichero_subido) ) {
 						$result[] = 'Error al mover el archivo';
 					}else{

@@ -1,6 +1,10 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
+$usuario = $_SESSION['user'];
+$mostradorU= new es\ucm\fdi\aw\MostradorUsuario($usuario);
+$htmlDatosPersonales = $mostradorU->datosPersonales();
+
 $tituloPagina = "Cuenta - ";
 
 $menuArtistas = "";
@@ -11,7 +15,7 @@ $menuCuenta = "active";
 
 $contenidoPrincipal = <<<EOS
 <h1>Mi cuenta</h1>
-<p>Aquí estarían contenido de la cuenta de un artista</p>
 EOS;
+$contenidoPrincipal .=$htmlDatosPersonales;
 		
 require ("includes/plantillas/layout2.php");

@@ -58,7 +58,7 @@ class Puja
                 $puja = new Puja($fila['id_obra'], $fila['precio_inicial'], $fila['fecha_finalizacion']);
                 $puja->precio_actual = $fila['precio_actual'];
 				$puja->id_comprador_actual = $fila['id_comprador_actual'];
-                $puja->id = $fila['id'];
+                //$puja->id = $fila['id'];
                 $result = $puja;
             }
             $rs->free();
@@ -161,80 +161,15 @@ class Puja
         return $puja;
     }
 	
-	/* public static function tarjeta($id_obra){
-        
-        if($puja instanceof bool){
-            return false;
-        }
-        $puja = self::buscaPuja($id_obra);
-        $obra = Obra::buscaObraPorId($id_obra);
-        $autor = Usuario::buscaUsuarioPorId($obra->id_autor());
-        $fecha_parse = new \DateTime();
-
-        $titulo = $obra->titulo();
-        $descripcion = $obra->descripcion();
-        $autorObra = $autor->nombre();
-        $fecha_finalizacion = $puja->fecha_finalizacion();
-        $puja_inicial = $puja->precio_inicial();
-        $puja_actual = $puja->precio_actual();
-        
-						
-        $fecha_limite_aux = $fecha_parse->createFromFormat("U", $fecha_finalizacion);
-        //printr($fecha_limite_aux );
-        $fecha_limite = $fecha_limite_aux->format("Y-m-d H:i:s");
-        $path = "img/obras/artista_".$obra->id_autor()."/".$titulo.".jpg";
-       
-        $html = <<<EOF
-        <div class="product-info">
-        <div class="product-text">
-        <img src=$path height="420" width="420">
-        <h1>$titulo</h1>
-        <p>$descripcion </p>
-        <p>Autor: $autorObra </p>
-        <p>Fecha finalizacion: $fecha_limite </p>
-        </div>
-        <div class="product-price-btn">
-        <p><span>Puja actual: $puja_actual</span>$</p>
-        <p><span>Puja actual: $puja_inicial</span>$</p>
-        <button type="button">pujar</button>
-        </div>
-        </div>
-        EOF;
-        return $html;
-        
-        
-    }*/
 	
-	public static function tarjeta($id_obra){
-        $puja = self::buscaPuja($id_obra);
-		$obra = Obra::buscaObraPorId($id_obra);
-		$titulo = $obra->titulo();
-		$path = "img/obras/artista_".$obra->id_autor()."/".$titulo.".jpg";
-		$autor = Usuario::buscaUsuarioPorId($obra->id_autor());
-		$autorObra = $autor->nombre();
-        $fecha_limite = $puja->fecha_finalizacion();
-		$puja_inicial = $puja->precio_inicial();
-        $puja_actual = $puja->precio_actual();
-		
-		$comprador = $puja->id_comprador_actual();
-		
-		
-        if($puja instanceof bool){
-            return false;
-        }
-        
-        $html = <<<EOF
-		<h2>$titulo</h2>
-		<img src=$path height="420" width="420">
-		<p>Autor: $autorObra </p>
-		<p>Fecha finalizacion: $fecha_limite </p>
-		<div class="product-price-btn">
-		<p><span>Precio inicial: $puja_actual</span>$</p>
-		<p><span>Puja actual: $puja_inicial</span>$</p>
-		<p><span>Comprador: $comprador</span></p>
-		</div>
-EOF;
-        return $html;
-    }
+	public static function todasPujas(){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Pujas");
+        $rs = $conn->prepare($query);
+        $rs->execute();
+        $pujas = $rs->get_result();
+		return $pujas;
+	}
 	
 }

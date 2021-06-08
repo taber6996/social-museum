@@ -28,10 +28,13 @@ if (isset($_SESSION["login"]) && $_SESSION["login"]) {
 	header('Location: general_user.php');
 	}
 } else {
-	$contenidoPrincipal .= <<<EOS
+	/*$contenidoPrincipal .= <<<EOS
 	<a href="login.php"><h1>INICIA SESIÓN</h1></a>
 	<a href="signup.php"><h1>REGÍSTRATE</h1></a>
-	EOS;
+	EOS;*/
+	$contenidoPrincipal .= <<<EOS
+	Tu sesión ha caducado
+EOS;
 }
 		
 require ("includes/plantillas/layout1.php");

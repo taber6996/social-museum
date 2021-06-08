@@ -89,55 +89,6 @@ class Producto
         
         return $producto;
     }
-    public static function muestraTodos(){
-    $app = Aplicacion::getInstance();
-    $conn = $app->conexionBd();
-    $query = sprintf("SELECT nombre FROM Productos P");
-    $rs = $conn->prepare($query);
-    $rs->execute();
-    $productos = $rs->get_result();
-    $filas = $productos->num_rows;
-    $html = "";
-    if($filas == 0){
-        $html = <<<EOF
-            <p> ¡No hay productos en la tienda! </p>
-        EOF;
-    }
-    else{
-        foreach($productos as $producto){
-            $nombre = $producto['nombre'] ?? null;
-            if(!empty($nombre)){
-                $html .= Producto::tarjeta($nombre);
-            }
-            }
-        }
-        return $html;
-    }
-    public static function tarjeta($nombre){
-        $product = self::buscaProducto($nombre);
-        if($product instanceof bool){
-            return false;
-        }
-        $descripcion = $product->descripcion();
-        $precio = $product->precio();
-        $path = "img/productos/".$nombre.".jpg";
-            $html = <<<EOF
-            <div class="product-info">
-            <div class="product-text">
-            <img src=$path height="420" width="420">
-            <h1>$nombre</h1>
-            <p>$descripcion </p>
-            </div>
-            <div class="product-price-btn">
-            <p><span>$precio</span>$</p>
-            <button type="button">Compra ahora!</button>
-            </div>
-            </div>
-            EOF;
-        return $html;
-        
-        
-    }
 
     private $id;
     private $nombre;
@@ -177,5 +128,25 @@ class Producto
     {
         return $this->unidades;
     }
+	
+	public static function nombresTodosProductos(){
+		$query = sprintf("SELECT nombre FROM Productos P");
+		$productos = self:: consulta($query);
+		return $productos;
+	}
+	
+	public static function todosProductos(){
+		$query = sprintf("SELECT * FROM Productos WHERE unidades > 0");
+		$productos = self:: consulta($query);
+		return $productos;
+	}
+	
+	private static function consulta($query){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $rs = $conn->prepare($query);
+        $rs->execute();
+		return $rs->get_result();
+	}
 
 }

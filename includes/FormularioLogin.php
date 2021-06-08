@@ -10,18 +10,18 @@ class FormularioLogin extends Form
     protected function generaCamposFormulario($datos, $errores = array())
     {
         // Se reutiliza el nombre de usuario introducido previamente o se deja en blanco
-        $correo =$datos['correo'] ?? '';
+        $nick =$datos['nick'] ?? '';
 
         // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($errores);
-        $errorCorreo = self::createMensajeError($errores, 'correo', 'span', array('class' => 'error'));
+        $errorNick = self::createMensajeError($errores, 'nick', 'span', array('class' => 'error'));
         $errorPassword = self::createMensajeError($errores, 'password', 'span', array('class' => 'error'));
 
         // Se genera el HTML asociado a los campos del formulario y los mensajes de error.
         $html = <<<EOF
         <fieldset>
             $htmlErroresGlobales
-            <p><label>Correo:</label> <input type="text" name="correo" value="$correo"/>$errorCorreo</p>
+            <p><label>Nick:</label> <input type="text" name="nick" value="$nick"/>$errorNick</p>
             <p><label>Password:</label> <input type="password" name="password" />$errorPassword</p>
             <button type="submit" name="login">Entrar</button>
         </fieldset>
@@ -34,10 +34,10 @@ class FormularioLogin extends Form
     {
         $result = array();
         
-        $correo =$datos['correo'] ?? null;
+        $nick =$datos['nick'] ?? null;
                 
-        if ( empty($correo) ) {
-            $result['correo'] = "El correo no puede estar vacío";
+        if ( empty($nick) ) {
+            $result['nick'] = "El nick no puede estar vacío";
         }
         
         $password = $datos['password'] ?? null;
@@ -46,17 +46,18 @@ class FormularioLogin extends Form
         }
         
         if (count($result) === 0) {
-            $usuario = Usuario::login($correo, $password);
+            $usuario = Usuario::login($nick, $password);
             if ( ! $usuario ) {
                 // No se da pistas a un posible atacante
                 $result[] = "El usuario o el password no coinciden";
             } else {
                 $_SESSION['login'] = true;
-                $_SESSION['correo'] = $correo;
+                $_SESSION['nick'] = $nick;
                 $_SESSION['esAdmin'] = strcmp($usuario->rol(), 'admin') == 0 ? true : false;
 				$_SESSION['esArtist'] = strcmp($usuario->rol(), 'artist') == 0 ? true : false;
 				$_SESSION['user'] = $usuario;
 				$_SESSION['avatar'] = $usuario->avatar();
+				$_SESSION['premium'] = $usuario->premium();
                 $result = 'cuenta.php';
             }
         }

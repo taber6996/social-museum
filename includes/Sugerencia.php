@@ -30,6 +30,27 @@ class Sugerencia
     public function setID($id){
         $this->id = $id;
     }
+	
+	public static function buscaPorId($id){		
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		$query = sprintf("SELECT * FROM Sugerencias S WHERE S.id = %d",$id);        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                $sugerencia = new Sugerencia($fila['correo'], $fila['nombre'], $fila['tipo'], $fila['contenido']);
+				$sugerencia->id = $fila['id'];
+                $result = $sugerencia;
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $result;
+	}
+	
     public static function crea($correo, $nombre, $tipo, $contenido)
     {
         $sugerencia = new Sugerencia($correo, $nombre, $tipo, $contenido);
@@ -53,60 +74,19 @@ class Sugerencia
         }
         return $sugerencia;
     }
-
-
-    public static function muestraTodos(){
-        $app = Aplicacion::getInstance();
+		
+		public static function todasSugerencias(){
+			$query = sprintf("SELECT * FROM sugerencias");
+			$sugerencias = self::consulta($query);
+			return $sugerencias;
+		}
+		
+		
+		private static function consulta($query){
+		$app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM sugerencias");
         $rs = $conn->prepare($query);
         $rs->execute();
-        $sugerencias = $rs->get_result();
-        $filas = $sugerencias->num_rows;
-        $html = "";
-        if($filas == 0){
-            $html = <<<EOF
-                <p> ¡No hay sugerencias! </p>
-            EOF;
-        }
-        else{
-            foreach($sugerencias as $sugerencia){
-                $id = $sugerencia['id'] ?? null;
-                $correo = $sugerencia['correo'] ?? null;
-                $nombre = $sugerencia['nombre'] ?? null;
-                $tipo = $sugerencia['tipo'] ?? null;
-                $contenido = $sugerencia['contenido'] ?? null;
-                if(!empty($id)){
-                    $instancia = new Sugerencia($correo, $nombre, $tipo, $contenido);
-                    $instancia->setID($id);
-                    $html .= Sugerencia::tarjeta($instancia);
-                }
-                }
-            }
-            return $html;
-        }
-        public static function tarjeta($instancia){
-            $correo = $instancia->correo();
-            $nombre = $instancia->nombre();
-            $tipo = $instancia->tipo();
-            $id = $instancia->id();
-            $contenido = $instancia->contenido();
-                $html = <<<EOF
-                <div class="sugerencia">
-                <div class="sugerencia-izq">
-                <h6>$tipo</h6>
-                <h2>$nombre</h2>
-                <a href="https://www.gmail.com">$correo</a>
-                </div>
-                <div class="sugerencia-der">
-                <h6>ID: #$id</h6>
-                <p>$contenido</p>
-                </div>
-                </div>
-
-                EOF;
-            return $html;
-            
-            
-        }
+		return $rs->get_result();
+	}
 }

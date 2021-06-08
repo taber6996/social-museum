@@ -33,7 +33,7 @@ class FormularioEvento extends Form
             <p><label>Descripcion:</label> <input type="text" name="descripcion" value="$descripcion"/>$errorDescripcion</p>
 			<p><label>Fecha de inicio :</label> <input type="date" name="fecha_ini" value="$fecha_ini"/>$errorFechaIni</p>
 			<p><label>Fecha de fin :</label> <input type="date" name="fecha_fin" value="$fecha_fin"/>$errorFechaFin</p>
-            <p><label>Precio:</label> <input type="number" step="0.01" min="0" name="precio" value="$precio"/>$errorPrecio</p>
+            <p><label>Precio entrada:</label> <input type="number" step="0.01" min="0" name="precio" value="$precio"/>$errorPrecio</p>
             <button type="submit" name="crear_evento">Crear</button>
         </fieldset>
 EOF;
@@ -64,9 +64,15 @@ EOF;
 		 if ( empty($fecha_ini)) {
             $result['fecha_ini'] = "Tienes que elegir cuando empieza el evento.";
         }
+		if(($fecha_ini < date("Y-m-d"))){
+            $result['fecha_ini'] = "La fecha de inicio no puede ser anterior a la fecha de hoy.";
+        }
 		$fecha_fin = $datos['fecha_fin'] ?? null;
-        if(($fecha_ini < date("Y-m-d")) && ($fecha_fin < date("Y-m-d"))){
-            $result['fecha_fin'] = "No puedes crear eventos en el pasado.";
+		if($fecha_fin < $fecha_ini){
+			$result['fecha_fin'] = "La fecha de fin debe ser posterior a la fehca de inicio.";
+		}
+        if(($fecha_fin < date("Y-m-d"))){
+            $result['fecha_fin'] = "La fecha de fin no puede ser anterior a la fecha de hoy.";
         }
 		 if ( empty($fecha_fin)) {
             $result['fecha_fin'] = "Tienes que elegir cuando termina el evento.";
@@ -83,10 +89,10 @@ EOF;
                 $result['nombre'] = "Ya existe un evento de ese tipo con ese nombre.";
             } else {
                 if($tipo == "Expo"){
-                    header("Location: expos.php");
+                    $result ="crear_expo.php?expo=$nombre";
                 }
 				else if($tipo == "Concurso"){
-                    header("Location: concursos.php");
+                    $result ="crear_concurso.php?concurso=$nombre";
                 }
 			}
 			

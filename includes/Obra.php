@@ -10,7 +10,7 @@ class Obra
     private $titulo;
     private $id_autor;
     private $descripcion;
-    private $likes;
+   // private $likes;
 	
 	/*   CONSTRUCTOR   */
 	
@@ -19,7 +19,7 @@ class Obra
         $this->titulo= $titulo;
         $this->descripcion = $descripcion;
 		$this->id_autor = $id_autor;
-		$this->likes=0;
+		//$this->likes=0;
     }
 	
 	/*   GETTERS   */
@@ -28,18 +28,11 @@ class Obra
 	public function id_autor(){return $this->id_autor;}
 	public function titulo(){return $this->titulo;}
 	public function descripcion(){return $this->descripcion;}
-	public function likes(){return $this->likes;}
+	//public function likes(){return $this->likes;}
 	
 	/*   SETTERS   */
 	
-	public function likeUp(){
-		$this->likes= ($this->likes) +1;
-		//self::actualiza($this);
-	}
-	public function likeDown(){
-		$this->likes= ($this->likes) -1;
-		//self::actualiza($this);
-	}
+	
 	
 	/*   FUNCIONES CRUD   */
 	
@@ -109,7 +102,7 @@ class Obra
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Obras(titulo, descripcion, id_autor, likes) VALUES('%s', '%s', %d, %d)"
+        $query=sprintf("INSERT INTO Obras(titulo, descripcion, id_autor) VALUES('%s', '%s', %d)"
             , $conn->real_escape_string($obra->titulo)
             , $conn->real_escape_string($obra->descripcion)
 			, $obra->id_autor
@@ -127,11 +120,10 @@ class Obra
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE Obras O SET titulo = '%s', descripcion='%s', id_autor=%d, likes=%d WHERE O.id=%i"
+        $query=sprintf("UPDATE Obras O SET titulo = '%s', descripcion='%s', id_autor=%d WHERE O.id=%i"
             , $conn->real_escape_string($obra->titulo)
             , $conn->real_escape_string($obra->descripcion)
             , $obra->id_autor
-			, $obra->likes
             , $obra->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
@@ -148,20 +140,58 @@ class Obra
 	
 	//FALTA ELIMINA OBRA
 	
-	public static function tarjeta($id){
-		$obra = self::buscaObraPorId($id);
-		$titulo = $obra->titulo();
-		$path = "img/obras/artista_".$obra->id_autor()."/".$titulo.".jpg";
-		
-		if($obra instanceof bool){
-			return false;
-		}
-		
-        $html = <<<EOF
-            <h2>$titulo</h2>
-            <img src=$path height="420" width="420">
-            EOF;
-        return $html;
+	public static function obrasAutor($id_autor){
+		$query = sprintf("SELECT id FROM Obras WHERE id_autor = %d", $id_autor);
+		$obras = self:: consulta($query);
+		return $obras;
+	}
+	
+	public static function todasObras(){
+		$query = sprintf("SELECT * FROM Obras");
+		$obras = self:: consulta($query);
+		return $obras;
+	}
+	
+	private static function consulta($query){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $rs = $conn->prepare($query);
+        $rs->execute();
+		return $rs->get_result();
+	}
+	
+	public function numLikes(){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Likes L WHERE L.id_obra = %d", $this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+			$result = $rs->num_rows;
+        
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		return $result;
+	}
+	
+	public function numComentarios(){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Comentarios C WHERE C.id_obra = %d", $this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+			$result = $rs->num_rows;
+        
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		return $result;
 	}
 	
 }

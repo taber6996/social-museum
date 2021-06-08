@@ -7,7 +7,7 @@ class FormularioRegistro extends Form
         parent::__construct('formRegistro');
     }
     
-    protected function generaCamposFormulario($datos, $errores = array())
+    /*protected function generaCamposFormulario($datos, $errores = array())
     {
         $nick = $datos['nick'] ?? '';
         $nombre = $datos['nombre'] ?? '';
@@ -41,7 +41,7 @@ class FormularioRegistro extends Form
             </fieldset>
         EOF;
         return $html;
-    }
+    }*/
     
 
     protected function procesaFormulario($datos)

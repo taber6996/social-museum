@@ -79,35 +79,22 @@ class Evento
         }
         return self::inserta($evento);
     }
-    
-    public static function tarjeta($nombre, $type){
-        $evento = self::buscaEvento($nombre, $type);
-        if($evento instanceof bool){
-            return false;
+	
+	public function insertaObra($id_obra){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query=sprintf("INSERT INTO Expos(id_expo, id_obra) VALUES(%d, %d)"
+            , $this->id
+			, $id_obra);
+        if ( $conn->query($query) ) {
+            //$evento->id = $conn->insert_id;
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
         }
-        $descripcion = $evento->descripcion();
-        $fechaI = $evento->fecha_ini();
-        $fechaF = $evento->fecha_fin();
-        $precio = $evento->precio();
-            $html = <<<EOF
-            <div class="product-info">
-            <div class="product-text">
-            <h1>$nombre</h1>
-            <p>$descripcion </p>
-            <p>Fecha inicio: $fechaI </p>
-            <p>Fecha fin: $fechaF </p>
-            </div>
-            <div class="product-price-btn">
-            <p><span>$precio</span>$</p>
-            <button type="button">¡Compra tu entrada ahora!</button>
-            </div>
-            </div>
-            EOF;
-        return $html;
-        
-        
+        //return $evento;
     }
-
+    
     private static function inserta($evento)
     {
         $app = Aplicacion::getInstance();
@@ -155,5 +142,62 @@ class Evento
     }
 	
 	//FALTA BORRAR EVENTO
+	/* Buscadores en BBDD */
+	
+	public static function exposAutor($id_autor){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		$query = sprintf("SELECT DISTINCT ev.nombre FROM Eventos ev, Expos ex, Obras o WHERE ev.id=ex.id_expo AND ex.id_obra=o.id AND o.id_autor=%d", $id_autor);
+        $rs = $conn->prepare($query);
+        $rs->execute();
+        $expos = $rs->get_result();
+		return $expos;
+	}
+	
+	public static function nombresEventos(){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Concurso'");
+        $rs = $conn->prepare($query);
+        $rs->execute();
+        $eventos = $rs->get_result();
+		return $eventos;
+	}
+	
+	public static function exposPorFecha($moment){
+		$query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo'");
+        if($moment == 'pasadas'){
+            $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin < NOW()");
+        }
+        else if($moment == 'presente'){
+            $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo' AND fecha_ini < NOW() AND fecha_fin > NOW()");
+        }
+        else if($moment == 'futuras'){
+            $query = sprintf("SELECT nombre FROM Eventos WHERE tipo = 'Expo' AND fecha_ini > NOW()");
+        }
+		
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $rs = $conn->prepare($query);
+        $rs->execute();
+        $expos = $rs->get_result();
+		return $expos;
+	}
+	
+	public function insertaPremio($premio_dinero, $premio_producto){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query=sprintf("INSERT INTO Concursos(id_concurso, premio_dinero, premio_producto) VALUES(%d, %d, '%s')"
+            , $this->id
+			, $premio_dinero
+			, $premio_producto);
+        if ( $conn->query($query) ) {
+            $evento->id = $conn->insert_id;
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $evento;
+    }
     
 }
