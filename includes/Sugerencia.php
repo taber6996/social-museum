@@ -61,7 +61,7 @@ class Sugerencia
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO sugerencias(nombre, correo, tipo, contenido) VALUES('%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO Sugerencias(nombre, correo, tipo, contenido) VALUES('%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($sugerencia->nombre)
             , $conn->real_escape_string($sugerencia->correo)
             , $conn->real_escape_string($sugerencia->tipo)
@@ -76,7 +76,7 @@ class Sugerencia
     }
 		
 		public static function todasSugerencias(){
-			$query = sprintf("SELECT * FROM sugerencias");
+			$query = sprintf("SELECT * FROM Sugerencias");
 			$sugerencias = self::consulta($query);
 			return $sugerencias;
 		}
