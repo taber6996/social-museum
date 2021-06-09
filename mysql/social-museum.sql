@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2021 a las 00:49:50
+-- Tiempo de generación: 09-06-2021 a las 06:36:37
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -37,7 +37,11 @@ CREATE TABLE `biografias` (
 --
 
 INSERT INTO `biografias` (`id_autor`, `bio`) VALUES
-(7, 'Soy un pintor español');
+(7, 'Soy un pintor español'),
+(8, 'Aficionado de los cómics. Estos garabatos son lo mejor que hago.\r\n                                  '),
+(9, 'Estoy aprendiendo a dibujar. Los animales me inspiran, ¿y a ti que te inspira?'),
+(11, 'Mi obra abarca la pintura de caballete y mural, el grabado y el dibujo.'),
+(14, 'Con mi cámara allá a donde vaya.');
 
 -- --------------------------------------------------------
 
@@ -112,10 +116,10 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id`, `nombre`, `tipo`, `descripcion`, `fecha_ini`, `fecha_fin`, `precio`) VALUES
-(1, 'Exposición Goya', 'Expo', 'Los mejores cuadros de Goya', '2021-05-12', '2021-06-30', 10),
-(2, 'Exposición Pasado', 'Expo', 'Una exposición del pasado', '2021-03-11', '2021-03-31', 5),
-(3, 'Exposición futuro', 'Expo', 'Una exposición del futuro', '2021-06-24', '2021-09-16', 1),
-(4, 'Concurso 1', 'Concurso', 'El primer concurso de Social Museum', '2021-05-12', '2021-08-14', 2);
+(2, 'Flores de Primavera', 'Expo', 'Una exposición del pasado', '2021-03-11', '2021-03-31', 5),
+(4, 'Concurso 1', 'Concurso', 'El primer concurso de Social Museum', '2021-05-12', '2021-08-14', 2),
+(37, 'Los Paisajes de Michael', 'Expo', 'Las mejores fotografías de paisajes del nuevo artista Michael M.', '2021-05-26', '2021-07-31', 4),
+(38, 'Goya y su esplendor', 'Expo', 'Los mejores cuadros de Goya', '2021-06-09', '2021-09-29', 5);
 
 -- --------------------------------------------------------
 
@@ -133,13 +137,19 @@ CREATE TABLE `expos` (
 --
 
 INSERT INTO `expos` (`id_expo`, `id_obra`) VALUES
-(1, 17),
-(1, 18),
-(1, 19),
 (2, 8),
 (2, 9),
 (2, 12),
-(3, 8);
+(37, 26),
+(37, 27),
+(37, 28),
+(37, 29),
+(37, 30),
+(37, 31),
+(38, 32),
+(38, 33),
+(38, 34),
+(38, 35);
 
 -- --------------------------------------------------------
 
@@ -161,7 +171,14 @@ INSERT INTO `likes` (`id_obra`, `id_usuario`) VALUES
 (1, 4),
 (1, 5),
 (4, 3),
-(4, 4);
+(4, 4),
+(4, 7),
+(4, 16),
+(5, 7),
+(7, 7),
+(14, 7),
+(16, 7),
+(25, 7);
 
 -- --------------------------------------------------------
 
@@ -179,8 +196,15 @@ CREATE TABLE `mecenas` (
 --
 
 INSERT INTO `mecenas` (`id_usuario`, `id_artista`) VALUES
+(7, 9),
+(7, 10),
+(7, 14),
 (14, 2),
-(14, 7);
+(14, 7),
+(16, 7),
+(16, 9),
+(16, 10),
+(16, 11);
 
 -- --------------------------------------------------------
 
@@ -221,7 +245,18 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (20, 11, 'La Caida', 'La caída'),
 (21, 11, 'Procesion Rural', 'Procesión rural'),
 (22, 11, 'Tobías y el ángel', 'Tobías y el ángel'),
-(25, 7, 'Autorretrato', 'Esto es un autorretrato');
+(25, 7, 'Autorretrato', 'Esto es un autorretrato'),
+(26, 14, 'Playa', 'Paisaje de playa'),
+(27, 14, 'Campo', 'Paisaje de campo'),
+(28, 14, 'Montañas', 'Paisaje de montañas'),
+(29, 14, 'Lago', 'Paisaje de lago'),
+(30, 14, 'Atardecer', 'Paisaje de atardecer'),
+(31, 14, 'Congelado', 'Paisaje Congelado'),
+(32, 11, 'La maja desnuda', 'La maja desnuda es una de las obras más conocidas del pintor español Francisco de Goya.'),
+(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del \" de Mayo'),
+(34, 11, 'El Quita Sol', 'Pareja en verano'),
+(35, 11, 'Familia Real', 'Retrato de la Familia Real'),
+(36, 7, 'El sueño', 'Mujer que descansa tranquilamente');
 
 -- --------------------------------------------------------
 
@@ -273,7 +308,8 @@ INSERT INTO `pujas` (`id_obra`, `fecha_finalizacion`, `precio_inicial`, `precio_
 (13, '2021-08-26', 15, 15, NULL),
 (14, '2021-07-26', 15, 15, NULL),
 (15, '2021-07-26', 15, 15, NULL),
-(16, '2021-07-26', 15, 15, NULL);
+(16, '2021-07-26', 15, 15, NULL),
+(36, '2021-09-01', 1000, 1000, NULL);
 
 -- --------------------------------------------------------
 
@@ -328,23 +364,24 @@ INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `a
 (8, 'raymond', 'Raymond', '$2y$10$isqo0bEJi5.OypoDE.PJKOHeG8pqrLyfvRRParSdrABU3EcPTboWm', 'artist', 1, 1),
 (9, 'lupita', 'Lupita', '$2y$10$f9hD3d2NaxmAGsgv.TP9M.tGCX2.r5lpXe9pjMuNr4MnWny5.BO3O', 'artist', 1, 1),
 (10, 'soff', 'Sofonisba Angui', '$2y$10$Dh1vSq6GnM0TUO2neFsPUOlMdayjIH2AwZJQmsvSG.dJtcSQhh4bW', 'artist', 1, 1),
-(11, 'goya', 'Francisco Goya', '$2y$10$sLXHOHgnFNMInJPEdiFrmOiwZ1zAch/.gVBtwe/r5vvlrS/lNgmFG', 'artist', 1, 1),
+(11, 'goya', 'Francisco Goya', '$2y$10$nC3.49ySiJanNkO3VTOd6eZPcrfaXGaBP3mXMojdUeXsd0t7EsqH2', 'artist', 1, 1),
 (12, 'abel99', 'Abel Ford', '$2y$10$qu5EZsZP/xQNGPHL6R5/w.A99.jLjEZaFv.m0BSG1eaZkTS2TwIHm', 'user', 0, 1),
-(14, 'mikkk', 'Michael', '$2y$10$WCLIri0w/ULuN6cUrM/CRuJwLuoeP5QGAb3/cJ7Oyjn6gsY98jcIG', 'artist', 1, 0),
-(15, 'dulaPeep', 'Dua', '$2y$10$7Cbkio5LtTx6gkLLVFqSO.C8JbImJ0xX5NMKSsGDZs3Nms40a4ztm', 'artist', 1, 0);
+(14, 'mikkk', 'Michael', '$2y$10$WCLIri0w/ULuN6cUrM/CRuJwLuoeP5QGAb3/cJ7Oyjn6gsY98jcIG', 'artist', 1, 1),
+(15, 'dulaPeep', 'Dua', '$2y$10$7Cbkio5LtTx6gkLLVFqSO.C8JbImJ0xX5NMKSsGDZs3Nms40a4ztm', 'artist', 1, 0),
+(16, 'isa99', 'Isabel', '$2y$10$sZX4yCv6zRs706xPTXa9O.szWcnnpR7DXTl9IoWuJtSpMi4Hi55Wa', 'user', 0, 1);
 
---
--- Índices para tablas volcadas
---
 
---
--- Estructura de tabla para la tabla `dibujos`
---
 CREATE TABLE `dibujos` (
   `id` int(11) NOT NULL,
   `id_autor` int(11) DEFAULT NULL,
   `titulo` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Índices para tablas volcadas
+--
+
 --
 -- Indices de la tabla `biografias`
 --
@@ -424,14 +461,10 @@ ALTER TABLE `sugerencias`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
-
-
---
--- Indices de la tabla `dibujos`
---
-
+  
 ALTER TABLE `dibujos`
   ADD PRIMARY KEY (`id`);
+  
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -441,13 +474,13 @@ ALTER TABLE `dibujos`
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `obras`
 --
 ALTER TABLE `obras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -465,8 +498,11 @@ ALTER TABLE `sugerencias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
+
+ ALTER TABLE `dibujos`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
@@ -519,13 +555,6 @@ ALTER TABLE `mecenas`
 ALTER TABLE `pujas`
   ADD CONSTRAINT `pujas_comprador` FOREIGN KEY (`id_comprador_actual`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pujas_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
---
--- AUTO_INCREMENT de la tabla `dibujos`
---
-
-
-ALTER TABLE `dibujos`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
