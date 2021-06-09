@@ -534,3 +534,18 @@ p#mensaje-abierto{
 	margin-left: 10px;
 	margin-top: 30px;
 }
+
+#imagen_obra{
+	width:100%;
+}
+
+div.comment{
+	font-size: 25px;
+	
+}
+
+div.comment span {
+	font-weight:bold;
+	font-size: 29px;
+}
+
