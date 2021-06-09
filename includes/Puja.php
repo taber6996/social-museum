@@ -32,7 +32,10 @@ class Puja
 	public function fecha_finalizacion(){return $this->fecha_finalizacion;}
 	
 	/*   SETTERS   */
-	
+	public function actualiza_campos($nueva, $id_comprador){
+        $this->precio_actual = $nueva;
+        $this->id_comprador_actual = $id_comprador;
+    }
 	/*   FUNCIONE CRUD   */
 	
 	public static function crea($id_obra, $precio_inicial, $fecha_finalizacion)
@@ -58,7 +61,7 @@ class Puja
                 $puja = new Puja($fila['id_obra'], $fila['precio_inicial'], $fila['fecha_finalizacion']);
                 $puja->precio_actual = $fila['precio_actual'];
 				$puja->id_comprador_actual = $fila['id_comprador_actual'];
-                //$puja->id = $fila['id'];
+                $puja->id = $fila['id'];
                 $result = $puja;
             }
             $rs->free();
@@ -80,8 +83,8 @@ class Puja
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
                 $puja = new Puja($fila['id_obra'], $fila['fecha_finalizacion'], $fila['precio_inicial'], $fila['precio_actual'], $fila['id_comprador_actual']);
-                //$puja->precio_actual = $fila['precio_actual'];
-				//$puja->id_comprador_actual = $fila['id_comprador_actual'];
+                $puja->precio_actual = $fila['precio_actual'];
+				$puja->id_comprador_actual = $fila['id_comprador_actual'];
                 $puja->id = $fila['id'];
                 $result = $puja;
             }
@@ -144,9 +147,9 @@ class Puja
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE Pujas P SET precio_actual = %f, id_comprador_actual=%d WHERE O.id=%i"
-            , $conn->real_escape_string($puja->precio_actual)
-            , $conn->real_escape_string($puja->id_comprador_actual)
+        $query=sprintf("UPDATE Pujas P SET precio_actual=%f, id_comprador_actual=%d WHERE P.id=%d"
+            , $puja->precio_actual
+            , $puja->id_comprador_actual
             , $puja->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
@@ -154,7 +157,7 @@ class Puja
                 exit();
             }
         } else {
-            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error)."---". $query ;
             exit();
         }
         
