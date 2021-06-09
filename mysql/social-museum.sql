@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 14:38:27
+-- Tiempo de generación: 09-06-2021 a las 19:40:13
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -42,6 +42,33 @@ INSERT INTO `biografias` (`id_autor`, `bio`) VALUES
 (9, 'Estoy aprendiendo a dibujar. Los animales me inspiran, ¿y a ti que te inspira?'),
 (11, 'Mi obra abarca la pintura de caballete y mural, el grabado y el dibujo.'),
 (14, 'Con mi cámara allá a donde vaya.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `buzon`
+--
+
+CREATE TABLE `buzon` (
+  `id` int(11) NOT NULL,
+  `id_desde` int(11) NOT NULL,
+  `id_para` int(11) NOT NULL,
+  `asunto` varchar(50) NOT NULL,
+  `mensaje` text NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `buzon`
+--
+
+INSERT INTO `buzon` (`id`, `id_desde`, `id_para`, `asunto`, `mensaje`, `fecha`) VALUES
+(1, 1, 3, 'Prueba de admin', 'Hola, esto es un mensaje de prueba desde el admin', '2021-06-09 14:47:30'),
+(2, 2, 2, 'Redundante', 'Hola, me puedo enviar un correo a mi mismo? Así es.', '2021-06-09 14:51:28'),
+(3, 2, 2, 'Prueba', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac ex a est volutpat dignissim. Curabitur urna tellus, iaculis sed augue vel, vulputate imperdiet lorem. Nunc tincidunt magna eu leo dignissim cursus. Sed commodo, odio pharetra mollis euismod, nunc elit rutrum tortor, auctor blandit massa nibh eget erat. Morbi blandit efficitur felis ac consectetur. Proin gravida, eros in consequat aliquam, diam ex dapibus velit, vitae mollis justo felis quis ipsum. Sed ullamcorper augue sit amet tellus ullamcorper tristique. Quisque vitae erat nibh. In posuere lorem ante, in consectetur odio tempor interdum. Nullam commodo urna at nunc pretium, in hendrerit leo feugiat. Praesent mollis erat nec mi porta, vitae aliquet nulla ultricies. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam id dapibus ante, sed posuere mauris. Phasellus consectetur pharetra dictum. Cras posuere iaculis nunc non ullamcorper. Donec laoreet ultricies nisl, sed ullamcorper nibh vestibulum quis.\r\n\r\nVivamus vehicula quis ipsum sit amet dictum. Mauris commodo tellus vitae libero varius, vel ultricies metus efficitur. Donec erat arcu, suscipit et justo in, iaculis iaculis est. Phasellus sed fermentum felis. Proin porta eleifend gravida. Curabitur in tincidunt sapien. Nunc dui nunc, placerat non vehicula ut, elementum nec sapien. Proin non elit neque. Maecenas sodales, lacus vel euismod finibus, eros nisl vehicula diam, in lacinia risus arcu a magna. Duis tempus ornare ornare. Nulla volutpat metus vitae ligula interdum volutpat. Aliquam tempus tincidunt risus nec fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi varius molestie faucibus. Integer quis finibus nisi.\r\n\r\nAliquam malesuada, neque id sagittis accumsan, nisl diam tincidunt mauris, id porttitor felis velit sit amet est. Donec quam augue, vulputate eu aliquet vitae, dapibus at arcu. Pellentesque porttitor consequat metus, quis hendrerit nisl rutrum vitae. Vivamus ac fringilla sapien. Donec aliquam bibendum euismod. Phasellus congue pharetra nulla ut pulvinar. Cras id aliquam orci. Morbi ullamcorper tellus vel nibh placerat, vitae mollis diam suscipit. Aliquam erat volutpat. Duis aliquam orci ut nibh bibendum ultrices. Etiam vel tincidunt urna. Phasellus quis ultricies orci.\r\n\r\nSed fermentum odio nisi, sit amet gravida quam bibendum id. Nullam cursus mi quis tortor fermentum congue. Pellentesque vel neque libero. Nunc ac diam sit amet ipsum varius vehicula. Pellentesque eu luctus dolor. Etiam ac erat odio. Vestibulum mollis libero finibus, suscipit tellus eu, vehicula odio. Aenean eget maximus augue, ac varius lacus.\r\n\r\nNunc metus nibh, ornare sed tortor ac, aliquet tristique lectus. Vivamus ac condimentum dolor. In tincidunt, ante vel semper sagittis, odio velit varius quam, pretium condimentum neque lectus consectetur justo. Maecenas molestie ligula sit amet tempus ultricies. Nunc cursus, lacus et iaculis laoreet, tellus augue consectetur nunc, et convallis massa quam et turpis. In rutrum mi suscipit orci eleifend sodales. Etiam non efficitur est, eu porttitor nulla. Vestibulum iaculis semper posuere.', '2021-06-09 16:22:22'),
+(4, 7, 8, 'Hola amigo', '¿Cómo estás?', '2021-06-09 16:33:01'),
+(5, 11, 9, 'Asunto super importante', 'a', '2021-06-09 16:48:49'),
+(6, 12, 7, 'Disculpe las molestias...', 'Hola, disculpe si le molesto pues no es esa mi intención. Pero de verdad que no consigo entender absolutamente nada de su obra. ¿Podría dar una pequeña charla razonando el por qué de esos garabatos?', '2021-06-09 16:49:15');
 
 -- --------------------------------------------------------
 
@@ -292,7 +319,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (8, 8, 'Freedom', 'Fight for freedom'),
 (9, 8, 'Player', 'American Player'),
 (10, 8, 'Wave', 'Big Blue Wave'),
-(11, 8, 'Woman', 'Womans Thoughts'),
+(11, 8, 'Woman', 'Woman\'s Thoughts'),
 (12, 8, 'Murder', 'Secret Murder'),
 (13, 9, 'Pajaro', 'Pajaro a lapiz'),
 (14, 9, 'Caballo', 'Caballo a lapiz'),
@@ -312,7 +339,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (30, 14, 'Atardecer', 'Paisaje de atardecer'),
 (31, 14, 'Congelado', 'Paisaje Congelado'),
 (32, 11, 'La maja desnuda', 'La maja desnuda es una de las obras más conocidas del pintor español Francisco de Goya.'),
-(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del \ de Mayo'),
+(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del \" de Mayo'),
 (34, 11, 'El Quita Sol', 'Pareja en verano'),
 (35, 11, 'Familia Real', 'Retrato de la Familia Real'),
 (36, 7, 'El sueño', 'Mujer que descansa tranquilamente');
@@ -440,6 +467,12 @@ ALTER TABLE `biografias`
   ADD PRIMARY KEY (`id_autor`);
 
 --
+-- Indices de la tabla `buzon`
+--
+ALTER TABLE `buzon`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `compras`
 --
 ALTER TABLE `compras`
@@ -528,6 +561,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `buzon`
+--
+ALTER TABLE `buzon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
