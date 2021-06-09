@@ -49,8 +49,8 @@ class FormularioRegistro extends Form
         $result = array();
         
         $nick = $datos['nick'] ?? null;
-        if ( empty($nick) || mb_strlen($nick) < 5 ) { //TODO contiene @?
-            $result['nick'] = "El nick tiene que ser válido.";
+        if ( empty($nick) || mb_strlen($nick) < 2 ) { //TODO contiene @?
+            $result['nick'] = "El nick tiene que tener más de 2 caracteres.";
         }
         
         $nombre = $datos['nombre'] ?? null;
