@@ -319,7 +319,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (8, 8, 'Freedom', 'Fight for freedom'),
 (9, 8, 'Player', 'American Player'),
 (10, 8, 'Wave', 'Big Blue Wave'),
-(11, 8, 'Woman', 'Woman\'s Thoughts'),
+(11, 8, 'Woman', 'Womans Thoughts'),
 (12, 8, 'Murder', 'Secret Murder'),
 (13, 9, 'Pajaro', 'Pajaro a lapiz'),
 (14, 9, 'Caballo', 'Caballo a lapiz'),
@@ -339,7 +339,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (30, 14, 'Atardecer', 'Paisaje de atardecer'),
 (31, 14, 'Congelado', 'Paisaje Congelado'),
 (32, 11, 'La maja desnuda', 'La maja desnuda es una de las obras más conocidas del pintor español Francisco de Goya.'),
-(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del \" de Mayo'),
+(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del \ de Mayo'),
 (34, 11, 'El Quita Sol', 'Pareja en verano'),
 (35, 11, 'Familia Real', 'Retrato de la Familia Real'),
 (36, 7, 'El sueño', 'Mujer que descansa tranquilamente');
