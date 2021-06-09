@@ -21,7 +21,6 @@
 		<a href="expos.php?momento=presente" class = <?= $menuExpos ?> >Expos</a>
 		<a href="tienda.php" class = <?= $menuTienda ?> >Tienda</a>
 		<a href="canvas.php">Dibujar</a>
-		<a href="subastas.php">Subastas</a>
 		<a href="vistaDibujos.php">Ver Dibujos</a>
 		<a href="eventos.php?tipo=expo" class = <?= $menuEventos ?> >Eventos</a>
 		<?php if(isset($_SESSION['login']) && $_SESSION['login']) : ?>
