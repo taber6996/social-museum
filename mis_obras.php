@@ -4,7 +4,7 @@ require_once __DIR__.'/includes/config.php';
 $form = new es\ucm\fdi\aw\FormularioObra();
 $htmlFormObra = $form->gestiona();
 $mostradorA= new es\ucm\fdi\aw\MostradorArtista($_SESSION['nick']);
-$htmlListaObras = $mostradorA->muestraObras();
+$htmlListaObras = $mostradorA->muestraMisObras();
 
 $tituloPagina = 'Social Museum';
 
