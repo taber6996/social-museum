@@ -46,19 +46,21 @@ EOS;
 				$id_u = $_SESSION['user']->id();
 				$nick = $this->usuarioArista->nick();
 				if(!($_SESSION["user"]->esMecenas($id_a))){
+					
+					$formFollow = new GestionFollow($this->usuarioArista->id());
+					$htmlFollow = $formFollow->gestiona();
+					
+					
 					$html .= <<<EOS
-				<form action="perfilArtista.php?artist=$nick" method="POST">
-					<input class="control" type="hidden" name="follow" value=true contenteditable="false" />
-					<button type="submit">SER MECENAS</button>
-				</form>				
+						$htmlFollow
 EOS;
 				}
 				else{
+					$formUnFollow = new GestionUnFollow($this->usuarioArista->id());
+					$htmlUnFollow = $formUnFollow->gestiona();
+					
 					$html .= <<<EOS
-				<form action="perfilArtista.php?artist=$nick" method="POST">
-					<input class="control" type="hidden" name="unfollow" value=true contenteditable="false" />
-					<button type="submit">DEJAR DE SER MECENAS</button>
-				</form>				
+						$htmlUnFollow
 EOS;
 				}
 				if (isset($_SESSION["premium"]) && $_SESSION["premium"]) {
@@ -123,12 +125,14 @@ EOF;
 				
 				$formUnLike = new GestionQuitarLike($id_obra);
 				$htmlUNLIKE = $formUnLike->gestiona();
-				
+				$_SESSION['obra'] = $id_obra;
 				$html .= <<<EOF
 				<div class="obraTarjeta">
 					<h3 class="titulo_oba" >$titulo</h3>
 					<img id="publicacion" src=$path>
 					<div class="inter">
+						
+						<a href="verObra.php?obra=$id_obra" >Ver</a>
 						<p>$numlikes likes  
 						<!-- $numComentarios comentarios -->
 						</p>
