@@ -183,6 +183,63 @@ class Usuario
 	
 	/*   FUNCIONES AUXILIARES   */
 	
+	public function altaPremium(){
+		$this->premium = 1;
+		$user = self:: actualiza($this);
+	}
+	
+	public function bajaPremium(){
+		$this->premium = 0;
+		$user = self:: actualiza($this);
+	}
+	
+	public function darLike($id_obra){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query=sprintf("INSERT INTO Likes(id_obra, id_usuario) VALUES(%d,%d)"
+			, $id_obra
+			, $this->id);
+        if ( $conn->query($query) ) {
+            //$usuario->id = $conn->insert_id;
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        
+	}
+	
+	public function quitarLike($id_obra){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		//DELETE FROM `likes` WHERE 0
+        $query=sprintf("DELETE FROM Likes WHERE id_obra=%d AND id_usuario=%d"
+			, $id_obra
+			, $this->id);
+        if ( $conn->query($query) ) {
+            //$usuario->id = $conn->insert_id;
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        
+	}
+	
+	public function compraEntradaExpo($id_expo){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query=sprintf("INSERT INTO Entradas(id_evento, id_usuario) VALUES(%d,%d)"
+			, $id_expo
+			, $this->id);
+        if ( $conn->query($query) ) {
+           // $usuario->id = $conn->insert_id;
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        
+	}
+	
+	
 	public function serMecenas($artistNick){
 		$artist = self::buscaUsuario($artistNick);
 		$a= $artist->id();
@@ -205,10 +262,11 @@ class Usuario
 		return $mecena;
 	}
 	
-    public function compra($id_producto){
+	 public function compra($id_producto){
         $compra = Compra::crea($id_producto, $this->id);
     }
 
+	
 	public function compruebaPassword($password)
     {
         return password_verify($password, $this->password);
@@ -303,23 +361,71 @@ class Usuario
 	
 	public static function misArtistas($user){
 		//SELECT nick FROM `usuarios`,`mecenas` WHERE `mecenas`.`id_usuario`=14 AND `mecenas`.`id_artista` = `usuarios`.`id`
-		$query = sprintf("SELECT nick FROM usuarios, mecenas WHERE mecenas.id_usuario=%d AND mecenas.id_artista=usuarios.id",$user->id());
+		$query = sprintf("SELECT nick FROM Usuarios, mecenas WHERE mecenas.id_usuario=%d AND mecenas.id_artista=usuarios.id",$user->id());
         $artistas = self:: consulta($query);
 		return $artistas;
 	}
 	
-    public static function misCompras($user){
+	 public static function misCompras($user){
         $query = sprintf("SELECT id_articulo FROM Compras WHERE id_usuario = %d", $user->id());
         $compras = self::consulta($query);
         return $compras;
     }
-
+	
 	private static function consulta($query){
 		$app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
         $rs = $conn->prepare($query);
         $rs->execute();
 		return $rs->get_result();
+	}
+	
+	public function tieneEntrada($id_expo){
+		//SELECT * FROM `entradas` WHERE id_evento = 3 AND id_usuario = 3
+		//$expo = Evento::buscaEvento($nombre_expo,'Expo');
+		//$id_expo = $expo->id();
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		$query = sprintf("SELECT * FROM Entradas WHERE id_evento=%d AND id_usuario=%d", $id_expo ,$this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+			$result = $rs->num_rows;
+        
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		if($result==0){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	public function likeDado($id_obra){
+		//SELECT * FROM `entradas` WHERE id_evento = 3 AND id_usuario = 3
+		//$expo = Evento::buscaEvento($nombre_expo,'Expo');
+		//$id_expo = $expo->id();
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		$query = sprintf("SELECT * FROM Likes WHERE id_obra=%d AND id_usuario=%d", $id_obra ,$this->id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+			$result = $rs->num_rows;
+        
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+		if($result==0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 }
