@@ -61,7 +61,7 @@ class Puja
                 $puja = new Puja($fila['id_obra'], $fila['precio_inicial'], $fila['fecha_finalizacion']);
                 $puja->precio_actual = $fila['precio_actual'];
 				$puja->id_comprador_actual = $fila['id_comprador_actual'];
-                $puja->id = $fila['id'];
+                //$puja->id = $fila['id'];
                 $result = $puja;
             }
             $rs->free();
