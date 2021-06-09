@@ -61,10 +61,17 @@ class MostradorProductos {
             </div>
             <div class="product-price-btn">
             <p><span>$precio</span>$</p>
-            <form action="compras.php?producto=$id" method="POST">
+            
+EOF;
+			if (isset($_SESSION["login"]) && $_SESSION["login"]) {
+				$html .= <<<EOF
+				<form action="compras.php?producto=$id" method="POST">
             <input class="control" type="hidden" name="compra" value=true contenteditable="false" />
-            <button type="submit">Compra ahora!</button>
-            </form>	
+				<button type="submit">Compra ahora!</button>
+				</form>
+EOF;
+			}	
+            $html .= <<<EOF
             </div>
             </div>
             EOF;

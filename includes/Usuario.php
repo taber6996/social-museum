@@ -404,6 +404,13 @@ class Usuario
 		}
 	}
 	
+	public function exposConEntrada(){
+		//SELECT * FROM `eventos` EV,`entradas` EN WHERE EV.id=EN.id_evento AND EN.id_usuario=3
+		$query = sprintf("SELECT * FROM Eventos EV, Entradas EN WHERE EV.id=EN.id_evento AND EN.id_usuario=%d", $this->id);
+		$obras = self:: consulta($query);
+		return $obras;
+	}
+	
 	public function likeDado($id_obra){
 		//SELECT * FROM `entradas` WHERE id_evento = 3 AND id_usuario = 3
 		//$expo = Evento::buscaEvento($nombre_expo,'Expo');

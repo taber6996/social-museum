@@ -194,4 +194,32 @@ class Obra
 		return $result;
 	}
 	
+	public function comentario($id_usuario,$comentario,$fecha){
+		
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		//INSERT INTO `comentarios`(`id_obra`, `id_usuario`, `comentario`, `fecha`) VALUES ([value-1],[value-2],[value-3],[value-4])
+        $query=sprintf("INSERT INTO Comentarios(id_obra, id_usuario,comentario,fecha) VALUES(%d,%d,'%s','%s')"
+			, $this->id
+			, $id_usuario
+			,$comentario
+			, $fecha);
+        if ( $conn->query($query) ) {
+           // $usuario->id = $conn->insert_id;
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+	}
+	
+	public static function comentarios($id_obra){
+		//SELECT * FROM `comentarios` WHERE 1 ORDER BY `comentarios`.`fecha` DESC
+
+		$query = sprintf("SELECT * FROM Comentarios WHERE id_obra = %d ORDER BY fecha DESC", $id_obra);
+		$comentarios = self:: consulta($query);
+		return $comentarios;
+	}
+	
+	
+	
 }

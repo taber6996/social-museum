@@ -318,6 +318,8 @@ section#seccionMisObras img{
 	border: #ff9a40 2px solid;
 }
 
+/* SUGRENCIA*/
+
 .sugerencia {
 	background-color: #fff;
 	border-radius: 5x;
@@ -360,10 +362,14 @@ section#seccionMisObras img{
 	width: 100%;
 }
 
+/* CANVAS */
+
+
 .colorButtons {
 	display: block;
 	margin: 10px 0;
 }
+
 
 canvas {
 	cursor: crosshair;
@@ -382,14 +388,18 @@ canvas#canvas {
 	top: 400px;
 }
 
+
 .btn {
 	margin-bottom: 10px;
 	width: 100%;
 }
-input {
+
+
+div#toolbar-canvas input {
 	width: 100%;
 	margin-bottom: 10px;
 }
+
 
 .input-group {
 	margin-bottom: 10px;
@@ -411,6 +421,8 @@ input {
 	width: 100px;
 }
 
+
+
 /*   PREMIUM   */
 
 img.p {
@@ -420,6 +432,12 @@ img.p {
 	
 }
 
+
+.o img{
+	width:300px;
+	height:300px;
+	object-fit:cover;
+}
 
 
 /* EXPO */

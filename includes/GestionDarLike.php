@@ -21,7 +21,7 @@ class GestionDarLike extends Form
 		}
         $html = <<<EOF
         <input class="control" type="hidden" name="obra" value=$id_obra contenteditable="false" />
-        <button type="submit" name="altaPremium">LIKE</button>
+        <button type="submit" name="LIKE">LIKE</button>
 EOF;
         return $html;
     }

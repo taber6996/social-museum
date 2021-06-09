@@ -109,7 +109,39 @@ EOF;
 		return $html;
 	}
 	
-	
+	public function muestraMisEntradas(){
+		$html="";
+		
+		$user = $_SESSION['user'];
+		$expos = $user->exposConEntrada();
+		//$expos = Evento::exposPorFecha($moment);
+        $filas = $expos->num_rows;
+        $html = "";
+        if($filas == 0){
+            $html = <<<EOF
+                <p> ¡No hay exposiciones! </p>
+            EOF;
+        }
+        else{
+            foreach($expos as $expo){
+                $nombre = $expo['nombre'] ?? null;
+                $html .= self::muestraExpo($nombre);
+				$evento = Evento::buscaEvento($nombre, 'Expo');
+				$fechaI = $evento->fecha_ini();
+				$fechaF = $evento->fecha_fin();
+				
+				$html .= <<<EOF
+				<p>Fechas: </p>
+				<p>$fechaI </p>
+				<p>$fechaF </p>
+EOF;
+                }
+            }
+		
+		
+		
+		return $html;
+	} 
 	
 }
 

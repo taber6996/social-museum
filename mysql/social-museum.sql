@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 07:34:30
+-- Tiempo de generación: 09-06-2021 a las 14:38:27
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -44,25 +44,6 @@ INSERT INTO `biografias` (`id_autor`, `bio`) VALUES
 (14, 'Con mi cámara allá a donde vaya.');
 
 -- --------------------------------------------------------
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `compras`
---
-
-CREATE TABLE `compras` (
-  `id` int(11) NOT NULL,
-  `id_articulo` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `compras`
---
-
-INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
-(1, 1, 3),
-(12, 1, 2);
 
 --
 -- Estructura de tabla para la tabla `comentarios`
@@ -81,7 +62,33 @@ CREATE TABLE `comentarios` (
 
 INSERT INTO `comentarios` (`id_obra`, `id_usuario`, `comentario`, `fecha`) VALUES
 (12, 6, 'Qué adorable!', '2021-06-07 01:19:35'),
-(1, 11, 'Me encanta!', '2021-06-03 01:20:07');
+(1, 11, 'Me encanta!', '2021-06-03 01:20:07'),
+(14, 7, 'Que bonito!', '2021-06-09 13:43:29'),
+(14, 3, 'Te ha quedado genial :D', '2021-06-09 14:02:08'),
+(31, 3, '¿donde es estooo? que chulo', '2021-06-09 14:02:46');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `id` int(11) NOT NULL,
+  `id_articulo` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
+(1, 1, 3),
+(12, 1, 2),
+(13, 1, 3),
+(14, 2, 3),
+(15, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -131,7 +138,8 @@ CREATE TABLE `entradas` (
 --
 
 INSERT INTO `entradas` (`id_evento`, `id_usuario`) VALUES
-(37, 3);
+(37, 3),
+(38, 3);
 
 -- --------------------------------------------------------
 
@@ -208,16 +216,26 @@ INSERT INTO `likes` (`id_obra`, `id_usuario`) VALUES
 (1, 3),
 (1, 4),
 (1, 5),
+(4, 3),
 (4, 4),
 (4, 7),
 (4, 16),
 (5, 3),
 (5, 7),
 (6, 3),
+(7, 3),
 (7, 7),
+(13, 3),
+(14, 3),
 (14, 7),
+(16, 3),
 (16, 7),
-(25, 7);
+(25, 3),
+(25, 7),
+(28, 3),
+(29, 3),
+(30, 3),
+(31, 3);
 
 -- --------------------------------------------------------
 
@@ -236,6 +254,7 @@ CREATE TABLE `mecenas` (
 
 INSERT INTO `mecenas` (`id_usuario`, `id_artista`) VALUES
 (3, 7),
+(3, 9),
 (7, 9),
 (7, 10),
 (7, 14),
@@ -421,6 +440,12 @@ ALTER TABLE `biografias`
   ADD PRIMARY KEY (`id_autor`);
 
 --
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `concursos`
 --
 ALTER TABLE `concursos`
@@ -448,9 +473,7 @@ ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id`);
 
 --
-ALTER TABLE `compras`
-  ADD PRIMARY KEY (`id`);
-  
+-- Indices de la tabla `expos`
 --
 ALTER TABLE `expos`
   ADD PRIMARY KEY (`id_expo`,`id_obra`),
@@ -507,6 +530,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT de la tabla `dibujos`
 --
 ALTER TABLE `dibujos`
@@ -525,8 +554,6 @@ ALTER TABLE `obras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
-ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -582,8 +609,6 @@ ALTER TABLE `expos`
 ALTER TABLE `likes`
   ADD CONSTRAINT `likes_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `likes_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-
 
 --
 -- Filtros para la tabla `mecenas`

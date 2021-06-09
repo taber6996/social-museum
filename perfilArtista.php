@@ -10,17 +10,6 @@ if(isset($_GET['artist'])){
 }
 $tituloPagina = $artist." - ";
 
-
-if(isset($_POST["follow"]) && $_POST["follow"]){
-	$user = $_SESSION["user"];
-	$user->serMecenas($artist);
-}
-
-if(isset($_POST["unfollow"]) && $_POST["unfollow"]){
-	$user = $_SESSION["user"];
-	$user->dejarDeSerMecenas($artist);
-}
-
 /* VARIABLES PARA DEJAR MARCADO EL MENU */
 $menuArtistas = "active";
 $menuExpos = "";

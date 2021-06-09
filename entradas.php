@@ -1,11 +1,14 @@
 <?php 
-	require_once __DIR__.'/includes/config.php';
+require_once __DIR__.'/includes/config.php';
 
-	$tituloPagina = 'Social Museum';
+$tituloPagina = 'Social Museum';
 
-	$contenidoPrincipal=<<<EOS
-	<h3>Entradas</h3>
-		<p>aqui se mostraran las entradas</p>
-	EOS;
+$mostradorEntradas = $mostrador = new es\ucm\fdi\aw\MostradorExpos();
+$htmlEntradas = $mostradorEntradas->muestraMisEntradas();
 
-	require __DIR__.'/includes/plantillas/layout2.php';
+$contenidoPrincipal=<<<EOS
+<h3>Entradas Compradas</h3>
+	$htmlEntradas
+EOS;
+
+require __DIR__.'/includes/plantillas/layout2.php';
