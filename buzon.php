@@ -1,8 +1,28 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
 
-	$tituloPagina = 'Social Museum';
+	$tituloPagina = "Mi buzón - ";
+
+	$menuArtistas = "";
+	$menuExpos = "";
+	$menuTienda = "";
+	$menuEventos = "";
+	$menuCuenta = "active";
 	
+	$menuSGeneral = "";
+	$menuSMecenazgos = "";
+	$menuSEntradas = "";
+	$menuSMisObras = "";
+	$menuSCompras = "";
+	$menuSBuzon = "active";
+	
+	$menuSGeneral = "";
+	$menuSMecenazgos = "";
+	$menuSEntradas = "";
+	$menuSCanvas = "";
+	$menuSCompras = "";
+	$menuSBuzon = "active";
+
 	$mostrador = new es\ucm\fdi\aw\MostradorCorreos();
 	$form = new es\ucm\fdi\aw\FormularioCorreo();
 	$htmlMostradorCorreos = "";

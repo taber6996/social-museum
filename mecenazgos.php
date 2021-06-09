@@ -1,7 +1,7 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
-$tituloPagina = 'Social Museum';
+$tituloPagina = "Mis mecenazgos - ";
 
 $menuArtistas = "";
 $menuExpos = "";
@@ -9,6 +9,20 @@ $menuTienda = "";
 $menuEventos = "";
 $menuCuenta = "active";
 
+$menuSGeneral = "";
+$menuSMecenazgos = "active";
+$menuSEntradas = "";
+$menuSMisObras = "";
+$menuSCompras = "";
+$menuSBuzon = "";
+
+$menuSGeneral = "";
+$menuSMecenazgos = "active";
+$menuSEntradas = "";
+$menuSCanvas = "";
+$menuSCompras = "";
+$menuSBuzon = "";
+		
 $mostrador = new es\ucm\fdi\aw\MostradorArtistas();
 $htmlMostradorArtistas = $mostrador->muestraMisArtistas($_SESSION["user"]);
 

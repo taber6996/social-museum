@@ -1,7 +1,13 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
 
-	$tituloPagina = 'Social Museum';
+	$tituloPagina = "Nuevo mensaje - ";
+
+	$menuArtistas = "";
+	$menuExpos = "";
+	$menuTienda = "";
+	$menuEventos = "";
+	$menuCuenta = "active";
 	
 	$form = new es\ucm\fdi\aw\FormularioCorreo();
 	$htmlFormularioCorreo = $form->gestiona();

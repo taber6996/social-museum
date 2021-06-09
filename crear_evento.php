@@ -6,6 +6,17 @@ $htmlFormEvento = $form->gestiona();
 
 $tituloPagina = 'Social Museum';
 
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
+
+$menuSGeneral = "";
+$menuSProducto = "";
+$menuSEvento = "active";
+$menuSSugerencias = "";
+
 $contenidoPrincipal = <<<EOS
 	<h3>Crear nuevo evento</h3>
 	$htmlFormEvento
