@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 06:36:37
+-- Tiempo de generación: 09-06-2021 a las 07:34:30
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -87,6 +87,18 @@ INSERT INTO `concursos` (`id_concurso`, `id_ganador`, `premio_dinero`, `premio_p
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `dibujos`
+--
+
+CREATE TABLE `dibujos` (
+  `id` int(11) NOT NULL,
+  `id_autor` int(11) DEFAULT NULL,
+  `titulo` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `entradas`
 --
 
@@ -94,6 +106,13 @@ CREATE TABLE `entradas` (
   `id_evento` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `entradas`
+--
+
+INSERT INTO `entradas` (`id_evento`, `id_usuario`) VALUES
+(37, 3);
 
 -- --------------------------------------------------------
 
@@ -170,11 +189,12 @@ INSERT INTO `likes` (`id_obra`, `id_usuario`) VALUES
 (1, 3),
 (1, 4),
 (1, 5),
-(4, 3),
 (4, 4),
 (4, 7),
 (4, 16),
+(5, 3),
 (5, 7),
+(6, 3),
 (7, 7),
 (14, 7),
 (16, 7),
@@ -196,6 +216,7 @@ CREATE TABLE `mecenas` (
 --
 
 INSERT INTO `mecenas` (`id_usuario`, `id_artista`) VALUES
+(3, 7),
 (7, 9),
 (7, 10),
 (7, 14),
@@ -370,14 +391,6 @@ INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `a
 (15, 'dulaPeep', 'Dua', '$2y$10$7Cbkio5LtTx6gkLLVFqSO.C8JbImJ0xX5NMKSsGDZs3Nms40a4ztm', 'artist', 1, 0),
 (16, 'isa99', 'Isabel', '$2y$10$sZX4yCv6zRs706xPTXa9O.szWcnnpR7DXTl9IoWuJtSpMi4Hi55Wa', 'user', 0, 1);
 
-
-CREATE TABLE `dibujos` (
-  `id` int(11) NOT NULL,
-  `id_autor` int(11) DEFAULT NULL,
-  `titulo` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
 --
 -- Índices para tablas volcadas
 --
@@ -395,6 +408,12 @@ ALTER TABLE `concursos`
   ADD PRIMARY KEY (`id_concurso`),
   ADD KEY `concursos_ganador` (`id_ganador`),
   ADD KEY `concursos_premio` (`premio_producto`);
+
+--
+-- Indices de la tabla `dibujos`
+--
+ALTER TABLE `dibujos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `entradas`
@@ -461,14 +480,16 @@ ALTER TABLE `sugerencias`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
-  
-ALTER TABLE `dibujos`
-  ADD PRIMARY KEY (`id`);
-  
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `dibujos`
+--
+ALTER TABLE `dibujos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
@@ -500,9 +521,6 @@ ALTER TABLE `sugerencias`
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
-
- ALTER TABLE `dibujos`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
