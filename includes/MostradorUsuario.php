@@ -17,7 +17,6 @@ class MostradorUsuario {
 		EOS;
 		
 		if(isset($_SESSION['avatar'])&&($_SESSION['avatar'])){
-			echo "hola";
 			$path = "img/avatares/".$user->id().".jpg";
 			$html .= <<<EOS
 			
@@ -52,8 +51,8 @@ EOS;
 EOS;
 		if(isset($_SESSION['premium'])&&($_SESSION['premium'])){
 			$html .= <<<EOS
-		¡Eres premium! ¿Quieres darte de baja?
-		<p><a href="premium.php">¡Hazte premium!</a></p>
+		¡Eres premium!
+		<p><a href="premium.php">Quiero darme de baja</a></p>
 EOS;
 			
 		}else{
