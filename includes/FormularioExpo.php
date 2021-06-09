@@ -99,7 +99,8 @@ EOF;
 					$id_obra = $obra['id'] ?? null;
 					$o = isset($datos[$id_obra]) ? $datos[$id_obra] : null ;
 					if($o){	
-						$expo->insertaObra($id_obra);	
+						$expo->insertaObra($id_obra);
+						$contador = $contador+1;						
 					}	
                 }
 				if($contador >0){
