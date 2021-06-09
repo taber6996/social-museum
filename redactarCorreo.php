@@ -3,18 +3,8 @@
 
 	$tituloPagina = 'Social Museum';
 	
-	$mostrador = new es\ucm\fdi\aw\MostradorCorreos();
 	$form = new es\ucm\fdi\aw\FormularioCorreo();
-	$htmlMostradorCorreos = "";
-	
-	if(isset($_GET["ver"]))
-	{
-		$ver = $_GET["ver"];
-		if($ver == "recibidos")
-			$htmlMostradorCorreos = $mostrador->muestraRecibidos($_SESSION["user"]->id());
-		else if($ver == "enviados")
-			$htmlMostradorCorreos = $mostrador->muestraEnviados($_SESSION["user"]->id());
-	}
+	$htmlFormularioCorreo = $form->gestiona();
 
 	$contenidoPrincipal=<<<EOS
 	<nav id="menu-secundario">
@@ -22,7 +12,7 @@
 	<a href="buzon.php?ver=recibidos">Recibidos</a>
 	<a href="buzon.php?ver=enviados">Enviados</a>
 	</nav>
-	$htmlMostradorCorreos
+	$htmlFormularioCorreo
 	EOS;
 
 	require __DIR__.'/includes/plantillas/layout2.php';
