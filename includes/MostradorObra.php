@@ -9,16 +9,12 @@ class MostradorObra {
 	
 	private $obra;
 	
-	public function muestraObra(){
+	public function muestraObra($id_obra){
 		$path = "img/obras/artista_".$this->obra->id_autor()."/".$this->obra->id().".jpg";
 		$html = <<<EOS
 		<img id="imagen_obra" src=$path>
 EOS;
 		return $html;
 	}
-
-	
-	
-
 }
 ?>
