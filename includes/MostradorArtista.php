@@ -65,7 +65,8 @@ EOS;
 				}
 				if (isset($_SESSION["premium"]) && $_SESSION["premium"]) {
 					$html .= <<<EOS
-					<button type="button" oncli>ENVIAR MENSAJE</button>
+					<a href="redactarCorreo.php">ENVIAR MENSAJE</a>
+					<!-- <button type="button" oncli>ENVIAR MENSAJE</button> -->
 EOS;
 				}
 			}
