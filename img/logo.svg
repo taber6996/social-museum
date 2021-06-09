@@ -5,11 +5,39 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg8"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="logo.svg"
+   width="271.04672mm"
+   height="40.542614mm"
+   viewBox="0 0 271.04672 40.542614"
    version="1.1"
-   viewBox="0 0 234.96829 40.54261"
-   height="40.54261mm"
-   width="234.96829mm">
+   id="svg8">
+  <sodipodi:namedview
+     inkscape:current-layer="svg8"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-9"
+     inkscape:window-x="-9"
+     inkscape:cy="-7.6789592"
+     inkscape:cx="230.68165"
+     inkscape:zoom="0.63058154"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     id="namedview32"
+     inkscape:window-height="1051"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
   <defs
      id="defs2" />
   <metadata
@@ -25,89 +53,94 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(0.07994047,-2.842081)"
-     id="layer1">
+     id="layer1"
+     transform="translate(0.07994047,-2.842081)">
     <text
-       id="text817"
-       y="32.147141"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.2889px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:'ROMANUS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.252234"
        x="44.772823"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:'ROMANUS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25223404"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:ROMANUS;-inkscape-font-specification:'ROMANUS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.25223404"
-         y="32.147141"
+       y="32.147141"
+       id="text817"><tspan
+         id="tspan815"
          x="44.772823"
-         id="tspan815">SOCIAL  MUSEUM</tspan></text>
+         y="32.147141"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:ROMANUS;-inkscape-font-specification:'ROMANUS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.252234">SOCIAL  MUSEUM</tspan></text>
     <flowRoot
-       transform="scale(0.26458333)"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"
        id="flowRoot819"
-       xml:space="preserve"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
          id="flowRegion821"><rect
-           y="127.51968"
-           x="147.85715"
-           height="40.714287"
+           id="rect823"
            width="67.14286"
-           id="rect823" /></flowRegion><flowPara
-         id="flowPara825" /></flowRoot>    <flowRoot
-       transform="scale(0.26458333)"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+           height="40.714287"
+           x="147.85715"
+           y="127.51968" /></flowRegion><flowPara
+         id="flowPara825" /></flowRoot>
+    <flowRoot
+       xml:space="preserve"
        id="flowRoot827"
-       xml:space="preserve"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
          id="flowRegion829"><rect
-           y="88.233971"
-           x="85.714287"
-           height="155"
+           id="rect831"
            width="764.28571"
-           id="rect831" /></flowRegion><flowPara
-         id="flowPara833" /></flowRoot>    <flowRoot
-       transform="scale(0.26458333)"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+           height="155"
+           x="85.714287"
+           y="88.233971" /></flowRegion><flowPara
+         id="flowPara833" /></flowRoot>
+    <flowRoot
+       xml:space="preserve"
        id="flowRoot835"
-       xml:space="preserve"><flowRegion
-         id="flowRegion837"><rect
-           y="154.3054"
-           x="76.785713"
-           height="50.714287"
-           width="43.214287"
-           id="rect839" /></flowRegion><flowPara
-         id="flowPara841" /></flowRoot>    <flowRoot
-       transform="scale(0.26458333)"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion837"><rect
+           id="rect839"
+           width="43.214287"
+           height="50.714287"
+           x="76.785713"
+           y="154.3054" /></flowRegion><flowPara
+         id="flowPara841" /></flowRoot>
+    <flowRoot
+       xml:space="preserve"
        id="flowRoot843"
-       xml:space="preserve"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
          id="flowRegion845"><rect
-           y="-10.694602"
-           x="650.35712"
-           height="48.214287"
+           id="rect847"
            width="101.42857"
-           id="rect847" /></flowRegion><flowPara
-         id="flowPara849" /></flowRoot>    <g
-       style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37850857;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           height="48.214287"
+           x="650.35712"
+           y="-10.694602" /></flowRegion><flowPara
+         id="flowPara849" /></flowRoot>
+    <g
+       id="g868"
        transform="matrix(0.07821044,0,0,0.07821044,0.16949251,3.0915148)"
-       id="g868">
+       style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37851;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
       <path
-         style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37850857;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path851"
          d="m 256,138 c 2.62891,0 5.21094,-1.07031 7.07031,-2.92969 C 264.92969,133.21094 266,130.62891 266,128 c 0,-2.62891 -1.07031,-5.21094 -2.92969,-7.07031 C 261.21094,119.07031 258.62891,118 256,118 c -2.62891,0 -5.21094,1.07031 -7.07031,2.92969 C 247.07031,122.78906 246,125.37109 246,128 c 0,2.62891 1.07031,5.21094 2.92969,7.07031 C 250.78906,136.92969 253.37109,138 256,138 Z m 0,0"
-         id="path851" />
+         style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37851;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
-         style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37850857;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path853"
          d="m 502,452 h -12 v -30 c 0,-5.52344 -4.47656,-10 -10,-10 h -6 v -15.83203 c 0,-10.82813 -6.60547,-20.13672 -16,-24.11328 v -33.72266 c 0,-5.52344 -4.47656,-10 -10,-10 -5.52344,0 -10,4.47656 -10,10 V 370 H 418 V 228 h 20 v 32.35547 c 0,5.52344 4.47656,10 10,10 5.52344,0 10,-4.47656 10,-10 v -34.41016 c 9.39453,-3.97656 16,-13.28906 16,-24.11328 V 186 h 6 c 5.52344,0 10,-4.47656 10,-10 v -38 h 1 c 4.63672,0 8.66016,-3.18359 9.73047,-7.69531 1.07031,-4.50782 -1.10156,-9.16407 -5.24219,-11.24219 l -235,-118 c -2.82422,-1.417969 -6.15234,-1.417969 -8.97656,0 l -235.000001,118 c -4.140625,2.08203 -6.3125,6.73437 -5.242188,11.24219 C 12.339844,134.81641 16.363281,138 21,138 h 1 v 38 c 0,5.52344 4.476562,10 10,10 h 6 v 15.83203 c 0,10.82422 6.605469,20.13672 16,24.10938 v 146.11328 c -9.394531,3.97656 -16,13.28515 -16,24.10937 V 412 h -6 c -5.523438,0 -10,4.47656 -10,10 v 30 H 10 c -5.523438,0 -10,4.47656 -10,10 v 40 c 0,5.52344 4.476562,10 10,10 h 492 c 5.52344,0 10,-4.47656 10,-10 v -40 c 0,-5.52344 -4.47656,-10 -10,-10 z M 447.83203,390 C 451.23438,390 454,392.76562 454,396.16797 V 412 H 402 V 396.16797 C 402,392.76562 404.76563,390 408.16797,390 Z m -88.5,22 v -15.83203 c 0,-10.82422 -6.60547,-20.13672 -16,-24.11328 V 225.94531 c 9.39453,-3.97656 16,-13.28906 16,-24.11328 V 186 H 382 v 15.83203 c 0,10.82422 6.60547,20.13672 16,24.10938 v 146.11328 c -9.39453,3.97656 -16,13.28515 -16,24.10937 V 412 Z m -114.66406,0 v -15.83203 c 0,-10.82813 -6.60938,-20.13672 -16,-24.11328 V 225.94531 c 9.39062,-3.97656 16,-13.28906 16,-24.11328 V 186 h 22.66797 v 15.83203 c 0,10.82422 6.60547,20.13672 16,24.10938 v 146.11328 c -9.39453,3.97656 -16,13.28515 -16,24.10937 V 412 Z M 130,412 v -15.83203 c 0,-10.82813 -6.60547,-20.13672 -16,-24.11328 V 225.94531 c 9.39453,-3.97656 16,-13.28906 16,-24.11328 V 186 h 22.66797 v 15.83203 c 0,10.82422 6.60547,20.13672 16,24.10938 v 146.11328 c -9.39453,3.97656 -16,13.28515 -16,24.10937 V 412 Z M 74,228 H 94 V 370 H 74 Z m 114.66797,0 h 20 v 142 h -20 z m 36,-26.16797 c 0,3.40234 -2.76563,6.16797 -6.16797,6.16797 h -39.66797 c -3.39844,0 -6.16797,-2.76563 -6.16797,-6.16797 V 186 h 52 v 15.83203 z m -52,194.33594 c 0,-3.40235 2.76562,-6.16797 6.16797,-6.16797 H 218.5 c 3.39844,0 6.16797,2.76562 6.16797,6.16797 V 412 h -52 z M 303.33203,228 h 20 v 142 h -20 z m 36,-26.16797 c 0,3.40234 -2.76562,6.16797 -6.16797,6.16797 H 293.5 c -3.39844,0 -6.16797,-2.76563 -6.16797,-6.16797 V 186 h 52 z m -52,194.33594 C 287.33203,392.76562 290.09766,390 293.5,390 h 39.66797 c 3.39844,0 6.16797,2.76562 6.16797,6.16797 V 412 h -52 V 396.16797 Z M 454,201.83203 C 454,205.23437 451.23437,208 447.83203,208 H 408.16406 C 404.76562,208 402,205.23437 402,201.83203 V 186 h 52 z M 206.33203,138 c 5.52344,0 10,-4.47656 10,-10 0,-5.52344 -4.47656,-10 -10,-10 H 63.199219 L 256,21.191406 448.80078,118 H 309 c -5.52344,0 -10,4.47656 -10,10 0,5.52344 4.47656,10 10,10 h 161 v 28 H 42 V 138 Z M 110,186 v 15.83203 C 110,205.23437 107.23438,208 103.83203,208 H 64.167969 C 60.765625,208 58,205.23437 58,201.83203 V 186 Z M 58,396.16797 C 58,392.76562 60.765625,390 64.167969,390 H 103.83594 C 107.23438,390 110,392.76562 110,396.16797 V 412 H 58 Z M 42,432 h 428 v 20 H 42 Z m 450,60 H 20 v -20 h 472 z m 0,0"
-         id="path853" />
+         style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37851;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
-         style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37850857;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path855"
          d="m 448,289 c -2.62891,0 -5.21094,1.07031 -7.07031,2.92969 C 439.07031,293.78906 438,296.37109 438,299 c 0,2.62891 1.07031,5.21094 2.92969,7.07031 C 442.78906,307.92969 445.37109,309 448,309 c 2.62891,0 5.21094,-1.07031 7.07031,-2.92969 C 456.92969,304.21094 458,301.62891 458,299 c 0,-2.62891 -1.07031,-5.21094 -2.92969,-7.07031 C 453.21094,290.07031 450.62891,289 448,289 Z m 0,0"
-         id="path855" />
+         style="fill:#944a00;fill-opacity:1;stroke:#0e0000;stroke-width:6.37851;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <flowRoot
-       transform="matrix(0.26458333,0,0,0.26458333,-0.07994047,0.19181349)"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"
        id="flowRoot836"
-       xml:space="preserve"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:ROMANUS;-inkscape-font-specification:ROMANUS;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-0.07994047,0.19181349)"><flowRegion
          id="flowRegion838"><rect
-           y="-80.618393"
-           x="-1.0101526"
-           height="412.14224"
+           id="rect840"
            width="952.57385"
-           id="rect840" /></flowRegion><flowPara
-         id="flowPara842"></flowPara></flowRoot>  </g>
+           height="412.14224"
+           x="-1.0101526"
+           y="-80.618393" /></flowRegion><flowPara
+         id="flowPara842" /></flowRoot>
+  </g>
 </svg>
