@@ -113,7 +113,7 @@ class Mecena
     {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
-		$query=sprintf("DELETE FROM mecenas WHERE  mecenas.id_usuario=%d AND mecenas.id_artista=%d"
+		$query=sprintf("DELETE FROM Mecenas WHERE  mecenas.id_usuario=%d AND mecenas.id_artista=%d"
 			,$mecena->id_usuario
             , $mecena->id_artista);
         if ( $conn->query($query) ) {
