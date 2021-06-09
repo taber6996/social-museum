@@ -1,8 +1,15 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
-$artist = $_GET['artist'];
+if(isset($_GET['artist'])){
+	$artist = $_GET['artist'];
+	$_SESSION['perfil'] = $artist;
+
+}else{
+	$artist = $_SESSION['perfil'];
+}
 $tituloPagina = $artist." - ";
+
 
 if(isset($_POST["follow"]) && $_POST["follow"]){
 	$user = $_SESSION["user"];
