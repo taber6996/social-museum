@@ -1,23 +1,19 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
-$tituloPagina = 'Subastas - ';
+$tituloPagina = 'Dibujos - ';
 
 /* VARIABLES PARA DEJAR MARCADO EL MENU */
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
-$menuEventos = "active";
+$menuEventos = "";
 $menuCuenta = "";
 
 $mostrador = new es\ucm\fdi\aw\MostradorDibujos();
 $htmlMostradorDibujos = $mostrador->muestra();
 
 $contenidoPrincipal=<<<EOS
-<nav id="menu-secundario">
-<a href="concursos.php">Concursos</a>
-<a href="subastas.php">Subastas</a>
-</nav>
 <div class="tarjetasSubastas">
 $htmlMostradorDibujos
 </div>
