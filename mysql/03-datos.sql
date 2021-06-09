@@ -234,21 +234,21 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `unidades`) VA
 (6, 'Taza', 'Wifi taza', 5, 50),
 (7, 'Cojin', 'Cojin de colores', 15, 10);
 
-INSERT INTO `pujas` (`id_obra`, `fecha_finalizacion`, `precio_inicial`, `precio_actual`, `id_comprador_actual`) VALUES
-(4, '2021-12-28', 10500, 10500, NULL),
-(5, '2021-07-21', 100000, 100000, NULL),
-(9, '2021-08-04', 350, 350, NULL),
-(10, '2021-08-18', 899.99, 899.99, NULL),
-(11, '2021-07-19', 555.55, 555.55, NULL),
-(12, '2021-05-26', 1000, 1000, NULL),
-(13, '2021-08-26', 15, 15, NULL),
-(14, '2021-07-26', 15, 15, NULL),
-(15, '2021-07-26', 15, 15, NULL),
-(16, '2021-07-26', 15, 15, NULL),
-(36, '2021-09-01', 1000, 1000, NULL),
-(37, '2021-06-30', 25, 25, NULL),
-(38, '2021-06-30', 30, 30, NULL),
-(45, '2021-07-10', 100, 100, NULL);
+INSERT INTO `pujas` (`id`,`id_obra`, `fecha_finalizacion`, `precio_inicial`, `precio_actual`, `id_comprador_actual`) VALUES
+(1,4, '2021-12-28', 10500, 10500, NULL),
+(2,5, '2021-07-21', 100000, 100000, NULL),
+(3,9, '2021-08-04', 350, 350, NULL),
+(4,10, '2021-08-18', 899.99, 899.99, NULL),
+(5,11, '2021-07-19', 555.55, 555.55, NULL),
+(6,12, '2021-05-26', 1000, 1000, NULL),
+(7,13, '2021-08-26', 15, 15, NULL),
+(8,14, '2021-07-26', 15, 15, NULL),
+(9,15, '2021-07-26', 15, 15, NULL),
+(10,16, '2021-07-26', 15, 15, NULL),
+(11,36, '2021-09-01', 1000, 1000, NULL),
+(12,37, '2021-06-30', 25, 25, NULL),
+(13,38, '2021-06-30', 30, 30, NULL),
+(14,45, '2021-07-10', 100, 100, NULL);
 
 INSERT INTO `sugerencias` (`id`, `nombre`, `correo`, `tipo`, `contenido`) VALUES
 (20, 'Carlota', 'carlota@gmail.com', 'evaluacion', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),

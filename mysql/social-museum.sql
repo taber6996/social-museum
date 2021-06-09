@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 20:29:15
+-- Tiempo de generación: 09-06-2021 a las 21:39:17
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -38,7 +38,7 @@ CREATE TABLE `biografias` (
 
 INSERT INTO `biografias` (`id_autor`, `bio`) VALUES
 (7, 'Soy un pintor español'),
-(8, 'Aficionado de los cómics. Estos garabatos son lo mejor que hago.\r\n                                  '),
+(8, 'Aficionado de los cómics. Estos garabatos son lo mejor que hago.'),
 (9, 'Estoy aprendiendo a dibujar. Los animales me inspiran, ¿y a ti que te inspira?'),
 (11, 'Mi obra abarca la pintura de caballete y mural, el grabado y el dibujo.'),
 (14, 'Con mi cámara allá a donde vaya.');
@@ -63,13 +63,13 @@ CREATE TABLE `buzon` (
 --
 
 INSERT INTO `buzon` (`id`, `id_desde`, `id_para`, `asunto`, `mensaje`, `fecha`) VALUES
-(1, 1, 3, 'Prueba de admin', 'Hola, esto es un mensaje de prueba desde el admin', '2021-06-09 14:47:30'),
-(2, 2, 2, 'Redundante', 'Hola, me puedo enviar un correo a mi mismo? Así es.', '2021-06-09 14:51:28'),
-(3, 2, 2, 'Prueba', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac ex a est volutpat dignissim. Curabitur urna tellus, iaculis sed augue vel, vulputate imperdiet lorem. Nunc tincidunt magna eu leo dignissim cursus. Sed commodo, odio pharetra mollis euismod, nunc elit rutrum tortor, auctor blandit massa nibh eget erat. Morbi blandit efficitur felis ac consectetur. Proin gravida, eros in consequat aliquam, diam ex dapibus velit, vitae mollis justo felis quis ipsum. Sed ullamcorper augue sit amet tellus ullamcorper tristique. Quisque vitae erat nibh. In posuere lorem ante, in consectetur odio tempor interdum. Nullam commodo urna at nunc pretium, in hendrerit leo feugiat. Praesent mollis erat nec mi porta, vitae aliquet nulla ultricies. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam id dapibus ante, sed posuere mauris. Phasellus consectetur pharetra dictum. Cras posuere iaculis nunc non ullamcorper. Donec laoreet ultricies nisl, sed ullamcorper nibh vestibulum quis.\r\n\r\nVivamus vehicula quis ipsum sit amet dictum. Mauris commodo tellus vitae libero varius, vel ultricies metus efficitur. Donec erat arcu, suscipit et justo in, iaculis iaculis est. Phasellus sed fermentum felis. Proin porta eleifend gravida. Curabitur in tincidunt sapien. Nunc dui nunc, placerat non vehicula ut, elementum nec sapien. Proin non elit neque. Maecenas sodales, lacus vel euismod finibus, eros nisl vehicula diam, in lacinia risus arcu a magna. Duis tempus ornare ornare. Nulla volutpat metus vitae ligula interdum volutpat. Aliquam tempus tincidunt risus nec fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi varius molestie faucibus. Integer quis finibus nisi.\r\n\r\nAliquam malesuada, neque id sagittis accumsan, nisl diam tincidunt mauris, id porttitor felis velit sit amet est. Donec quam augue, vulputate eu aliquet vitae, dapibus at arcu. Pellentesque porttitor consequat metus, quis hendrerit nisl rutrum vitae. Vivamus ac fringilla sapien. Donec aliquam bibendum euismod. Phasellus congue pharetra nulla ut pulvinar. Cras id aliquam orci. Morbi ullamcorper tellus vel nibh placerat, vitae mollis diam suscipit. Aliquam erat volutpat. Duis aliquam orci ut nibh bibendum ultrices. Etiam vel tincidunt urna. Phasellus quis ultricies orci.\r\n\r\nSed fermentum odio nisi, sit amet gravida quam bibendum id. Nullam cursus mi quis tortor fermentum congue. Pellentesque vel neque libero. Nunc ac diam sit amet ipsum varius vehicula. Pellentesque eu luctus dolor. Etiam ac erat odio. Vestibulum mollis libero finibus, suscipit tellus eu, vehicula odio. Aenean eget maximus augue, ac varius lacus.\r\n\r\nNunc metus nibh, ornare sed tortor ac, aliquet tristique lectus. Vivamus ac condimentum dolor. In tincidunt, ante vel semper sagittis, odio velit varius quam, pretium condimentum neque lectus consectetur justo. Maecenas molestie ligula sit amet tempus ultricies. Nunc cursus, lacus et iaculis laoreet, tellus augue consectetur nunc, et convallis massa quam et turpis. In rutrum mi suscipit orci eleifend sodales. Etiam non efficitur est, eu porttitor nulla. Vestibulum iaculis semper posuere.', '2021-06-09 16:22:22'),
-(4, 7, 8, 'Hola amigo', '¿Cómo estás?', '2021-06-09 16:33:01'),
-(5, 11, 9, 'Asunto super importante', 'a', '2021-06-09 16:48:49'),
-(6, 12, 7, 'Disculpe las molestias...', 'Hola, disculpe si le molesto pues no es esa mi intención. Pero de verdad que no consigo entender absolutamente nada de su obra. ¿Podría dar una pequeña charla razonando el por qué de esos garabatos?', '2021-06-09 16:49:15'),
-(7, 7, 9, 'Clase', 'Podriamos apuntarnos a clase de pintura juntos', '2021-06-09 18:05:59');
+(1, 1, 3, 'Prueba de admin', 'Hola, esto es un mensaje de prueba desde el admin', '2021-06-09 12:47:30'),
+(2, 2, 2, 'Redundante', 'Hola, me puedo enviar un correo a mi mismo? Así es.', '2021-06-09 12:51:28'),
+(3, 2, 2, 'Prueba', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac ex a est volutpat dignissim. Curabitur urna tellus, iaculis sed augue vel, vulputate imperdiet lorem. Nunc tincidunt magna eu leo dignissim cursus. Sed commodo, odio pharetra mollis euismod, nunc elit rutrum tortor, auctor blandit massa nibh eget erat. Morbi blandit efficitur felis ac consectetur. Proin gravida, eros in consequat aliquam, diam ex dapibus velit, vitae mollis justo felis quis ipsum. Sed ullamcorper augue sit amet tellus ullamcorper tristique. Quisque vitae erat nibh. In posuere lorem ante, in consectetur odio tempor interdum. Nullam commodo urna at nunc pretium, in hendrerit leo feugiat. Praesent mollis erat nec mi porta, vitae aliquet nulla ultricies. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam id dapibus ante, sed posuere mauris. Phasellus consectetur pharetra dictum. Cras posuere iaculis nunc non ullamcorper. Donec laoreet ultricies nisl, sed ullamcorper nibh vestibulum quis.\r\n\r\nVivamus vehicula quis ipsum sit amet dictum. Mauris commodo tellus vitae libero varius, vel ultricies metus efficitur. Donec erat arcu, suscipit et justo in, iaculis iaculis est. Phasellus sed fermentum felis. Proin porta eleifend gravida. Curabitur in tincidunt sapien. Nunc dui nunc, placerat non vehicula ut, elementum nec sapien. Proin non elit neque. Maecenas sodales, lacus vel euismod finibus, eros nisl vehicula diam, in lacinia risus arcu a magna. Duis tempus ornare ornare. Nulla volutpat metus vitae ligula interdum volutpat. Aliquam tempus tincidunt risus nec fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi varius molestie faucibus. Integer quis finibus nisi.\r\n\r\nAliquam malesuada, neque id sagittis accumsan, nisl diam tincidunt mauris, id porttitor felis velit sit amet est. Donec quam augue, vulputate eu aliquet vitae, dapibus at arcu. Pellentesque porttitor consequat metus, quis hendrerit nisl rutrum vitae. Vivamus ac fringilla sapien. Donec aliquam bibendum euismod. Phasellus congue pharetra nulla ut pulvinar. Cras id aliquam orci. Morbi ullamcorper tellus vel nibh placerat, vitae mollis diam suscipit. Aliquam erat volutpat. Duis aliquam orci ut nibh bibendum ultrices. Etiam vel tincidunt urna. Phasellus quis ultricies orci.\r\n\r\nSed fermentum odio nisi, sit amet gravida quam bibendum id. Nullam cursus mi quis tortor fermentum congue. Pellentesque vel neque libero. Nunc ac diam sit amet ipsum varius vehicula. Pellentesque eu luctus dolor. Etiam ac erat odio. Vestibulum mollis libero finibus, suscipit tellus eu, vehicula odio. Aenean eget maximus augue, ac varius lacus.\r\n\r\nNunc metus nibh, ornare sed tortor ac, aliquet tristique lectus. Vivamus ac condimentum dolor. In tincidunt, ante vel semper sagittis, odio velit varius quam, pretium condimentum neque lectus consectetur justo. Maecenas molestie ligula sit amet tempus ultricies. Nunc cursus, lacus et iaculis laoreet, tellus augue consectetur nunc, et convallis massa quam et turpis. In rutrum mi suscipit orci eleifend sodales. Etiam non efficitur est, eu porttitor nulla. Vestibulum iaculis semper posuere.', '2021-06-09 14:22:22'),
+(4, 7, 8, 'Hola amigo', '¿Cómo estás?', '2021-06-09 14:33:01'),
+(5, 11, 9, 'Asunto super importante', 'a', '2021-06-09 14:48:49'),
+(6, 12, 7, 'Disculpe las molestias...', 'Hola, disculpe si le molesto pues no es esa mi intención. Pero de verdad que no consigo entender absolutamente nada de su obra. ¿Podría dar una pequeña charla razonando el por qué de esos garabatos?', '2021-06-09 14:49:15'),
+(7, 7, 9, 'Clase', 'Podriamos apuntarnos a clase de pintura juntos', '2021-06-09 16:05:59');
 
 -- --------------------------------------------------------
 
@@ -472,6 +472,7 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `unidades`) VA
 --
 
 CREATE TABLE `pujas` (
+  `id` int(11) NOT NULL,
   `id_obra` int(11) NOT NULL,
   `fecha_finalizacion` date NOT NULL,
   `precio_inicial` float NOT NULL DEFAULT 0,
@@ -483,21 +484,21 @@ CREATE TABLE `pujas` (
 -- Volcado de datos para la tabla `pujas`
 --
 
-INSERT INTO `pujas` (`id_obra`, `fecha_finalizacion`, `precio_inicial`, `precio_actual`, `id_comprador_actual`) VALUES
-(4, '2021-12-28', 10500, 10500, NULL),
-(5, '2021-07-21', 100000, 100000, NULL),
-(9, '2021-08-04', 350, 350, NULL),
-(10, '2021-08-18', 899.99, 899.99, NULL),
-(11, '2021-07-19', 555.55, 555.55, NULL),
-(12, '2021-05-26', 1000, 1000, NULL),
-(13, '2021-08-26', 15, 15, NULL),
-(14, '2021-07-26', 15, 15, NULL),
-(15, '2021-07-26', 15, 15, NULL),
-(16, '2021-07-26', 15, 15, NULL),
-(36, '2021-09-01', 1000, 1000, NULL),
-(37, '2021-06-30', 25, 25, NULL),
-(38, '2021-06-30', 30, 30, NULL),
-(45, '2021-07-10', 100, 100, NULL);
+INSERT INTO `pujas` (`id`, `id_obra`, `fecha_finalizacion`, `precio_inicial`, `precio_actual`, `id_comprador_actual`) VALUES
+(1, 4, '2021-12-28', 10500, 10500, NULL),
+(2, 5, '2021-07-21', 100000, 100000, NULL),
+(3, 9, '2021-08-04', 350, 350, NULL),
+(4, 10, '2021-08-18', 899.99, 899.99, NULL),
+(5, 11, '2021-07-19', 555.55, 555.55, NULL),
+(6, 12, '2021-05-26', 1000, 1000, NULL),
+(7, 13, '2021-08-26', 15, 15, NULL),
+(8, 14, '2021-07-26', 15, 15, NULL),
+(9, 15, '2021-07-26', 15, 15, NULL),
+(10, 16, '2021-07-26', 15, 15, NULL),
+(11, 36, '2021-09-01', 1000, 1000, NULL),
+(12, 37, '2021-06-30', 25, 25, NULL),
+(13, 38, '2021-06-30', 30, 30, NULL),
+(14, 45, '2021-07-10', 100, 100, NULL);
 
 -- --------------------------------------------------------
 
@@ -648,8 +649,9 @@ ALTER TABLE `productos`
 -- Indices de la tabla `pujas`
 --
 ALTER TABLE `pujas`
-  ADD PRIMARY KEY (`id_obra`),
-  ADD KEY `pujas_comprador` (`id_comprador_actual`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pujas_comprador` (`id_comprador_actual`),
+  ADD KEY `pujas_obra` (`id_obra`);
 
 --
 -- Indices de la tabla `sugerencias`
@@ -702,6 +704,12 @@ ALTER TABLE `obras`
 --
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `pujas`
+--
+ALTER TABLE `pujas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `sugerencias`
