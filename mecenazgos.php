@@ -3,6 +3,12 @@ require_once __DIR__.'/includes/config.php';
 
 $tituloPagina = 'Social Museum';
 
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
+
 $mostrador = new es\ucm\fdi\aw\MostradorArtistas();
 $htmlMostradorArtistas = $mostrador->muestraMisArtistas($_SESSION["user"]);
 
