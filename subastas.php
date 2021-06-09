@@ -7,6 +7,7 @@ $tituloPagina = 'Subastas - ';
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "active";
 $menuCuenta = "";
 

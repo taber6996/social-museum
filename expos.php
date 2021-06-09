@@ -7,6 +7,7 @@
 	$menuArtistas = "";
 	$menuExpos = "active";
 	$menuTienda = "";
+	$menuDibujos = "";
 	$menuEventos = "";
 	$menuCuenta = "";
 

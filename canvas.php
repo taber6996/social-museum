@@ -4,6 +4,7 @@ require_once __DIR__.'/includes/config.php';
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "";
 $menuCuenta = "active";
 
@@ -12,6 +13,20 @@ $menuSGeneral = "";
 $menuSMecenazgos = "";
 $menuSEntradas = "";
 $menuSCanvas = "active";
+$menuSCompras = "";
+$menuSBuzon = "";
+
+$menuSGeneral = "";
+$menuSCanvas = "active";
+$menuSProducto = "";
+$menuSEvento = "";
+$menuSSugerencias = "";
+
+$menuSGeneral = "";
+$menuSMecenazgos = "";
+$menuSEntradas = "";
+$menuSCanvas = "active";
+$menuSMisObras = "";
 $menuSCompras = "";
 $menuSBuzon = "";
 

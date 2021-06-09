@@ -6,12 +6,14 @@ $tituloPagina = "Mis mecenazgos - ";
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "";
 $menuCuenta = "active";
 
 $menuSGeneral = "";
 $menuSMecenazgos = "active";
 $menuSEntradas = "";
+$menuSCanvas = "";
 $menuSMisObras = "";
 $menuSCompras = "";
 $menuSBuzon = "";

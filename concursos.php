@@ -7,6 +7,7 @@ $tituloPagina = 'Concursos - ';
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "active";
 $menuCuenta = "";
 

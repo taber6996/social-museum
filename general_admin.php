@@ -12,10 +12,12 @@ $tituloPagina = "Cuenta - ";
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "";
 $menuCuenta = "active";
 
 $menuSGeneral = "active";
+$menuSCanvas = "";
 $menuSProducto = "";
 $menuSEvento = "";
 $menuSSugerencias = "";

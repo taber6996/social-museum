@@ -6,6 +6,7 @@ $tituloPagina = "Mis entradas - ";
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "";
 $menuCuenta = "active";
 

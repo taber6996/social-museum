@@ -11,12 +11,14 @@ $tituloPagina = "Mis obras - ";
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "";
 $menuCuenta = "active";
 
 $menuSGeneral = "";
 $menuSMecenazgos = "";
 $menuSEntradas = "";
+$menuSCanvas = "";
 $menuSMisObras = "active";
 $menuSCompras = "";
 $menuSBuzon = "";

@@ -6,8 +6,24 @@
 	$menuArtistas = "";
 	$menuExpos = "";
 	$menuTienda = "";
+	$menuDibujos = "";
 	$menuEventos = "";
 	$menuCuenta = "active";
+	
+	$menuSGeneral = "";
+	$menuSMecenazgos = "";
+	$menuSEntradas = "";
+	$menuSCanvas = "";
+	$menuSCompras = "";
+	$menuSBuzon = "active";
+	
+	$menuSGeneral = "";
+	$menuSMecenazgos = "";
+	$menuSEntradas = "";
+	$menuSCanvas = "";
+	$menuSMisObras = "";
+	$menuSCompras = "";
+	$menuSBuzon = "active";
 	
 	$form = new es\ucm\fdi\aw\FormularioCorreo();
 	$htmlFormularioCorreo = $form->gestiona();
