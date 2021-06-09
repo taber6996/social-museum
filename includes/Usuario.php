@@ -205,6 +205,10 @@ class Usuario
 		return $mecena;
 	}
 	
+    public function compra($id_producto){
+        $compra = Compra::crea($id_producto, $this->id);
+    }
+
 	public function compruebaPassword($password)
     {
         return password_verify($password, $this->password);
@@ -304,6 +308,12 @@ class Usuario
 		return $artistas;
 	}
 	
+    public static function misCompras($user){
+        $query = sprintf("SELECT id_articulo FROM Compras WHERE id_usuario = %d", $user->id());
+        $compras = self::consulta($query);
+        return $compras;
+    }
+
 	private static function consulta($query){
 		$app = Aplicacion::getInstance();
         $conn = $app->conexionBd();

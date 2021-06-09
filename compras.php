@@ -1,11 +1,23 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
+	
+	$producto = false;
+	if(isset($_GET['producto'])){
+		$producto = $_GET['producto'];
+	}
+	
 
-	$tituloPagina = 'Social Museum';
+	if(isset($_POST["compra"]) && $_POST["compra"]){
+		$user = $_SESSION["user"];
+		$user->compra($producto);
+		header("Location: compras.php");
+	}
 
-	$contenidoPrincipal=<<<EOS
-	<h3>Compras</h3>
-		<p>aqui se mostraran las compras</p>
-	EOS;
+	$tituloPagina = 'Compras -';
 
-	require __DIR__.'/includes/plantillas/layout2.php';
+	$mostrador = new es\ucm\fdi\aw\MostradorProductos();
+	$html = $mostrador->muestraMisCompras($_SESSION["user"]);
+	
+	$contenidoPrincipal = $html;
+	
+	require ("includes/plantillas/layout2.php");

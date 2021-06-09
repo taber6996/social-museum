@@ -4,6 +4,29 @@ namespace es\ucm\fdi\aw;
 class Producto
 {
 
+    public static function buscaProductoID($id){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+		//$query = sprintf("SELECT * FROM Productos P WHERE P.nombre = '%s',$conn->real_escape_string($nombre));
+		$query = sprintf("SELECT * FROM Productos P WHERE P.id = '%d'", $conn->real_escape_string($id));
+
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+				$producto = new Producto($fila['nombre'], $fila['descripcion'], $fila['precio'], $fila['unidades']);
+                $producto->id = $fila['id'];
+                $result = $producto;
+            }
+            $rs->free();
+
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $result;
+    }
     public static function buscaProducto($nombre)
     {
         $app = Aplicacion::getInstance();
