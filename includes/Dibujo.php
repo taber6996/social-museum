@@ -156,7 +156,7 @@ EOF;
 		return $dibujos;
 	}
 	
-	public static function todasObras(){
+	public static function todosDibujos(){
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
         $query = sprintf("SELECT * FROM Dibujos");
