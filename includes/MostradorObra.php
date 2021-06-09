@@ -12,6 +12,7 @@ class MostradorObra {
 	public function muestraObra(){		
 		$path = "img/obras/artista_".$this->obra->id_autor()."/".$this->obra->id().".jpg";
 		$html = <<<EOS
+		<div id="imagenYcomentarios">
 		<img id="imagen_obra" src=$path>
 EOS;
 		return $html;
@@ -30,8 +31,12 @@ EOS;
 			
 			$html .= <<<EOS
 				<div class="comment">
-				<p>@$nick : $c </p>
+				<!-- <fieldset> -->
+				<p><span>@$nick : </span>$c </p>
+				<!-- </fieldset> -->
 				</div>
+				
+		</div>
 EOS;
 		
 		}
