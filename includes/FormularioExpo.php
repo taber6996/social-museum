@@ -23,7 +23,7 @@ class FormularioExpo extends Form
 		<h3>Expo $nombreExpo</h3>
 		<p>Añade las obras que quieras en la expo</p>
 		$errorSinObras
-        <fieldset>
+        
         <input class="control" type="hidden" name="expo" value=$nombreExpo contenteditable="false" />
 
 EOF;
@@ -36,21 +36,48 @@ EOF;
             EOF;
         }
         else{
+			$html .= <<<EOF
+			<div class="obrasSelection">
+			
+				<div class="o">
+EOF;
+			
             foreach($obras as $obra){
                 $id = $obra['id'] ?? null;
-                $obra = Obra::tarjeta($id);
+                $obra = self::muestraObra($id);
 				$html .= <<<EOF
 				$obra
-				<label>ID: $id </label><input class="control" type="checkbox" name=$id />
-				EOF;	
+				<label></label><input class="control" type="checkbox" name=$id />
+				</div>
+EOF;			
+
                 }
+				$html .= <<<EOF
+				</div>
+				</div>
+EOF;
             }
 		$html .= <<<EOF
         <button type="submit" name="crear_expo">Aceptar</button>
-        </fieldset>
+        
 EOF;
         return $html;
     }
+	
+	private function muestraObra($id){
+		$obra = Obra::buscaObraPorId($id);
+		$titulo = $obra->titulo();
+		$id_obra = $obra->id();
+		$path = "img/obras/artista_".$obra->id_autor()."/".$id_obra.".jpg"; 
+		
+		$html = <<<EOF
+			<div class="opcion">
+				$titulo
+				<img class="obra" src=$path>
+				
+EOF;
+		return $html;
+	}
 	
 
     protected function procesaFormulario($datos)
