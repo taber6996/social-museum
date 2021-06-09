@@ -1,6 +1,8 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
+$tituloPagina = 'Subastas - ';
+
 if(isset($_GET['id_subasta'])){
     $id_subasta = $_GET['id_subasta'];
 }
