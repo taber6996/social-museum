@@ -1,66 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 20:29:15
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.4.15
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `social-museum`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `biografias`
---
-
-CREATE TABLE `biografias` (
-  `id_autor` int(11) NOT NULL,
-  `bio` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `biografias`
---
-
 INSERT INTO `biografias` (`id_autor`, `bio`) VALUES
 (7, 'Soy un pintor español'),
-(8, 'Aficionado de los cómics. Estos garabatos son lo mejor que hago.\r\n                                  '),
+(8, 'Aficionado de los cómics. Estos garabatos son lo mejor que hago.'),
 (9, 'Estoy aprendiendo a dibujar. Los animales me inspiran, ¿y a ti que te inspira?'),
 (11, 'Mi obra abarca la pintura de caballete y mural, el grabado y el dibujo.'),
 (14, 'Con mi cámara allá a donde vaya.');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `buzon`
---
-
-CREATE TABLE `buzon` (
-  `id` int(11) NOT NULL,
-  `id_desde` int(11) NOT NULL,
-  `id_para` int(11) NOT NULL,
-  `asunto` varchar(50) NOT NULL,
-  `mensaje` text NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `buzon`
---
 
 INSERT INTO `buzon` (`id`, `id_desde`, `id_para`, `asunto`, `mensaje`, `fecha`) VALUES
 (1, 1, 3, 'Prueba de admin', 'Hola, esto es un mensaje de prueba desde el admin', '2021-06-09 14:47:30'),
@@ -70,23 +13,6 @@ INSERT INTO `buzon` (`id`, `id_desde`, `id_para`, `asunto`, `mensaje`, `fecha`) 
 (5, 11, 9, 'Asunto super importante', 'a', '2021-06-09 16:48:49'),
 (6, 12, 7, 'Disculpe las molestias...', 'Hola, disculpe si le molesto pues no es esa mi intención. Pero de verdad que no consigo entender absolutamente nada de su obra. ¿Podría dar una pequeña charla razonando el por qué de esos garabatos?', '2021-06-09 16:49:15'),
 (7, 7, 9, 'Clase', 'Podriamos apuntarnos a clase de pintura juntos', '2021-06-09 18:05:59');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `comentarios`
---
-
-CREATE TABLE `comentarios` (
-  `id_obra` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `comentario` varchar(200) DEFAULT NULL,
-  `fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `comentarios`
---
 
 INSERT INTO `comentarios` (`id_obra`, `id_usuario`, `comentario`, `fecha`) VALUES
 (12, 6, 'Qué adorable!', '2021-06-07 01:19:35'),
@@ -108,22 +34,6 @@ INSERT INTO `comentarios` (`id_obra`, `id_usuario`, `comentario`, `fecha`) VALUE
 (49, 15, 'jajajajajajaj', '2021-06-09 20:18:32'),
 (50, 3, 'que divertido', '2021-06-09 20:26:07');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `compras`
---
-
-CREATE TABLE `compras` (
-  `id` int(11) NOT NULL,
-  `id_articulo` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `compras`
---
-
 INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
 (1, 1, 3),
 (12, 1, 2),
@@ -131,52 +41,9 @@ INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
 (14, 2, 3),
 (15, 2, 3);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `concursos`
---
-
-CREATE TABLE `concursos` (
-  `id_concurso` int(11) NOT NULL,
-  `id_ganador` int(11) DEFAULT NULL,
-  `premio_dinero` int(11) DEFAULT NULL,
-  `premio_producto` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `concursos`
---
-
 INSERT INTO `concursos` (`id_concurso`, `id_ganador`, `premio_dinero`, `premio_producto`) VALUES
 (4, NULL, 50, NULL);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `dibujos`
---
-
-CREATE TABLE `dibujos` (
-  `id` int(11) NOT NULL,
-  `id_autor` int(11) DEFAULT NULL,
-  `titulo` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `entradas`
---
-
-CREATE TABLE `entradas` (
-  `id_evento` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `entradas`
---
 
 INSERT INTO `entradas` (`id_evento`, `id_usuario`) VALUES
 (37, 3),
@@ -184,26 +51,6 @@ INSERT INTO `entradas` (`id_evento`, `id_usuario`) VALUES
 (38, 3),
 (38, 20),
 (39, 20);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `eventos`
---
-
-CREATE TABLE `eventos` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(25) NOT NULL,
-  `tipo` varchar(25) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `fecha_ini` date NOT NULL,
-  `fecha_fin` date NOT NULL,
-  `precio` float NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `eventos`
---
 
 INSERT INTO `eventos` (`id`, `nombre`, `tipo`, `descripcion`, `fecha_ini`, `fecha_fin`, `precio`) VALUES
 (2, 'Flores de Primavera', 'Expo', 'Una exposición del pasado', '2021-03-11', '2021-03-31', 5),
@@ -213,21 +60,6 @@ INSERT INTO `eventos` (`id`, `nombre`, `tipo`, `descripcion`, `fecha_ini`, `fech
 (39, 'Flores', 'Expo', 'Mas y mas flores', '2021-06-09', '2021-07-07', 5),
 (40, 'Comics', 'Expo', 'Comics muy divertidos', '2021-06-10', '2021-06-10', 2.5),
 (41, 'Perrete', 'Expo', 'Perros graciosos de nuestra nueva artista', '2021-06-11', '2021-07-09', 5.99);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `expos`
---
-
-CREATE TABLE `expos` (
-  `id_expo` int(11) NOT NULL,
-  `id_obra` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `expos`
---
 
 INSERT INTO `expos` (`id_expo`, `id_obra`) VALUES
 (2, 8),
@@ -253,21 +85,6 @@ INSERT INTO `expos` (`id_expo`, `id_obra`) VALUES
 (41, 51),
 (41, 52),
 (41, 53);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `likes`
---
-
-CREATE TABLE `likes` (
-  `id_obra` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `likes`
---
 
 INSERT INTO `likes` (`id_obra`, `id_usuario`) VALUES
 (4, 3),
@@ -336,20 +153,6 @@ INSERT INTO `likes` (`id_obra`, `id_usuario`) VALUES
 (52, 15),
 (53, 15);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `mecenas`
---
-
-CREATE TABLE `mecenas` (
-  `id_usuario` int(11) NOT NULL,
-  `id_artista` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `mecenas`
---
 
 INSERT INTO `mecenas` (`id_usuario`, `id_artista`) VALUES
 (3, 7),
@@ -372,22 +175,6 @@ INSERT INTO `mecenas` (`id_usuario`, `id_artista`) VALUES
 (20, 7),
 (20, 11);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `obras`
---
-
-CREATE TABLE `obras` (
-  `id` int(11) NOT NULL,
-  `id_autor` int(11) NOT NULL,
-  `titulo` varchar(25) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `obras`
---
 
 INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (4, 7, 'Chica frente a un espejo', 'Chica frente a un espejo'),
@@ -439,24 +226,6 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (52, 15, 'Dog 4', '4'),
 (53, 15, 'Dog 5', '5');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `productos`
---
-
-CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(25) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `precio` float NOT NULL DEFAULT 0,
-  `unidades` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `productos`
---
-
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `unidades`) VALUES
 (1, 'Camiseta', 'Camiseta de algodón con logo', 15, 85),
 (2, 'Lapices', 'Lapices de colores', 1, 150),
@@ -464,24 +233,6 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `unidades`) VA
 (5, 'Pulsera', 'Pulsera multicolor', 2, 100),
 (6, 'Taza', 'Wifi taza', 5, 50),
 (7, 'Cojin', 'Cojin de colores', 15, 10);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pujas`
---
-
-CREATE TABLE `pujas` (
-  `id_obra` int(11) NOT NULL,
-  `fecha_finalizacion` date NOT NULL,
-  `precio_inicial` float NOT NULL DEFAULT 0,
-  `precio_actual` float NOT NULL,
-  `id_comprador_actual` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `pujas`
---
 
 INSERT INTO `pujas` (`id_obra`, `fecha_finalizacion`, `precio_inicial`, `precio_actual`, `id_comprador_actual`) VALUES
 (4, '2021-12-28', 10500, 10500, NULL),
@@ -499,47 +250,9 @@ INSERT INTO `pujas` (`id_obra`, `fecha_finalizacion`, `precio_inicial`, `precio_
 (38, '2021-06-30', 30, 30, NULL),
 (45, '2021-07-10', 100, 100, NULL);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sugerencias`
---
-
-CREATE TABLE `sugerencias` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(25) DEFAULT NULL,
-  `correo` varchar(25) DEFAULT NULL,
-  `tipo` varchar(25) DEFAULT NULL,
-  `contenido` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `sugerencias`
---
-
 INSERT INTO `sugerencias` (`id`, `nombre`, `correo`, `tipo`, `contenido`) VALUES
 (20, 'Carlota', 'carlota@gmail.com', 'evaluacion', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),
 (21, 'Javier', 'javier@gmail.com', 'criticas', '\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nick` varchar(40) NOT NULL,
-  `nombre` varchar(15) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `rol` varchar(10) NOT NULL,
-  `premium` tinyint(1) NOT NULL DEFAULT 0,
-  `avatar` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `usuarios`
---
 
 INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `avatar`) VALUES
 (1, 'admin', 'Administrador', '$2y$10$j3gDDnUmICg/rvP0lmz8Duv2FcE1Ufi0tDQpIqx5cKcbqtkBOxhfS', 'admin', 0, 0),
@@ -560,215 +273,3 @@ INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `a
 (18, 'comicMan', 'Damion', '$2y$10$bn3L8iAEaZjH1p/bdDTli.6HqWytll1riXW57rfsqkKRf8PAChfXS', 'artist', 1, 1),
 (19, 'flowerPop', 'Cinder', '$2y$10$ctkRYBGtBMyWcyFk/3OS.OkwU7VPkSfJHdpA3qys7U3yHknaYGwW.', 'artist', 1, 1),
 (20, 'elenaM', 'Elena Maldonado', '$2y$10$WyF0esJ8bLRgUwBR5ii1p.eZHeJWf0QU3P5T6VDSASrzX0jbH4G9y', 'user', 0, 0);
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `biografias`
---
-ALTER TABLE `biografias`
-  ADD PRIMARY KEY (`id_autor`);
-
---
--- Indices de la tabla `buzon`
---
-ALTER TABLE `buzon`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `compras`
---
-ALTER TABLE `compras`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `concursos`
---
-ALTER TABLE `concursos`
-  ADD PRIMARY KEY (`id_concurso`),
-  ADD KEY `concursos_ganador` (`id_ganador`),
-  ADD KEY `concursos_premio` (`premio_producto`);
-
---
--- Indices de la tabla `dibujos`
---
-ALTER TABLE `dibujos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `entradas`
---
-ALTER TABLE `entradas`
-  ADD PRIMARY KEY (`id_evento`,`id_usuario`),
-  ADD KEY `entradas_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `eventos`
---
-ALTER TABLE `eventos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `expos`
---
-ALTER TABLE `expos`
-  ADD PRIMARY KEY (`id_expo`,`id_obra`),
-  ADD KEY `expos_obra` (`id_obra`);
-
---
--- Indices de la tabla `likes`
---
-ALTER TABLE `likes`
-  ADD PRIMARY KEY (`id_obra`,`id_usuario`),
-  ADD KEY `likes_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `mecenas`
---
-ALTER TABLE `mecenas`
-  ADD PRIMARY KEY (`id_usuario`,`id_artista`),
-  ADD KEY `mecenas_artista` (`id_artista`);
-
---
--- Indices de la tabla `obras`
---
-ALTER TABLE `obras`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nombre` (`nombre`);
-
---
--- Indices de la tabla `pujas`
---
-ALTER TABLE `pujas`
-  ADD PRIMARY KEY (`id_obra`),
-  ADD KEY `pujas_comprador` (`id_comprador_actual`);
-
---
--- Indices de la tabla `sugerencias`
---
-ALTER TABLE `sugerencias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `buzon`
---
-ALTER TABLE `buzon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `compras`
---
-ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT de la tabla `dibujos`
---
-ALTER TABLE `dibujos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `eventos`
---
-ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- AUTO_INCREMENT de la tabla `obras`
---
-ALTER TABLE `obras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-
---
--- AUTO_INCREMENT de la tabla `productos`
---
-ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `sugerencias`
---
-ALTER TABLE `sugerencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `biografias`
---
-ALTER TABLE `biografias`
-  ADD CONSTRAINT `biografias_autor` FOREIGN KEY (`id_autor`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `concursos`
---
-ALTER TABLE `concursos`
-  ADD CONSTRAINT `concursos_evento` FOREIGN KEY (`id_concurso`) REFERENCES `eventos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `concursos_ganador` FOREIGN KEY (`id_ganador`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `concursos_premio` FOREIGN KEY (`premio_producto`) REFERENCES `productos` (`nombre`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `entradas`
---
-ALTER TABLE `entradas`
-  ADD CONSTRAINT `entradas_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `entradas_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `expos`
---
-ALTER TABLE `expos`
-  ADD CONSTRAINT `expos_expo` FOREIGN KEY (`id_expo`) REFERENCES `eventos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `expos_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `likes`
---
-ALTER TABLE `likes`
-  ADD CONSTRAINT `likes_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `likes_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `mecenas`
---
-ALTER TABLE `mecenas`
-  ADD CONSTRAINT `mecenas_artista` FOREIGN KEY (`id_artista`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mecenas_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `pujas`
---
-ALTER TABLE `pujas`
-  ADD CONSTRAINT `pujas_comprador` FOREIGN KEY (`id_comprador_actual`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pujas_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
