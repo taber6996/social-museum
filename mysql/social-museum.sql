@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 13:33:31
+-- Tiempo de generación: 09-06-2021 a las 14:38:27
 -- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.2
+-- Versión de PHP: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,7 +62,10 @@ CREATE TABLE `comentarios` (
 
 INSERT INTO `comentarios` (`id_obra`, `id_usuario`, `comentario`, `fecha`) VALUES
 (12, 6, 'Qué adorable!', '2021-06-07 01:19:35'),
-(1, 11, 'Me encanta!', '2021-06-03 01:20:07');
+(1, 11, 'Me encanta!', '2021-06-03 01:20:07'),
+(14, 7, 'Que bonito!', '2021-06-09 13:43:29'),
+(14, 3, 'Te ha quedado genial :D', '2021-06-09 14:02:08'),
+(31, 3, '¿donde es estooo? que chulo', '2021-06-09 14:02:46');
 
 -- --------------------------------------------------------
 
@@ -83,7 +86,9 @@ CREATE TABLE `compras` (
 INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
 (1, 1, 3),
 (12, 1, 2),
-(13, 1, 3);
+(13, 1, 3),
+(14, 2, 3),
+(15, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -211,16 +216,26 @@ INSERT INTO `likes` (`id_obra`, `id_usuario`) VALUES
 (1, 3),
 (1, 4),
 (1, 5),
+(4, 3),
 (4, 4),
 (4, 7),
 (4, 16),
 (5, 3),
 (5, 7),
 (6, 3),
+(7, 3),
 (7, 7),
+(13, 3),
+(14, 3),
 (14, 7),
+(16, 3),
 (16, 7),
-(25, 7);
+(25, 3),
+(25, 7),
+(28, 3),
+(29, 3),
+(30, 3),
+(31, 3);
 
 -- --------------------------------------------------------
 
@@ -239,6 +254,7 @@ CREATE TABLE `mecenas` (
 
 INSERT INTO `mecenas` (`id_usuario`, `id_artista`) VALUES
 (3, 7),
+(3, 9),
 (7, 9),
 (7, 10),
 (7, 14),
@@ -276,7 +292,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (8, 8, 'Freedom', 'Fight for freedom'),
 (9, 8, 'Player', 'American Player'),
 (10, 8, 'Wave', 'Big Blue Wave'),
-(11, 8, 'Woman', 'Womans Thoughts'),
+(11, 8, 'Woman', 'Woman\'s Thoughts'),
 (12, 8, 'Murder', 'Secret Murder'),
 (13, 9, 'Pajaro', 'Pajaro a lapiz'),
 (14, 9, 'Caballo', 'Caballo a lapiz'),
@@ -296,7 +312,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (30, 14, 'Atardecer', 'Paisaje de atardecer'),
 (31, 14, 'Congelado', 'Paisaje Congelado'),
 (32, 11, 'La maja desnuda', 'La maja desnuda es una de las obras más conocidas del pintor español Francisco de Goya.'),
-(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del  de Mayo'),
+(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del \" de Mayo'),
 (34, 11, 'El Quita Sol', 'Pareja en verano'),
 (35, 11, 'Familia Real', 'Retrato de la Familia Real'),
 (36, 7, 'El sueño', 'Mujer que descansa tranquilamente');
@@ -399,7 +415,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `avatar`) VALUES
 (1, 'admin', 'Administrador', '$2y$10$j3gDDnUmICg/rvP0lmz8Duv2FcE1Ufi0tDQpIqx5cKcbqtkBOxhfS', 'admin', 0, 0),
 (2, 'artist', 'Artista', '$2y$10$rYYIYCUzVJqTAFEhRZV7R.4DZF6hOGuVezEP592V/Su4Jq1D1.KEa', 'artist', 1, 0),
-(3, 'user', 'Usuario', '$2y$10$ImLgzNnDkWlI7LBB5a1mk.vNu8Fb8z79syAsoOXqM7jy5hrTaZKnG', 'user', 1, 0),
+(3, 'user', 'Usuario', '$2y$10$ImLgzNnDkWlI7LBB5a1mk.vNu8Fb8z79syAsoOXqM7jy5hrTaZKnG', 'user', 0, 0),
 (4, 'sergioRamos', 'Sergio', '$2y$10$b2ZEmBjoBfnGqi8Kruyi2uByOaItEaYt45b7iNalrFDzvLsLb.302', 'user', 1, 1),
 (5, 'ana', 'Ana Martinez', '$2y$10$nC3.49ySiJanNkO3VTOd6eZPcrfaXGaBP3mXMojdUeXsd0t7EsqH2', 'user', 0, 1),
 (6, 'pepito', 'Pepito', '$2y$10$c6N1O.toQCs3nbg7VCC7s.5veeUfwNHeahn0ERLrppOJi/7Fv4fXW', 'user', 0, 0),
@@ -517,7 +533,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `dibujos`
@@ -612,4 +628,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
