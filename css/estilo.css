@@ -187,6 +187,11 @@ footer{
 
 /*   PERFIL ARTISTA   */
 
+div.perfilArtista a{
+	text-decoration:none;
+	color:#000;
+}
+
 div.perfilArtista{
 	position:static;
 	width: 100%;
@@ -199,7 +204,7 @@ div.perfilArtista h2{
 }
 
 div.perfilArtista div#info_artista{
-	height: 15em;
+	height: 20em;
 }
 
 div#info_artista img#avatar{
@@ -280,6 +285,12 @@ div#obras_artista div.obraTarjeta div.inter{
 
 
 /**/
+
+section#seccionMisObras img{
+	width:250px;
+	height:250px;
+	object-fit:cover;
+}
 
 /* TIENDA */
 .tarjetasProductos{
@@ -398,4 +409,68 @@ input {
 }
 #input-name{
 	width: 100px;
+}
+
+/*   PREMIUM   */
+
+img.p {
+	height: 400px;
+    width: 600px;
+    object-fit: cover;
+	
+}
+
+
+
+/* EXPO */
+
+
+.slideshow{
+	width:90%;
+	max-width:1000px;
+	margin:20px auto;
+	overflow:hidden;
+}
+
+.slides {
+	width:100%;
+}
+
+.slides img{
+	object-fit:cover;
+}
+
+.slidesjs-pagination {
+	background:#424242;
+	list-style:none;
+	overflow:hidden;
+}
+
+.slidesjs-pagination li{
+	float:left;
+}
+
+.slidesjs-pagination li a {
+	display:block;
+	padding: 10px 20px;
+	color:#fff;
+	text-decoration:none;
+}
+
+.slidesjs-pagination li a:hover {
+	background:#000;
+}
+
+.slides .active{
+	background:#000;
+}
+
+.slidesjs-navigation{
+	padding: 10px 20px;
+	background:#000;
+	color:#fff;
+	text-decoration:none;
+	display:inline-block;
+	padding:10px 20px;
+	float:right;
 }
