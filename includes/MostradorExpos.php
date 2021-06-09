@@ -63,7 +63,8 @@ EOF;
 				
 				else{
 				
-				$user = $_SESSION['user'];
+				if(isset($_SESSION['user'])){
+						$user = $_SESSION['user'];
 				if($user->tieneEntrada($id)){
 					$html .= <<<EOF
 					<p>¡Ya tienes entrada! Pronto podrás visitar la expo.</p>
@@ -78,6 +79,9 @@ EOF;
 				</div>
 EOF;
 				}
+				}
+				
+			
 			}
 
 			}
