@@ -15,7 +15,8 @@ header{
 
 span.error {
 	color:#FF0000;
-	}
+}
+	
 /* MENU SECUNDARIO */
 #menu-secundario{
 	background-color:#fff9f2;
@@ -190,6 +191,11 @@ footer{
 
 /*   PERFIL ARTISTA   */
 
+div.perfilArtista a{
+	text-decoration:none;
+	color:#000;
+}
+
 div.perfilArtista{
 	position:static;
 	width: 100%;
@@ -202,7 +208,7 @@ div.perfilArtista h2{
 }
 
 div.perfilArtista div#info_artista{
-	height: 15em;
+	height: 20em;
 }
 
 div#info_artista img#avatar{
@@ -284,6 +290,12 @@ div#obras_artista div.obraTarjeta div.inter{
 
 /**/
 
+section#seccionMisObras img{
+	width:250px;
+	height:250px;
+	object-fit:cover;
+}
+
 /* TIENDA */
 .tarjetasProductos{
 	display: flex;
@@ -309,6 +321,8 @@ div#obras_artista div.obraTarjeta div.inter{
 	margin-top: 20px;
 	border: #ff9a40 2px solid;
 }
+
+/* SUGRENCIA*/
 
 .sugerencia {
 	background-color: #fff;
@@ -350,6 +364,137 @@ div#obras_artista div.obraTarjeta div.inter{
 	padding: 30px;
 	position: relative;
 	width: 100%;
+}
+
+/* CANVAS */
+
+
+.colorButtons {
+	display: block;
+	margin: 10px 0;
+}
+
+
+canvas {
+	cursor: crosshair;
+}
+
+div#toolbar-canvas {
+	position: absolute;
+	left: 280px;
+	width: 150px;
+	padding: 20px 20px;
+	top: 300px;
+}
+
+canvas#canvas {
+	left: 550px;
+	top: 400px;
+}
+
+
+.btn {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+
+div#toolbar-canvas input {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+
+.input-group {
+	margin-bottom: 10px;
+}
+
+.toolsButtons .btn {
+	width: 48%;
+}
+
+.sizeButtons .btn {
+	width: 48%;
+}
+
+.colorpicker {
+	background: transparent;
+	height: 40px;
+}
+#input-name{
+	width: 100px;
+}
+
+
+
+/*   PREMIUM   */
+
+img.p {
+	height: 400px;
+    width: 600px;
+    object-fit: cover;
+	
+}
+
+
+.o img{
+	width:300px;
+	height:300px;
+	object-fit:cover;
+}
+
+
+/* EXPO */
+
+
+.slideshow{
+	width:90%;
+	max-width:1000px;
+	margin:20px auto;
+	overflow:hidden;
+}
+
+.slides {
+	width:100%;
+}
+
+.slides img{
+	object-fit:cover;
+}
+
+.slidesjs-pagination {
+	background:#424242;
+	list-style:none;
+	overflow:hidden;
+}
+
+.slidesjs-pagination li{
+	float:left;
+}
+
+.slidesjs-pagination li a {
+	display:block;
+	padding: 10px 20px;
+	color:#fff;
+	text-decoration:none;
+}
+
+.slidesjs-pagination li a:hover {
+	background:#000;
+}
+
+.slides .active{
+	background:#000;
+}
+
+.slidesjs-navigation{
+	padding: 10px 20px;
+	background:#000;
+	color:#fff;
+	text-decoration:none;
+	display:inline-block;
+	padding:10px 20px;
+	float:right;
 }
 
 /* CORREOS */
