@@ -59,8 +59,30 @@ class Evento
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
-                $fila = $rs->fetch_assoc();$evento = new Evento($fila['nombre'], $fila['tipo'], $fila['descripcion'], $fila['fecha_ini'], $fila['fecha_fin'], $fila['precio']);
-                
+                $fila = $rs->fetch_assoc();
+				$evento = new Evento($fila['nombre'], $fila['tipo'], $fila['descripcion'], $fila['fecha_ini'], $fila['fecha_fin'], $fila['precio']);
+                $evento->id = $fila['id'];
+                $result = $evento;
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $result;
+    }
+	
+	public static function buscaEventoPorId($id)
+    {
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Eventos E WHERE E.id = %d", $id);
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                $evento = new Evento($fila['nombre'], $fila['tipo'], $fila['descripcion'], $fila['fecha_ini'], $fila['fecha_fin'], $fila['precio']);
                 $evento->id = $fila['id'];
                 $result = $evento;
             }
@@ -144,6 +166,14 @@ class Evento
 	//FALTA BORRAR EVENTO
 	/* Buscadores en BBDD */
 	
+	private static function consulta($query){
+		$app = Aplicacion::getInstance();
+        $conn = $app->conexionBd();
+        $rs = $conn->prepare($query);
+        $rs->execute();
+		return $rs->get_result();
+	}
+	
 	public static function exposAutor($id_autor){
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBd();
@@ -152,6 +182,12 @@ class Evento
         $rs->execute();
         $expos = $rs->get_result();
 		return $expos;
+	}
+	
+	public static function obrasExpo($id_expo){
+		$query = sprintf("SELECT id_obra FROM Expos WHERE id_expo=%d", $id_expo);
+		$obras = self:: consulta($query);
+		return $obras;
 	}
 	
 	public static function nombresEventos(){
