@@ -39,9 +39,9 @@ class MostradorArtista {
 EOS;
 		if (isset($_SESSION["login"]) && $_SESSION["login"]) {
 			$html .= <<<EOS
-			<div id="botones">
+			<p><div id="botones">
 EOS;
-			if (isset($_SESSION["nick"]) && $_SESSION["nick"]!=$this->usuarioArista->nick()) {
+			if ((isset($_SESSION["nick"]) && $_SESSION["nick"]!=$this->usuarioArista->nick()) && (isset($_SESSION["esAdmin"]) && $_SESSION["esAdmin"]==false)) {
 				$id_a = $this->usuarioArista->id();
 				$id_u = $_SESSION['user']->id();
 				$nick = $this->usuarioArista->nick();
@@ -68,7 +68,7 @@ EOS;
 				}
 			}
 			$html .= <<<EOS
-			</div>
+			</div></p>
 EOS;
 		}
 		return $html;
@@ -118,13 +118,85 @@ EOF;
 				$titulo = $obra->titulo();
 				$path = "img/obras/artista_".$obra->id_autor()."/".$id_obra.".jpg";
 				
+				$formLike = new GestionDarLike($id_obra);
+				$htmlLIKE = $formLike->gestiona();
+				
+				$formUnLike = new GestionQuitarLike($id_obra);
+				$htmlUNLIKE = $formUnLike->gestiona();
+				
 				$html .= <<<EOF
 				<div class="obraTarjeta">
 					<h3 class="titulo_oba" >$titulo</h3>
 					<img id="publicacion" src=$path>
 					<div class="inter">
-						<p>$numlikes likes  $numComentarios comentarios</p>
-							<a href="verObra.php?obra=$id_obra">Ver</a>
+						<p>$numlikes likes  
+						<!-- $numComentarios comentarios -->
+						</p>
+EOF;
+						if (isset($_SESSION["login"]) && $_SESSION["login"]) {
+							$user = $_SESSION['user'];
+							if(!($user->likeDado($id_obra))){
+								$html .= <<<EOF
+							$htmlLIKE
+EOF;
+							}else{
+								$html .= <<<EOF
+							$htmlUNLIKE
+EOF;
+							}
+							
+						}
+		
+						$html .= <<<EOF
+							
+					</div>
+				</div>
+			
+EOF;
+                }
+            }
+			$html .= <<<EOF
+			</section>
+EOF;
+            return $html;
+        }
+		
+		public function muestraMisObras(){
+		$id_autor = $this->usuarioArista->id();
+		$obras = Obra::obrasAutor($id_autor);
+        $filas = $obras->num_rows;
+        $html = "";
+		$html .= <<<EOF
+			<section id=seccionMisObras>
+EOF;
+        if($filas == 0){
+            $html .= <<<EOF
+                <p> ¡No hay obras! </p>
+EOF;
+        }
+        else{
+			
+            foreach($obras as $obra){
+                $id = $obra['id'] ?? null;
+                $obra = Obra::buscaObraPorId($id);
+				$numlikes = $obra->numLikes();
+				$numComentarios = $obra->numComentarios();
+				$id_obra = $obra->id();
+				$titulo = $obra->titulo();
+				$path = "img/obras/artista_".$obra->id_autor()."/".$id_obra.".jpg";
+				
+				
+				
+				$html .= <<<EOF
+				
+				<div class="obraTarjeta">
+					<h3 class="titulo_oba" >$titulo</h3>
+					<img id="publicacion" src=$path>
+					<div class="inter">
+						<p>$numlikes likes  
+						<!-- $numComentarios comentarios -->
+						</p>
+							
 					</div>
 				</div>
 			
@@ -151,7 +223,6 @@ EOF;
 EOF;
         }
         else{
-			
 			foreach($expos as $expo){
                 $nombre = $expo['nombre'] ?? null;
                 $html .= self::muestraExpo($nombre);
@@ -176,13 +247,12 @@ EOF;
             <div class="product-info">
             <div class="product-text">
             <h1>$nombre</h1>
-            <p>$descripcion </p>
+           
             <p>Fecha inicio: $fechaI </p>
             <p>Fecha fin: $fechaF </p>
             </div>
-            <div class="product-price-btn">
-            <p><span>$precio</span>$</p>
-            <button type="button">¡Compra tu entrada ahora!</button>
+           
+           
             </div>
             </div>
             EOF;
