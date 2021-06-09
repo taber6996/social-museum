@@ -13,6 +13,9 @@ header{
 	text-align: center;
 }
 
+span.error {
+	color:#FF0000;
+	}
 /* MENU SECUNDARIO */
 #menu-secundario{
 	background-color:#fff9f2;
@@ -187,11 +190,6 @@ footer{
 
 /*   PERFIL ARTISTA   */
 
-div.perfilArtista a{
-	text-decoration:none;
-	color:#000;
-}
-
 div.perfilArtista{
 	position:static;
 	width: 100%;
@@ -204,7 +202,7 @@ div.perfilArtista h2{
 }
 
 div.perfilArtista div#info_artista{
-	height: 20em;
+	height: 15em;
 }
 
 div#info_artista img#avatar{
@@ -286,12 +284,6 @@ div#obras_artista div.obraTarjeta div.inter{
 
 /**/
 
-section#seccionMisObras img{
-	width:250px;
-	height:250px;
-	object-fit:cover;
-}
-
 /* TIENDA */
 .tarjetasProductos{
 	display: flex;
@@ -317,8 +309,6 @@ section#seccionMisObras img{
 	margin-top: 20px;
 	border: #ff9a40 2px solid;
 }
-
-/* SUGRENCIA*/
 
 .sugerencia {
 	background-color: #fff;
@@ -362,133 +352,40 @@ section#seccionMisObras img{
 	width: 100%;
 }
 
-/* CANVAS */
+/* CORREOS */
 
-
-.colorButtons {
-	display: block;
-	margin: 10px 0;
+div#correos {
+	margin-top: 20px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
 
-
-canvas {
-	cursor: crosshair;
+table#indice-correos{
+	width: 50%;
+	order: 1;
+	border: 3px solid #000;
+	border-radius: 5px;
+	flex-basis:
 }
 
-div#toolbar-canvas {
-	position: absolute;
-	left: 280px;
-	width: 150px;
-	padding: 20px 20px;
-	top: 300px;
+table#indice-correos td{
+	text-align: left;
+	vertical-align: top;
+	padding: 0.3em;
+	border-bottom: 1px solid #000;
 }
 
-canvas#canvas {
-	left: 550px;
-	top: 400px;
-}
-
-
-.btn {
-	margin-bottom: 10px;
-	width: 100%;
-}
-
-
-div#toolbar-canvas input {
-	width: 100%;
-	margin-bottom: 10px;
-}
-
-
-.input-group {
-	margin-bottom: 10px;
-}
-
-.toolsButtons .btn {
-	width: 48%;
-}
-
-.sizeButtons .btn {
-	width: 48%;
-}
-
-.colorpicker {
-	background: transparent;
-	height: 40px;
-}
-#input-name{
-	width: 100px;
-}
-
-
-
-/*   PREMIUM   */
-
-img.p {
-	height: 400px;
-    width: 600px;
-    object-fit: cover;
+table#indice-correos tr.titulos{
+	background-color: #ffc591;
 	
 }
 
-
-.o img{
-	width:300px;
-	height:300px;
-	object-fit:cover;
-}
-
-
-/* EXPO */
-
-
-.slideshow{
-	width:90%;
-	max-width:1000px;
-	margin:20px auto;
-	overflow:hidden;
-}
-
-.slides {
-	width:100%;
-}
-
-.slides img{
-	object-fit:cover;
-}
-
-.slidesjs-pagination {
-	background:#424242;
-	list-style:none;
-	overflow:hidden;
-}
-
-.slidesjs-pagination li{
-	float:left;
-}
-
-.slidesjs-pagination li a {
-	display:block;
-	padding: 10px 20px;
-	color:#fff;
-	text-decoration:none;
-}
-
-.slidesjs-pagination li a:hover {
-	background:#000;
-}
-
-.slides .active{
-	background:#000;
-}
-
-.slidesjs-navigation{
-	padding: 10px 20px;
-	background:#000;
-	color:#fff;
-	text-decoration:none;
-	display:inline-block;
-	padding:10px 20px;
-	float:right;
+p#mensaje-abierto{
+	width: 50%;
+	order: 2;
+	border-left: 5px solid #ffc591;
+	border-radius: 5px;
+	margin-left: 10px;
+	margin-top: 30px;
 }
