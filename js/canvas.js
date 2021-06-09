@@ -93,7 +93,7 @@ document.getElementById('sendToServer').addEventListener('click', function(event
 			canvas.width = 600;
 			canvas.height = 600;
 			canvas.style.zIndex = 8;
-			canvas.style.position = "absolute";
+			canvas.style.position = "relative";
 			canvas.style.border = "1px solid";
 			ctx.fillStyle = currentBg;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);

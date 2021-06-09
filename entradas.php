@@ -1,8 +1,28 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
-$tituloPagina = 'Social Museum';
+$tituloPagina = "Mis entradas - ";
 
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
+
+$menuSGeneral = "";
+$menuSMecenazgos = "";
+$menuSEntradas = "active";
+$menuSMisObras = "";
+$menuSCompras = "";
+$menuSBuzon = "";
+
+$menuSGeneral = "";
+$menuSMecenazgos = "";
+$menuSEntradas = "active";
+$menuSCanvas = "";
+$menuSCompras = "";
+$menuSBuzon = "";
+		
 $mostradorEntradas = $mostrador = new es\ucm\fdi\aw\MostradorExpos();
 $htmlEntradas = $mostradorEntradas->muestraMisEntradas();
 

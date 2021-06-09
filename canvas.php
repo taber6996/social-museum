@@ -1,10 +1,22 @@
 <?php 
 require_once __DIR__.'/includes/config.php';
 
-
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
 
 $tituloPagina = "Dibujo -";
+$menuSGeneral = "";
+$menuSMecenazgos = "";
+$menuSEntradas = "";
+$menuSCanvas = "active";
+$menuSCompras = "";
+$menuSBuzon = "";
+
 $contenidoPrincipal=<<<EOS
+ <div id="canvas-kit">
  <div id="toolbar-canvas">
  <div class="colorButtons">
     <h3>Colour</h3>
@@ -46,5 +58,6 @@ $contenidoPrincipal=<<<EOS
 <noscript>
 <p> Esta página requiere JavaScript para su correcto funcionamiento.</p>
 </noscript>
+</div>
 EOS;
-require __DIR__.'/includes/plantillas/layout1.php';
+require __DIR__.'/includes/plantillas/layout2.php';

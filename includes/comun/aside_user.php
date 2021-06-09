@@ -1,11 +1,22 @@
+<?php
+	if (!isset($menuSGeneral, $menuSMecenazgos, $menuSEntradas, $menuSCanvas, $menuSCompras, $menuSBuzon))
+	{
+		$menuSGeneral = "";
+		$menuSMecenazgos = "";
+		$menuSEntradas = "";
+		$menuSCanvas = "";
+		$menuSCompras = "";
+		$menuSBuzon = "";
+	}
+?>
 <aside>
 	<nav id="menu-secundario">
-		<a href="general_user.php">General</a>
-		<a href="mecenazgos.php">Mecenazgos</a>
-		<a href="entradas.php">Entradas</a>
-		<a href="canvas.php">Canvas</a>
-		<a href="compras.php">Compras</a>
-		<a href="buzon.php">Buzón</a>
+		<a href="general_user.php" class = <?= $menuSGeneral ?> >General</a>
+		<a href="mecenazgos.php" class = <?= $menuSMecenazgos ?> >Mecenazgos</a>
+		<a href="entradas.php" class = <?= $menuSEntradas ?> >Entradas</a>
+		<a href="canvas.php" class = <?= $menuSCanvas ?> >Canvas</a>
+		<a href="compras.php" class = <?= $menuSCompras ?> >Compras</a>
+		<a href="buzon.php" class = <?= $menuSBuzon ?> >Buzón</a>
 		<a href="logout.php">Log Out</a>
 	</ul>
 	</nav>	

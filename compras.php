@@ -1,6 +1,28 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
 	
+	$tituloPagina = "Mis compras - ";
+
+	$menuArtistas = "";
+	$menuExpos = "";
+	$menuTienda = "";
+	$menuEventos = "";
+	$menuCuenta = "active";
+	
+	$menuSGeneral = "";
+	$menuSMecenazgos = "";
+	$menuSEntradas = "";
+	$menuSMisObras = "";
+	$menuSCompras = "active";
+	$menuSBuzon = "";
+	
+	$menuSGeneral = "";
+	$menuSMecenazgos = "";
+	$menuSEntradas = "";
+	$menuSCanvas = "";
+	$menuSCompras = "active";
+	$menuSBuzon = "";
+
 	$producto = false;
 	if(isset($_GET['producto'])){
 		$producto = $_GET['producto'];
@@ -12,8 +34,6 @@
 		$user->compra($producto);
 		header("Location: compras.php");
 	}
-
-	$tituloPagina = 'Compras -';
 
 	$mostrador = new es\ucm\fdi\aw\MostradorProductos();
 	$html = $mostrador->muestraMisCompras($_SESSION["user"]);

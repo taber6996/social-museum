@@ -16,6 +16,13 @@ $menuTienda = "";
 $menuEventos = "";
 $menuCuenta = "active";
 
+$menuSGeneral = "active";
+$menuSMecenazgos = "";
+$menuSEntradas = "";
+$menuSCanvas = "";
+$menuSCompras = "";
+$menuSBuzon = "";
+
 $contenidoPrincipal = <<<EOS
 <h1>Mi cuenta</h1>
 EOS;

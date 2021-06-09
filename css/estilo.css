@@ -9,8 +9,10 @@ header{
 	/*padding:25px 0 30px 0;
 	z-index:1000;*/
 }
-#logo{
+img#logoSVG{
 	text-align: center;
+	width: 100%;
+	height: auto;
 }
 
 span.error {
@@ -43,10 +45,11 @@ span.error {
 {
 	background-color:#d1ccc7;
 }
-#lista-menu-secundario li a:active
+
+#menu-secundario a.active
 {
-	background-color:#000000;
-	color:#d1ccc7;
+	background-color:#202020;
+	color:#ff9a40;
 }
 
 /* MENU DEL HEADER */
@@ -368,12 +371,11 @@ section#seccionMisObras img{
 
 /* CANVAS */
 
-
+/*
 .colorButtons {
 	display: block;
 	margin: 10px 0;
 }
-
 
 canvas {
 	cursor: crosshair;
@@ -423,6 +425,64 @@ div#toolbar-canvas input {
 }
 #input-name{
 	width: 100px;
+}
+*/
+.colorButtons {
+	display: block;
+	margin: 10px 0;
+}
+
+canvas {
+	cursor: crosshair;
+}
+
+div#canvas-kit {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+div#toolbar-canvas {
+	float: left;
+	width: 20%;
+}
+
+canvas#canvas {
+	left: 15em;
+	bottom: 38em;
+}
+
+
+.btn {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+
+div#toolbar-canvas input {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+
+.input-group {
+	margin-bottom: 10px;
+}
+
+.toolsButtons .btn {
+	width: 48%;
+}
+
+.sizeButtons .btn {
+	width: 48%;
+}
+
+.colorpicker {
+	background: transparent;
+	height: 40px;
+}
+
+input#titulo-input{
+	float: left;
 }
 
 
@@ -548,4 +608,3 @@ div.comment span {
 	font-weight:bold;
 	font-size: 29px;
 }
-

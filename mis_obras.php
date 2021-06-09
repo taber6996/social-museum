@@ -6,7 +6,20 @@ $htmlFormObra = $form->gestiona();
 $mostradorA= new es\ucm\fdi\aw\MostradorArtista($_SESSION['nick']);
 $htmlListaObras = $mostradorA->muestraMisObras();
 
-$tituloPagina = 'Social Museum';
+$tituloPagina = "Mis obras - ";
+
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
+
+$menuSGeneral = "";
+$menuSMecenazgos = "";
+$menuSEntradas = "";
+$menuSMisObras = "active";
+$menuSCompras = "";
+$menuSBuzon = "";
 
 $contenidoPrincipal = <<<EOS
 	<h3>Subir nueva obra</h3>

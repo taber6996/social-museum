@@ -6,6 +6,17 @@ $htmlFormProducto = $form->gestiona();
 
 $tituloPagina = 'Social Museum';
 
+$menuArtistas = "";
+$menuExpos = "";
+$menuTienda = "";
+$menuEventos = "";
+$menuCuenta = "active";
+
+$menuSGeneral = "";
+$menuSProducto = "active";
+$menuSEvento = "";
+$menuSSugerencias = "";
+
 $contenidoPrincipal = <<<EOS
 	<h3>Subir nuevo producto</h3>
 	$htmlFormProducto
