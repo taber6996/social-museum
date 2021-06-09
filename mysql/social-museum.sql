@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 07:34:30
+-- Tiempo de generación: 09-06-2021 a las 13:33:31
 -- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.4.15
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,25 +44,6 @@ INSERT INTO `biografias` (`id_autor`, `bio`) VALUES
 (14, 'Con mi cámara allá a donde vaya.');
 
 -- --------------------------------------------------------
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `compras`
---
-
-CREATE TABLE `compras` (
-  `id` int(11) NOT NULL,
-  `id_articulo` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `compras`
---
-
-INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
-(1, 1, 3),
-(12, 1, 2);
 
 --
 -- Estructura de tabla para la tabla `comentarios`
@@ -82,6 +63,27 @@ CREATE TABLE `comentarios` (
 INSERT INTO `comentarios` (`id_obra`, `id_usuario`, `comentario`, `fecha`) VALUES
 (12, 6, 'Qué adorable!', '2021-06-07 01:19:35'),
 (1, 11, 'Me encanta!', '2021-06-03 01:20:07');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `id` int(11) NOT NULL,
+  `id_articulo` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
+(1, 1, 3),
+(12, 1, 2),
+(13, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,8 @@ CREATE TABLE `entradas` (
 --
 
 INSERT INTO `entradas` (`id_evento`, `id_usuario`) VALUES
-(37, 3);
+(37, 3),
+(38, 3);
 
 -- --------------------------------------------------------
 
@@ -273,7 +276,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (8, 8, 'Freedom', 'Fight for freedom'),
 (9, 8, 'Player', 'American Player'),
 (10, 8, 'Wave', 'Big Blue Wave'),
-(11, 8, 'Woman', 'Woman\'s Thoughts'),
+(11, 8, 'Woman', 'Womans Thoughts'),
 (12, 8, 'Murder', 'Secret Murder'),
 (13, 9, 'Pajaro', 'Pajaro a lapiz'),
 (14, 9, 'Caballo', 'Caballo a lapiz'),
@@ -293,7 +296,7 @@ INSERT INTO `obras` (`id`, `id_autor`, `titulo`, `descripcion`) VALUES
 (30, 14, 'Atardecer', 'Paisaje de atardecer'),
 (31, 14, 'Congelado', 'Paisaje Congelado'),
 (32, 11, 'La maja desnuda', 'La maja desnuda es una de las obras más conocidas del pintor español Francisco de Goya.'),
-(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del \" de Mayo'),
+(33, 11, 'Los fusilamientos de 2 de', 'Cuadro del  de Mayo'),
 (34, 11, 'El Quita Sol', 'Pareja en verano'),
 (35, 11, 'Familia Real', 'Retrato de la Familia Real'),
 (36, 7, 'El sueño', 'Mujer que descansa tranquilamente');
@@ -396,7 +399,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `avatar`) VALUES
 (1, 'admin', 'Administrador', '$2y$10$j3gDDnUmICg/rvP0lmz8Duv2FcE1Ufi0tDQpIqx5cKcbqtkBOxhfS', 'admin', 0, 0),
 (2, 'artist', 'Artista', '$2y$10$rYYIYCUzVJqTAFEhRZV7R.4DZF6hOGuVezEP592V/Su4Jq1D1.KEa', 'artist', 1, 0),
-(3, 'user', 'Usuario', '$2y$10$ImLgzNnDkWlI7LBB5a1mk.vNu8Fb8z79syAsoOXqM7jy5hrTaZKnG', 'user', 0, 0),
+(3, 'user', 'Usuario', '$2y$10$ImLgzNnDkWlI7LBB5a1mk.vNu8Fb8z79syAsoOXqM7jy5hrTaZKnG', 'user', 1, 0),
 (4, 'sergioRamos', 'Sergio', '$2y$10$b2ZEmBjoBfnGqi8Kruyi2uByOaItEaYt45b7iNalrFDzvLsLb.302', 'user', 1, 1),
 (5, 'ana', 'Ana Martinez', '$2y$10$nC3.49ySiJanNkO3VTOd6eZPcrfaXGaBP3mXMojdUeXsd0t7EsqH2', 'user', 0, 1),
 (6, 'pepito', 'Pepito', '$2y$10$c6N1O.toQCs3nbg7VCC7s.5veeUfwNHeahn0ERLrppOJi/7Fv4fXW', 'user', 0, 0),
@@ -419,6 +422,12 @@ INSERT INTO `usuarios` (`id`, `nick`, `nombre`, `password`, `rol`, `premium`, `a
 --
 ALTER TABLE `biografias`
   ADD PRIMARY KEY (`id_autor`);
+
+--
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `concursos`
@@ -448,9 +457,7 @@ ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id`);
 
 --
-ALTER TABLE `compras`
-  ADD PRIMARY KEY (`id`);
-  
+-- Indices de la tabla `expos`
 --
 ALTER TABLE `expos`
   ADD PRIMARY KEY (`id_expo`,`id_obra`),
@@ -507,6 +514,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `dibujos`
 --
 ALTER TABLE `dibujos`
@@ -525,8 +538,6 @@ ALTER TABLE `obras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
-ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -583,8 +594,6 @@ ALTER TABLE `likes`
   ADD CONSTRAINT `likes_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `likes_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-
-
 --
 -- Filtros para la tabla `mecenas`
 --
@@ -603,3 +612,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
