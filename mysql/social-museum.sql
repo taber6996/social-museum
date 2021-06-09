@@ -44,6 +44,25 @@ INSERT INTO `biografias` (`id_autor`, `bio`) VALUES
 (14, 'Con mi cámara allá a donde vaya.');
 
 -- --------------------------------------------------------
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `id` int(11) NOT NULL,
+  `id_articulo` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `id_articulo`, `id_usuario`) VALUES
+(1, 1, 3),
+(12, 1, 2);
 
 --
 -- Estructura de tabla para la tabla `comentarios`
@@ -429,7 +448,9 @@ ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `expos`
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id`);
+  
 --
 ALTER TABLE `expos`
   ADD PRIMARY KEY (`id_expo`,`id_obra`),
@@ -504,6 +525,8 @@ ALTER TABLE `obras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+ALTER TABLE `compras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -559,6 +582,8 @@ ALTER TABLE `expos`
 ALTER TABLE `likes`
   ADD CONSTRAINT `likes_obra` FOREIGN KEY (`id_obra`) REFERENCES `obras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `likes_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
 
 --
 -- Filtros para la tabla `mecenas`
