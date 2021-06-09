@@ -3,8 +3,6 @@ require_once __DIR__.'/includes/config.php';
 
 $form = new es\ucm\fdi\aw\FormularioEvento();
 $htmlFormEvento = $form->gestiona();
-//$mostrador = new es\ucm\fdi\aw\MostradorEventos();
-//$htmlListaEventos = $mostrador->muestra();
 
 $tituloPagina = 'Social Museum';
 
