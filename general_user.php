@@ -14,6 +14,7 @@ $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
 $menuEventos = "";
+$menuDibujos = "";
 $menuCuenta = "active";
 
 $menuSGeneral = "active";

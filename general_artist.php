@@ -11,11 +11,13 @@ $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
 $menuEventos = "";
+$menuDibujos = "";
 $menuCuenta = "active";
 
 $menuSGeneral = "active";
 $menuSMecenazgos = "";
 $menuSEntradas = "";
+$menuSCanvas = "";
 $menuSMisObras = "";
 $menuSCompras = "";
 $menuSBuzon = "";

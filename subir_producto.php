@@ -9,10 +9,12 @@ $tituloPagina = 'Social Museum';
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "";
+$menuDibujos = "";
 $menuEventos = "";
 $menuCuenta = "active";
 
 $menuSGeneral = "";
+$menuSCanvas = "";
 $menuSProducto = "active";
 $menuSEvento = "";
 $menuSSugerencias = "";

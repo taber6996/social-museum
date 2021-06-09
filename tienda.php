@@ -10,6 +10,7 @@ $tituloPagina = 'Tienda - ';
 $menuArtistas = "";
 $menuExpos = "";
 $menuTienda = "active";
+$menuDibujos = "";
 $menuEventos = "";
 $menuCuenta = "";
 
